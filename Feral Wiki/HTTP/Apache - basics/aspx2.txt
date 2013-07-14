@@ -1,0 +1,36 @@
+cd user_apps
+mkdir apacheapxs2
+cd apacheapxs2
+
+wget http://security.debian.org/debian-security/pool/updates/main/a/apache2/apache2-threaded-dev_2.2.16-6+squeeze11_amd64.deb
+
+ar x apache2-threaded-dev_2.2.16-6+squeeze11_amd64.deb
+tar -xf data.tar.gz
+./usr/bin/apsx2
+
+cannot open /usr/share/apache2/build/config_vars.mk: No such file or directory at ./usr/bin/apxs2 line 218.
+
+cd user_apps
+mkdir h264streaming
+wget http://h264.code-shop.com/download/apache_mod_h264_streaming-2.2.7.tar.gz
+tar -zxvf apache_mod_h264_streaming-2.2.7.tar.gz
+cd mod_h264_streaming-2.2.7
+./configure --prefix=${HOME}/user_apps/h264streaming --with-apxs=`which apxs2`
+
+configure: error: *** The apxs binary installed by apache could not be found!
+
+make
+make install
+
+touch ~/.apache2/conf.d/x264.conf
+nano -w ~/.apache2/conf.d/x264.conf
+
+#Include ~/user_apps/h264streaming/mod_h264_streaming.so
+LoadModule h264_streaming_module ~/user_apps/h264streaming/mod_h264_streaming.so
+AddHandler h264-streaming.extensions .mp4
+
+ctrl + x
+y
+enter
+
+/usr/sbin/apache2ctl restart

@@ -1,0 +1,6 @@
+cd ~/www/$(whoami).$(hostname)/public_html/
+
+http://download.owncloud.org/community/owncloud-5.0.4.tar.bz2
+
+tar -xjf owncloud-5.0.4.tar.bz2
+

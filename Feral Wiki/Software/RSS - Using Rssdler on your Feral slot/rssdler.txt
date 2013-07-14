@@ -1,0 +1,191 @@
+[url=http://code.google.com/p/rssdler/]Rssdler[/url] is a utility to automatically download enclosures and other objects linked to from various types of RSS feeds. Works well on podcasts, videocasts, and torrents. This tutorial will guide you through setting up rssdler on your Feral box. (note: Waffles.FM prevents accessing RSS feeds directly on your Feral box. See [url=https://www.feralhosting.com/faq//view?question=39]this guide[/url] for a possible workaround.)
+
+[h3]Downloading and Installing Rssdler[/h3]
+[h4]Using SSH (recommended):[/h4]
+Connect to your server using an SSH client: Her is a guide on [url=https://www.feralhosting.com/faq/view?question=12]using putty[/url]):
+
+[code]cd[/code]
+Moves you to your home directory. You should be here by default, but just to be safe.
+
+[code]mkdir -p ~/bin && mkdir -p ~/.rssdler[/code]
+Makes directories named [i].rssdler[/i] and [i]bin[/i] at [i]~/[/i] 
+
+[b]Download and extract rssdler and create the config.txt:[/b]
+
+[code]wget http://rssdler.googlecode.com/files/rssdler-0.4.2.tar.gz -O ~/rssdler-0.4.2.tar.gz
+tar -xf ~/rssdler-0.4.2.tar.gz
+cp -f ~/rssdler042/* ~/.rssdler/
+rm -f ~/rssdler-0.4.2.tar.gz && rm -rf ~/rssdler042/
+touch ~/.rssdler/config.txt[/code]
+Downloads rssdler, extracts it, copies the contents, removes the tar and unpacked folder. Creates the config.txt
+
+Optional: you can edit new[i]~/.rssdler/config.txt[/i] file with ftp + a text editor or use the nano command below:
+
+[code]nano -w ~/.rssdler/config.txt[/code]
+Opens the blank new file in nano ready to paste in the custom config details in the paste bin link:
+
+[url=http://pastebin.com/QTakP9mj]Use this pastebin example config.txt[/url]
+
+This config must be edited a little to work on your slot. Please read the next section.
+
+A commented config file with all available options can be found [url=http://code.google.com/p/rssdler/wiki/CommentedConfig]Commented Config here[/url]. Also here, a [url=http://pastebin.com/4VHjFPwX]pastebin rssdler commented version[/url]
+
+The config.txt file can be found here:
+
+[code]/media/DISKiD/home/USERNAME/.rssdler/config.txt[/code]
+Note: The previous ssh commands created this file four you using the [i]touch[/i] command.
+
+[h3]config.txt settings:[/h3]
+[b]1:[/b] We suggest that you use the temporary download directories to test your setup before using it properly as used in the config.txt:
+These are already configured in the example config.txt linked above. you just need to change the path to that of your slot.
+
+[code]/media/DISKiD/home/USERNAME/private/TESTdownload
+/media/DISKiD/home/USERNAME/private/TESTmininova
+/media/DISKiD/home/USERNAME/private/TESTlegittorrents[/code]
+[b]2:[/b] Be sure to substitute [i]DISKiD[/i] and [i]USERNAME[/i] with your actual disk ID username in the config file. use this command to find your info:
+
+[code]cd && pwd[/code]
+This will give you the info you need to copy and replace in the config.txt
+
+[b]3:[/b] In the last section of the config give any name to your first test feed between the square brackets and enter the actual URL of the feed (this must be a direct download type of feed). If no download dir is specified here, .torrents will be downloaded to the dir specified in the global section of the config. This is a very powerful feature that allows you to download your .torrents to different dir's according to the feed.
+
+Please see further on for examples of this.
+
+[b]4:[/b] Pay special attention to the [i]scanMins[/i] setting — this is how often rssdler will be checking the feed. Don't set this value too low — 15 min should be safe to start with. Consult with your tracker regarding the minimum allowed rss poll frequency on this specific tracker. Don't joke with it — your IP will most likely get banned by the tracker if you check the feed way too frequently.
+
+[b]5:[/b] The config.txt on pastebin come ready to work with some demo  rss urls. You just need to change the paths to your full paths then they will download some torrents to these folders when you run the screen command below:
+
+~/private/TESTdownloads
+~/private/TESTmininova
+~/private/TESTlegittorrents
+
+Please note that we are specifying no filters for our test feed — this means that rssdler will download all .torrents in the feed not filtering them for now by any criteria.
+
+It's time to test our setup.
+
+[h3]Easily creating a simple bash script in SSH to run rssdler in a  screen[/h3]
+The following tip will save you from typing the full path to rssdler.py with arguments each time you want to run it.
+
+These SSH commands will do this for you quite easily, you can just copy and paste them:
+
+[code]echo -e '#!/bin/bash\npython $(cd && pwd)/.rssdler/rssdler.py --run' > ~/bin/rssdler[/code]
+This creates a simple script in the ~/bin directory so we can easily run rssdler with a screen in a moment.
+
+[code]chmod 700 ~/bin/rssdler[/code]
+We must make it executable. If you get permission errors when running the screen command you did not do this step.
+
+And that is the bash script created using SSH.
+
+[h3]Launching Rssdler in Screen and Testing Your Setup[/h3]
+[url=https://www.feralhosting.com/faq/view?question=12]SSH[/url] to your server. Type:
+
+[code]screen -dmS myrssdler rssdler[/code]
+This command will start a screen session in the background called [i]myrssdler[/i] using the bash script we created in [i]~/bin/rssdler[/i]
+
+To check on rssdler, you will just reattach this screen session by typing [i]screen -r myrssdler[/i]. You will be able to leave rssdler running in the background by detaching the screen session [i]ctrl + a + d[/i]. Read our [url=https://www.feralhosting.com/faq/view?question=2]rTorrent tutorial[/url] or the more general tutorial on [url=https://www.feralhosting.com/faq/view?question=16]using Screen[/url] to familiarize yourself with the concept.
+
+If everything was set up correctly and you made no typos in the configuration file, rssdler should start up, read the config file, download .torrents from your test feed and store them in your test dir.
+
+[b](Please note that there's no need to restart rssdler for it to pick the changes you make to the config file. You can edit the config, and rssdler will pick up the changes on the fly.)[/b]
+
+Leave rssdler running for a while and observe it in Screen. Once you are satisfied with the results, you can edit config.txt and change the download dir to your actual watch folder.
+
+Please be very careful with this script. Filters need to be setup correctly for rssdler to download only what you want, and not everything in the feed. Errors in the config may harm your ratio or, in the worst scenario, destroy it completely.
+
+[b]ATTENTION: Do test your setup properly before sending .torrents to your actual watch folder! Configure your filters and leave rssdler running for about a day, then examine the download dir to see what it actually downloaded and if your filters are actually filtering out the right stuff![/b]
+
+[h3]Configuring Filters[/h3]
+This part of the tutorial needs to be expanded on. For now please consult [url=http://code.google.com/p/rssdler/wiki/CommentedConfig]this file[/url] for reference.
+
+[b]Example 1:[/b]
+
+[Example1]
+link = http://rss.torrentleech.org/rss.php?passkey=XXXXXXXXX--EDIT-ME--XXXXXXXXXX
+maxSize = 400
+directory =/media/DISKiD/home/USERNAME/private/rtorrent/TEST
+regextrue = (Dexter)
+regexfalse = (hr|720|1080|ntsc|x264|sct)
+nosave = False
+
+[b]Example 2:[/b]
+
+[Example2]
+link = http://rss.torrentleech.org/rss.php?passkey=XXXXXXXXX--EDIT-ME--XXXXXXXXXX
+maxSize = 0
+minSize = 195
+nosave = False
+# checkTime1Day = Mon
+# checkTime1Start = 18
+# checkTime1Stop = 21
+regextrue = (Prison.Break|Heroes|Gossip.Girl|Sons.of.Anarchy|Fringe)
+regexfalse = (HEBSUB|D0|DVDR|DVD-R|DVDRip)
+
+Please note that no download dir was specified in Example 2 — rssdler will use the global setting in this case.
+
+The lines starting with a # are 'commented out' — this means rssdler will ignore these settings when parsing the config.
+
+You can learn about all available settings [url=http://code.google.com/p/rssdler/wiki/HelpMessage]here[/url].
+
+If you need help on using regular expressions, you can find it [url=http://www.regular-expressions.info/quickstart.html]here[/url]. You can use this [url=http://erik.eae.net/playground/regexp/regexp.html]online tool[/url] for testing your regex.
+
+Provided your filters are configured correctly, these settings should suffice for running rssdler on most trackers.
+
+[b]For some trackers however it's necessary to have a properly formatted cookies.txt file in the .rssdler dir. Please search the tracker's forum for information on how to configure this file.[/b]
+
+[h3]Advanced: Command Line Options[/h3]
+
+To add these commands all you have to do is edit the ~/bin/rssdler bash script and add your options there. The kill the PID and run the screen command above again.
+
+[code]--config/-c can be used with all the options except --comment-config, --help
+    --comment-config: Prints a commented config file to stdout
+    --help/-h: print the short help message (command line options)
+    --full-help/-f: print the complete help message (quite long)
+    --run/-r: run according to the configuration file
+    --runonce/-o: run only once then exit
+    --daemon/-d: run in the background (Unix-like only)
+    --kill/-k: kill the currently running instance (may not work on Windows)
+    --config/-c: specify a config file (default /home/james/.rssdler/config.txt).
+    --list-failed: Will list the urls of all the failed downloads
+    --purge-failed: Use to clear the failed download queue. 
+        Use when you have a download stuck (perhaps removed from the site or 
+        wrong url in RSS feed) and you no longer care about RSSDler attempting 
+        to grab it. Will be appended to the saved download list to prevent 
+        readdition to the failed queue.
+        Should be used alone or with -c/--config. Exits after completion.
+    --list-saved: Will list everything that has been registered as downloaded.
+    --purge-saved: Clear the list of saved downloads, not stored anywhere.
+    --state/-s: Will return the process ID if another instance is running with.
+        Otherwise exits with return code 1
+        Note for Windows: will return the pid found in daemonInfo,
+        regardless of whether it is currently running.[/code]
+[h3]Dealing with Unicode Related Issues in Rssdler[/h3]
+rssdler is known to crash on encountering Unicode characters in file names. If the feeds you'll be using do not normally contain those, there's no further action required. If however you plan on using what.cd feeds, patching rssdler to ignore errors is a must.
+
+Open the rssdler.py file. Locate the line:
+
+[code]if not isinstance(s, basestring): s= unicode(s) # __str__ for exceptions etc[/code]
+Erase it, and paste the following instead:
+
+[code]    if not isinstance(s, basestring):
+        try:
+            s= unicode(s) # __str__ for exceptions etc
+        except:
+            s= unicode(s.__str__(), errors='ignore')
+    if isinstance(s, str): s = unicode(s, 'utf-8', 'replace')
+    if not isinstance(s, unicode): 
+        raise UnicodeEncodeError(u'could not encode %s to unicode' % s)[/code]
+Be careful while editing the file. Indentation is important. Do not use tab for indentation, use the space key. The screen shot below shows what this section of the file must look like (with whitespace marked):
+
+[img]http://i29.tinypic.com/1zntkyr.jpg[/img]
+
+An already modified rssdler.py can be found [url=http://rusak.pastebin.com/f624298d3]here[/url].
+
+[h3]Other Known Issues[/h3]
+Rssdler will crash on feeds containing numerous %%% characters, or at least that's what seems to be the issue (namely, Waffles.FM custom feeds). Currently there's no fix that we're aware of. Please contact rusak on #feral IRC if you have one, or feel free to edit this article directly. Thank you.
+
+[b]WAFFLES.FM[/b]:
+
+Until further notice, Waffles.FM banned OVH IP ranges from accessing the website, while still allowing access to the tracker. You will thus be able to use your Feral box to download/upload stuff from/to Waffles.FM, but you will not be able to access Waffles.FM website using Feral VPN / SSH tunnel or use Waffles.FM RSS feeds directly on your Feral box. See [url=https://www.feralhosting.com/faq/view?question=39]this guide[/url] for a possible workaround.
+
+
+

@@ -1,0 +1,19 @@
+[b]Windows Paid Solutions:[/b]
+
+[url=http://www.smartftp.com/]SmarFTP Client[/url] FTP/SFTP/keyfiles/Built in Terminal Emulator/Parallel downloads/Segmented downloads
+
+[url=http://www.cuteftp.com/trial.aspx]CuteFTP Client[/url] FTP/SFTP/keyfiles/Parallel downloads/Segmented downloads
+
+[b]Mac Free Solutions:[/b]
+
+[url=https://filezilla-project.org/download.php?type=client]Filezilla Client[/url] FTP/SFTP/keyfiles/parallel downloads
+
+[b]Mac Paid Solutions:[/b]
+
+[url=http://nolobe.com/interarchy/]interarchy[/url] Recommended - FTP/SFTP/keyfiles/Parallel downloads/Segmented downloads
+
+[url=http://panic.com/transmit/]Transmit[/url] FTP/SFTP/keyfiles/Parallel downloads
+
+[url=http://fetchsoftworks.com/fetch/]Fetch[/url] FTP/SFTP/keyfiles/Parallel downloads
+
+[url=http://www.cuteftp.com/trial.aspx]CuteFTP Client[/url] FTP/SFTP/keyfiles/Parallel downloads/Segmented downloads

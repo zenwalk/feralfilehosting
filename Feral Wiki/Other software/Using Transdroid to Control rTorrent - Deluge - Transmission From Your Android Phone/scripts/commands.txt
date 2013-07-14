@@ -1,0 +1,5 @@
+killall -9 nginx php5-fpm -u $(whoami) && killall -9 rtorrent -u $(whoami)
+rm -rf ~/.nginx && rm -rf ~/www/$(whoami).$(hostname)/public_html/rutorrent
+
+cp ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ~/.nginx/conf.d/000-default-server.d/scgi-htpasswd
+sed -i 's/\(.*\):\(.*\)/rutorrent:\2/g' ~/.nginx/conf.d/000-default-server.d/scgi-htpasswd

@@ -1,0 +1,107 @@
+# READ THE COMMENTS PLEASE
+# Use Full Paths. Relative paths starting with are assumed to be inside the working directory.
+# If the folder you wish to use does not exist you must CREATE it first
+
+[global]
+
+downloadDir = /media/DISKiD/home/USERNAME/private/TESTdownload
+#
+# This folder is created for you when the program runs.
+# download files to this directory by default
+# Using the example directories
+##### EDIT this line. You must replace DISKiD and USERNAME with your own
+##### Please see the faq for how to get his info
+
+workingDir = /media/DISKiD/home/USERNAME/.rssdler
+#
+# makes this the 'working directory' of RSSDler. anytime you specify a filename
+# without an absolute path, it will be relative to this 
+# I am not sure what the implications of changing this are. This is where the apps main files are.
+##### EDIT this line. You must replace DISKiD and USERNAME with your own
+##### Please see the faq for how to get his info
+
+minSize = 0
+#
+# if a file is smaller than this, it will not be downloaded. 
+# if filesize cannot be determined, this is ignored. 
+# Specified in MB. Remember 1024 MB == 1GB
+# 0 means no minimum, as does "None" (w/o the quotes)
+
+# maxSize = None
+#
+# if a file is larger than this, it will not be downloaded.  Default is None
+# though this line is ignored because it starts with a #
+
+log = 1
+#
+# write messages to a log file. 0 is off, 1 is just error messages, 
+# 3 tells you when you download something, 5 is very, very wordy. (default = 0)
+
+logFile = downloads.log
+#
+# where to write those log messages (default 'downloads.log')
+
+verbose = 3
+#
+# like log, only prints to the screen (errors to stderr, other to stdout)
+# default 3
+
+scanMins = 15
+#
+#how long to wait between checking feeds (in minutes). Default 15.
+
+sleepTime = 3
+#
+# how long to wait between http requests (in seconds). Default 0
+
+runOnce = False
+#
+# to exit after scanning all the feeds, or to keep looping. Default False.
+
+urllib = false
+#
+# set to false if mechanize was installed on the server; set to true if there's no mechanize
+
+# the rest of the global options are described in the help,
+# let's move on to a thread
+
+###################
+# each section represents a feed, except for the one called global. 
+# this is the example url section
+###################
+
+[mininova]
+
+link = http://www.mininova.org/rss.xml
+# Use a direct link to the feed
+# no quotes
+
+directory = /media/DISKiD/home/USERNAME/private/TESTmininova
+#
+# This folder is created for you when the program runs.
+# if specified, will download files in this thread to this directory and not the global one.
+##### Optional EDIT. You must replace DISKiD and USERNAME with your own
+##### Please see the faq for how to get his info
+
+[legit torrents]
+
+link = http://www.legittorrents.info/rss_torrents.php
+# Use a direct link to the feed
+# no quotes
+
+directory = /media/DISKiD/home/USERNAME/private/TESTlegittorrents
+#
+# This folder is created for you when the program runs.
+# if specified, will download files in this thread to this directory and not the global one.
+##### Optional EDIT. You must replace DISKiD and USERNAME with your own
+##### Please see the faq for how to get his info
+
+[Open Office]
+
+link = http://borft.student.utwente.nl/%7Emike/oo/bt.rss
+# Use a direct link to the feed
+# no quotes
+
+directory = 
+#
+# NO Directory Specified so the global option will be used
