@@ -1,4 +1,5 @@
 In SSH do these commands. Use this faq if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
+
 [SSH](https://www.feralhosting.com/faq/view?question=12)
 
 You can do this from the [Install Software](https://www.feralhosting.com/manager/slot/install?) page for that slot.
