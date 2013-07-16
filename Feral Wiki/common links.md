@@ -2,6 +2,8 @@ In SSH do these commands. Use this faq if you do not know how to SSH into your s
 
 [SSH](https://www.feralhosting.com/faq/view?question=12)
 
+[text editor](https://www.feralhosting.com/faq/view?question=219)
+
 You can do this from the [Install Software](https://www.feralhosting.com/manager/slot/install?) page for that slot.
 
 You can do this from the Install Software link in your [Account Manager](https://www.feralhosting.com/manager/)
