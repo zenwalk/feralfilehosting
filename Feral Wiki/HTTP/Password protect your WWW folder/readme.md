@@ -8,13 +8,7 @@ This bash script provides some easy options to perform some common tasks.
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/bashscript.png)
 
 ~~~
-wget -qNO ~/htpasswdtk.sh http://git.io/eJySww
-~~~
-
-Then:
-
-~~~
-bash ~/htpasswdtk.sh
+wget -qNO ~/htpasswdtk.sh http://git.io/eJySww && bash ~/htpasswdtk.sh
 ~~~
 
 This script will also get the latest version and copy it to your `~/bin` directory and make it executable.
@@ -91,7 +85,7 @@ This will move us into the root of our WWW folder
 Now type:
 
 ~~~
-nano .htaccess
+nano -w .htaccess
 ~~~
 
 This opens an existing file, in this case .htaccess, or creates the new file upon saving using a text editor called nano
@@ -352,31 +346,33 @@ You nginx configuration files stored here:
 ~/.nginx/conf.d/000-default-server.d
 ~~~
 
-Create a new conf file and enter this information, for example
+Create a new conf file and enter this information, for example:
 
 ~~~
-touch ~/.nginx/conf.d/000-default-server.d/links.conf
+nano -w ~/.nginx/conf.d/000-default-server.d/links.conf
 ~~~
 
-Then enter this information into it.
+Then copy this information into it:
 
 ~~~
 location /links {
-    auth_basic username;
-    auth_basic_user_file /media/DiskID/username/path/to/.htpasswd
+    auth_basic "Please log in";
+    auth_basic_user_file /media/DiskID/username/path/to/.htpasswd;
 }
 ~~~
 
 Where:
 
-`username` = Your Feral username and `/media/DiskID/username/path/to/.htpasswd` reflect the actual paths to your `.htpasswd`. You can use the method described in the Apache section of this FAQ to generate and manage your `.htpasswd` files.
+`/media/DiskID/username/path/to/.htpasswd` reflects the actual full path to your `.htpasswd`. You can use the method described in the Apache section of this FAQ to generate and manage your `.htpasswd` files.
 
-So to password protect your server root you would do this:
+The press and hold `CTRL` then press `x` to save. Press `y` to confirm.
+
+For example, to password protect your server root you would do this:
 
 ~~~
 location / {
-    auth_basic username;
-    auth_basic_user_file /media/DiskID/username/path/to/.htpasswd
+    auth_basic "Please log in";
+    auth_basic_user_file /media/DiskID/username/path/to/.htpasswd;
 }
 ~~~
 
@@ -388,11 +384,15 @@ location /
 
 Is specifying the server root and not a sub directory.
 
-Then save and restart ngnix for the settings to take effect.
+Then save the edits to the `links.conf` and restart ngnix for the settings to take effect.
 
 ~~~
 killall -9 nginx php5-fpm -u $(whoami)
 ~~~
 
-The wait 5 minutes for it to restart.
+You will need to wait up to 5 minutes for it to restart. 
+
+**Important note:** Please note you may need to clear your browser cache for changes to reflected in your current browser session.
+
+
 

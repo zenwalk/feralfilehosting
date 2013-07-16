@@ -14,3 +14,5 @@ You can do this from the Install Software link in your [Account Manager](https:/
 You will need to have Mysql already installed. You can do this from the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/)
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/installmysql.png)
+
+The press and hold `CTRL` then press `x` to save. Press `y` to confirm.
