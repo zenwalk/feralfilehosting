@@ -117,7 +117,7 @@ then
     fi
     echo -e "\033[33m""Here is the command you have just created:""\e[0m"
     echo
-    echo -e "\033[31m""rsync" "\033[32m""-rlpthDPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+    echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
     echo
     read -ep "Would you like to try and run this command in a screen [y] or exit now [e]: " confirmscreen1
     echo
@@ -154,14 +154,14 @@ then
             #
             screen -dmS rsynctk$mish
             sleep 2
-            screen -S rsynctk$mish -p 0 -X exec rsync -rlpthDPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.feralhosting.com:~/$path ~/rsync
+            screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.feralhosting.com:~/$path ~/rsync
             #
             echo
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
-            echo -e "\033[31m""rsync" "\033[32m""-rlpthDPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
             echo -e "The command that uses our public/private key file pair."
-            echo -e "\033[31m""rsync" "\033[32m""-rlpthDPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
             echo -e "\033[33m""The command to copy our public key to the old slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "\033[33m""file.""\e[0m"
             echo -e "ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.feralhosting.com"
@@ -201,7 +201,7 @@ then
     fi
     echo -e "\033[33m""Here is the command you have just created:""\e[0m"
     echo
-    echo -e "\033[31m""rsync" "\033[32m""-rlpthDPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+    echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
     echo
     read -ep "Would you like to try and run this command in a screen [y] or exit now [e]: " confirmscreen1
     echo
@@ -238,14 +238,14 @@ then
             #
             screen -dmS rsynctk$mish
             sleep 2
-            screen -S rsynctk$mish -p 0 -X exec rsync -rlpthDPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.whatbox.ca:~/$path ~/rsync
+            screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.whatbox.ca:~/$path ~/rsync
             #
             echo
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
-            echo -e "\033[31m""rsync" "\033[32m""-rlpthDPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
             echo -e "The command that uses our public/private key file pair."
-            echo -e "\033[31m""rsync" "\033[32m""-rlpthDPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
             echo -e "\033[33m""The command to copy our public key to the old slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "\033[33m""file.""\e[0m"
             echo -e "ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.whatbox.ca"

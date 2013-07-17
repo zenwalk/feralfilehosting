@@ -43,7 +43,7 @@ mkdir -p ~/rysnc
 
 This means there is now a folder called `rysnc` within your `~/` or slot root on the NEW server.
 
-Now the process below will describe how to copy all or parts of your old slots data to the newly created `rsync` folder on your new slot.
+Now the process below will describe how to copy all or parts of your old slot's data to the newly created `rsync` folder on your new slot.
 
 ## Step 2: Using rysnc
 
@@ -57,9 +57,15 @@ Use this command to create a screen for us to use.
 screen -S transfer
 ~~~
 
-Once this has opened you will be placed inside it the new screen window, now continue reading the guide:
+If it already exists, reconnect to it using this command:
 
-**2.2** rsync command and structure
+~~~
+screen -r transfer
+~~~
+
+Once the has opened you will be placed inside it the new screen window, now continue reading the guide:
+
+**2.2** rsync, the command and structure
 
 **Important note:** Please see the end of the FAQ for a breakdown of the arguments used as well as for some optional extras.
 
@@ -69,7 +75,7 @@ This is the command we will use to copy files from our old slot to our new slot,
 rsync -avhPS usename@server.feralhosting.com:~/location/of/files ~/destination/of/files/
 ~~~
 
-for example, using the directories we created in step one we can do this
+For example, using the directories we created in step one we can do this
 
 ~~~
 rsync -avhPS usename@server.feralhosting.com:~/private/rtorrent/data ~/rsync/
@@ -111,15 +117,17 @@ All files from within the data directory on our old slot will be copied to the `
 
 So be careful about the use of a trailing slash. You could use general rule of telling rysnc to look `inside this directory` when deciding whether to apply a trailing slash.
 
+Here is a useful explanation of the use of a trailing slash: [External link](http://devblog.virtage.com/2013/01/to-trailing-slash-or-not-to-trailing-slash-to-rsync-path/)
+
 ### Step 3: Applying our command:
 
-Once we have the correct command with the relevant paths to your directories let's do a quick check
+Once we have the correct command, with the relevant paths to your directories, let's do a quick check
 
-**3.1:** We have SSH'd t the server we want to copy the files to. This means your NEW slot.
+**3.1:** We have SSH'd to the server we want to copy the files to. This means your NEW slot.
 
-**3.2:** We have opened a screen window in the terminal and given it a name we can easily recognize ( that is what the -S does), in this example the screen name is **transfer**.
+**3.2:** We have opened a screen window in SSH and given it a name we can easily recognize ( that is what the -S does), in this example the screen name is **transfer**.
 
-**3.3:** We have edited the command to be relevant to our details? So **username@server.feralhosting.com** has been edited to contain your relevant info such as the host where the files are we want to copy, for example: **huzzah378@lemur.feralhosting.com**
+**3.3:** We have edited the command to be relevant to our details? So `username@server.feralhosting.com` has been edited to contain your relevant info such as the host where the files are we want to copy, for example: `huzzah378@lemur.feralhosting.com`
 
 **3.4:** We have used existing directories that we either created in step 1 or that already existed.
 
@@ -182,3 +190,5 @@ Here is the command broken down.
 ~~~
 -anczvhPS
 ~~~
+
+

@@ -1,5 +1,5 @@
 
-Here is the basic set-up to get connected to the Feral IRC channel using Irssi. It will get you connected using SSL to the Feral IRC channel using irssi.
+Here is the basic set-up to get connected to the Feral IRC channel using Irssi from your Feral slot. It will get you connected using SSL to the Feral IRC channel using irssi.
 
 Doe these commands in [SSH](https://www.feralhosting.com/faq/view?question=12):
 
