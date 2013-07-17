@@ -1,3 +1,4 @@
+
 ### Rsync toolkit bash script
 
 Do this command on your **NEW** slot:
@@ -8,7 +9,7 @@ wget -qNO ~/rsynctk.sh http://git.io/ikae7Q && bash ~/rsynctk.sh
 
 This script basically does 3 things.
 
-**1:** Asks you for inputs such as **username** and **server** name and will generate you a working command that you can do inside a screen window.
+**1:** Asks you for inputs such as username and server name and will then generate you a working command that you can do inside a screen window.
 
 **2:** You can continue and have the script create a screen and add the command. This stage requires your SSH passwords for your old slot. If you complete the steps correctly it will create a screen and start the transfer based on your input.
 
@@ -16,7 +17,7 @@ This script basically does 3 things.
 
 If anything you can just do stage one to get a working command. Remember you run this script on your **NEW** slot. It copies files from your old slot to the new. The process is started and runs on the new slot.
 
-### Rysnc usage explained with an example situation
+### rysnc Intro
 
 Let us say that you have just purchased an upgraded slot and would like to move files over from the old slot over to your newer slot. This can be done through a ticket and usually is, but here I will explain how to do this partially or completely by yourself in SSH with very reliable results using program called screen with another program called rsync
 
@@ -24,19 +25,13 @@ Let us say that you have just purchased an upgraded slot and would like to move 
 
 Don't forget you can open a ticket and ask Staff to do this for you if you are struggling:
 
-If you plan on cloning/copying you entire HOME folder or a particular and existing folder like `~/private` to `~/private`  you do not need to move the files first. You can just skip to **Step 3**. **Step1:** and **Step2** describes preparing a method for easily and selectively copying files from one slot to another. 
+If you plan on cloning/copying you entire HOME folder or a particular and existing folder like `~/private` to `~/private`  you do not need to move the files first. You can just skip to **Step 2**. 
 
-**Step 3:** onwards describes the use of rysnc in general to copy files.
+**Step 1:** describes preparing a method for easily and selectively copying files from one slot to another. 
 
-### Step 1: Selectively copying files and folders
+**Step 2:** onwards describes the use of rysnc in general to copy files.
 
-**1** [SSH](https://www.feralhosting.com/faq/view?question=12) to your NEW slot (**the slot that has the files you want to move**) and copy or type this command.
-
-~~~
-mkdir -p ~/rysnc
-~~~
-
-**Step 2**:
+### Step 1: Prepare our NEW slot
 
 **1** [SSH](https://www.feralhosting.com/faq/view?question=12) to you NEW slot.
 
@@ -46,23 +41,13 @@ Here we will now create the folder where you wish to store the transferred files
 mkdir -p ~/rysnc
 ~~~
 
-This means both folders are within your `~/` or slot root on both servers. Check you can `cd` you (move your location) to within the folder by using the code below in a terminal. Once you are happy both locations exist and are in the correct place move to the next step.
+This means there is now a folder called `rysnc` within your `~/` or slot root on the NEW server.
 
-CD to the newly created or existing folder to check paths. **Use the name of the folders you selected/created**
+Now the process below will describe how to copy all or parts of your old slots data to the newly created `rsync` folder on your new slot.
 
-~~~
-cd ~/rysnc
-~~~
+## Step 2: Using rysnc
 
-The result in your Terminal will look something like this. 
-
-~~~
-chamois ~/rysnc
-~~~
-
-**Step 3**: This is the command we will use but first it needs to be edited to suit your details
-
-**3.1**
+**2.1**
 
 **Important note:** It is best to start transfers inside a screen window. This is a pretty simple thing to do.
 
@@ -74,47 +59,83 @@ screen -S transfer
 
 Once this has opened you will be placed inside it the new screen window, now continue reading the guide:
 
-**3.1** rsync command and structure
+**2.2** rsync command and structure
 
 **Important note:** Please see the end of the FAQ for a breakdown of the arguments used as well as for some optional extras.
 
 This is the command we will use to copy files from our old slot to our new slot, while connected to our new slot via SSH.
 
 ~~~
-rsync -avhPS usename@server.feralhosting.com:~/location/of/files/ ~/destination/of/files/
+rsync -avhPS usename@server.feralhosting.com:~/location/of/files ~/destination/of/files/
 ~~~
 
 for example, using the directories we created in step one we can do this
 
 ~~~
-rsync -avhPS usename@server.feralhosting.com:~/rsync/ ~/rsync/
+rsync -avhPS usename@server.feralhosting.com:~/private/rtorrent/data ~/rsync/
 ~~~
 
-This will move the contents of the `~/rsync` directory from the `usename@server.feralhosting.com` used in the command into the `~/rsync` directory of the slot you are currently SSH'd into.
+This will copy the folder and the contents of the `~/private/rtorrent/data` directory from the `usename@server.feralhosting.com` used in the command into the `~/rsync` directory of the slot you are currently SSH'd into.
+
+**2.3** Understanding trailing slashes `/` in paths.
+
+rysnc will be very specific about the use of a trailing slash in your paths. It has an important meaning to rsync and should be explained, so let us look at the example command above:
+
+Here rsync is copying from the left to the right. There is no trailing slash on our `~/private/rtorrent/data` path.
+
+To help with the example, our `~/private/rtorrent/data` contains a single folder called `some.film.2013.720p`
+
+~~~
+~/private/rtorrent/data ~/rsync/
+~~~
+
+This means that rsync will copy the whole folder `data` into the `~/rsync/` directory on our new slot like this:
+
+~~~
+~/rsync/data/some.film.2013.720p
+~~~
+
+If we had used a trailing slash we are telling rsync that we want to copy the contents of the folder and not the actual folder.
+
+~~~
+~/private/rtorrent/data/ ~/rsync/
+~~~
+
+This command has a trailing slash so the outcome will be different. The **contents** of the `~/private/rtorrent/data` will be copied to the `~/rsync/` directory on our new slot.
+
+All files from within the data directory on our old slot will be copied to the `~/rsync/`
+
+~~~
+~/rsync/some.film.2013.720p
+~~~
+
+So be careful about the use of a trailing slash. You could use general rule of telling rysnc to look `inside this directory` when deciding whether to apply a trailing slash.
+
+### Step 3: Applying our command:
 
 Once we have the correct command with the relevant paths to your directories let's do a quick check
 
-**3:** We have SSH'd t the server we want to copy the file to i.e your new slot.
+**3.1:** We have SSH'd t the server we want to copy the files to. This means your NEW slot.
 
-**3.1:** We have opened a screen window in the terminal and given it a name we can easily recognize ( that is what the -S does), in this example it is **transfer**.
+**3.2:** We have opened a screen window in the terminal and given it a name we can easily recognize ( that is what the -S does), in this example the screen name is **transfer**.
 
-**3.2:** We have edited the command to be relevant to our details? So **username@server.feralhosting.com** has been edited to contain your relevant info such as the host where the files are we want to copy, for example: **huzzah378@lemur.feralhosting.com**
+**3.3:** We have edited the command to be relevant to our details? So **username@server.feralhosting.com** has been edited to contain your relevant info such as the host where the files are we want to copy, for example: **huzzah378@lemur.feralhosting.com**
 
-**3.3:** We have used existing directories that we either created in step 1 or that already existed.
+**3.4:** We have used existing directories that we either created in step 1 or that already existed.
 
-**3.4:** Our command now looks something like this:
+**3.5:** Our command now looks something like this:
 
 ~~~
-rsync -avhPS huzzah378@lemur.feralhosting.com:~/fxp/ ~/fxp/
+rsync -avhPS huzzah378@lemur.feralhosting.com:~/private/rtorrent/data ~/rsync/
 ~~~
 
 Then in your screen window copy or type this command (in putty or Linux a right click will paste the contents of your clip board including a password, even if you don't see it.)
 
-**Important note:** It does not matter if you have set up public or private key auth for your SSH. The password that SSH will ask for is the one that is shown in your Slot Details page in your [Account Manager](https://www.feralhosting.com/manager/). This is the one that you received upon the creation of you slot.
+**Important note:** It does not matter if you have set up public or private key Auth for your SSH. The password that SSH will ask for is the one that is shown in your Slot Details page in your [Account Manager](https://www.feralhosting.com/manager/). This is the one that you received upon the creation of you slot.
 
 If all goes to plan the transfers should start and you will see stuff being moved in the screen window. now you can either wait around and what it's progress or detach from the screen to leave it running in the background. This will allow you to close the SSH connection(terminal) without interrupting the transfer, to do this, in your screen do button combo:
 
-press and hold left **CTRL + a** then press d
+The press and hold `CTRL` then press `d` to detach from the screen. This leaves it running in the background.
 
 You should see a "you have been detached" or similar prompt from within the terminal.
 
