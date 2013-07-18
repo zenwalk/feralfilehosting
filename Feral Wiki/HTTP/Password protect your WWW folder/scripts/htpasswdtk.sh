@@ -315,7 +315,10 @@ echo 'location /links {
 killall -9 nginx php5-fpm -u $(whoami)
 echo "Now wait up to 5 minutes for nginx to restart"
 else
-    echo "File does not exist"
+    echo
+    echo -e "\033[31m""File does not exist""\e[0m"
+    echo
+    sleep 2
 fi
 ;;
 ##########
@@ -329,7 +332,10 @@ echo 'location /links {
 killall -9 nginx php5-fpm -u $(whoami)
 echo "Now wait up to 5 minutes for nginx to restart"
 else
-    echo "File does not exist"
+    echo
+    echo -e "\033[31m""File does not exist""\e[0m"
+    echo
+    sleep 2
 fi
 ;;
 ##########
