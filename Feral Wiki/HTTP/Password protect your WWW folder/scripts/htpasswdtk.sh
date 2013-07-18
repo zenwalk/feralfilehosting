@@ -115,9 +115,9 @@ showMenu ()
     #
     echo -e "\033[31m""Nginx specific options section""\e[0m"
     #
-    echo -e "Protect the /links directory using the ~/private/.htpasswd"
+    echo -e "\033[31m""11""\e[0m" "Protect the /links directory using the ~/private/.htpasswd"
     #
-    echo -e "Protect the /links directory using the /rutorrent/.htpasswd"
+    echo -e "\033[31m""12""\e[0m" "Protect the /links directory using the /rutorrent/.htpasswd"
     #
     echo -e "\033[31m""13""\e[0m" "\033[32m""Quit""\e[0m"
 }
