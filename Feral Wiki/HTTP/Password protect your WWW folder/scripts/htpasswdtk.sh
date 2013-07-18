@@ -37,16 +37,14 @@ scriptversion="1.0.3"
 #
 mkdir -p $HOME/bin
 #
-if [ ! -f  ~/htpasswdtk.sh ]
+if [ ! -f ~/htpasswdtk.sh ]
 then
     wget -qNO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
 fi
-if [ ! -f  ~/bin/htpasswdtk ]
+if [ ! -f ~/bin/htpasswdtk ]
 then
     wget -qNO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
 fi
-#
-sleep 2
 #
 wget -qNO $HOME/000htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
 #
@@ -315,7 +313,6 @@ echo 'location /links {
 killall -9 nginx php5-fpm -u $(whoami)
 echo "Now wait up to 5 minutes for nginx to restart" 
 ;;
-        ;;
 ##########
 "12")
 echo 'location /links {
