@@ -280,7 +280,7 @@ fi" > ~/bin/subsonicrsk
 #############################
 #
 echo '#!/bin/bash
-echo "$(date +"%H:%M.%m.%d.%y")" >> subsonicrun.log
+echo "$(date +"%H:%M on the %d.%m.%y")" >> subsonicrun.log
 if [[ -z "$(ps -p $(cat ~/private/subsonic/subsonic.4.8.sh.PID) --no-headers)" ]]
 then
     bash ~/private/subsonic/subsonic.sh

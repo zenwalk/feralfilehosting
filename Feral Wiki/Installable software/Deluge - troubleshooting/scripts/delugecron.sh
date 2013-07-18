@@ -16,7 +16,7 @@ then
     (crontab -l; echo '0 */5 * * * bash -l ~/delugecron') |uniq - | crontab -
 fi
 #
-echo "$(date +"%H:%M on the %m.%d.%y")" >> ~/delugecron.log
+echo "$(date +"%H:%M on the %d.%m.%y")" >> ~/delugecron.log
 echo "Killing Deluged and the Web Gui"
 killall -9 deluged deluge-web -u $(whoami)
 echo "Restarting Deluged and the Web Gui"

@@ -75,7 +75,7 @@ echo
 echo -e "Hello $(whoami), you have the latest version of this script. This script version is:" "\033[31m""$scriptversion""\e[0m"
 echo
 #
-rm -f $HOME/000htpasswdtk.sh && rm -f $HOME/111htpasswdtk.sh rm -f $HOME/222htpasswdtk.sh
+rm -f $HOME/000htpasswdtk.sh $HOME/111htpasswdtk.sh $HOME/222htpasswdtk.sh
 chmod -f 700 ~/bin/htpasswdtk
 #
 read -ep "The scripts have been updated, do you wish to continue [y] or exit now [q] : " updatestatus
@@ -115,7 +115,13 @@ showMenu ()
     #
     echo -e "\033[31m""10""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use a custom AuthFile path" "\033[33m""(if present)""\e[0m"
     #
-    echo -e "\033[31m""11""\e[0m" "\033[32m""Quit""\e[0m"
+    echo -e "\033[31m""Nginx specific options section""\e[0m"
+    #
+    echo -e "Protect the /links directory using the ~/private/.htpasswd"
+    #
+    echo -e "Protect the /links directory using the /rutorrent/.htpasswd"
+    #
+    echo -e "\033[31m""13""\e[0m" "\033[32m""Quit""\e[0m"
 }
 ###
 #
@@ -301,9 +307,30 @@ while [ 1 ]
             find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec sed -i "s|AuthUserFile .*|AuthUserFile \"$HOME/$path\"|g" {} \; -exec chmod 644 {} \;
         ;;
 ##########
-        "11") # Quit
-            exit
+"11")
+echo 'location /links {
+    auth_basic "Please log in";
+    auth_basic_user_file '$HOME'/private/.htpasswd;
+}' > ~/.nginx/conf.d/000-default-server.d/links.conf
+killall -9 nginx php5-fpm -u $(whoami)
+echo "Now wait up to 5 minutes for nginx to restart" 
+;;
         ;;
+##########
+"12")
+echo 'location /links {
+    auth_basic "Please log in";
+    auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;
+}' > ~/.nginx/conf.d/000-default-server.d/links.conf
+killall -9 nginx php5-fpm -u $(whoami)
+echo "Now wait up to 5 minutes for nginx to restart" 
+;;
+##########
+
+##########
+"13")
+exit
+;;
 ##########
     esac
 done

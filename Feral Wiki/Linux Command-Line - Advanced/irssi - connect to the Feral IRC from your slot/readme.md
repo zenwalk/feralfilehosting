@@ -6,15 +6,14 @@ Doe these commands in [SSH](https://www.feralhosting.com/faq/view?question=12):
 **1:** Create a required folder and get a custom theme
 
 ~~~
-mkdir -p ~/.irssi/scripts
+mkdir -p ~/.irssi/scripts/autorun
 wget -qNO ~/.irssi/xchat.theme http://irssi.org/themefiles/xchat.theme
 ~~~
 
-**2:** Get a nick colour and trigger script:
+**2:** Get a nick colour script:
 
 ~~~
-wget -qNO ~/.irssi/scripts/xchatnickcolor.pl http://dave.waxman.org/irssi/xchatnickcolor.pl
-wget -qNO ~/.irssi/scripts/trigger.pl http://scripts.irssi.org/scripts/trigger.pl
+wget -qNO ~/.irssi/scripts/autorun/xchatnickcolor.pl http://dave.waxman.org/irssi/xchatnickcolor.pl
 ~~~
 
 **3:** Create a screen and open irssi in it using this command:
@@ -41,7 +40,6 @@ Once it has loaded copy or type these commands to configure your username. Where
 /set recode_out_default_charset utf-8
 /set term_charset utf-8
 /set theme xchat
-/run xchatnickcolor.pl
 ~~~
 
 **5:** Configure your server and channel settings:
@@ -86,6 +84,12 @@ Then update your configuration file to automatically do this when you connect ne
 
 ~~~
 /network ADD -autosendcmd "/msg nickserv IDENTIFY YourPassGoesHere;wait 2000" What-Network
+~~~
+
+Then save the updated configuration:
+
+~~~
+/save
 ~~~
 
 **8:** Changing windows
