@@ -64,6 +64,9 @@ killall -9 nginx php5-fpm -u $(whoami)
 
 and waiting 5 minutes for it to be restarted.
 
+~~~
+ps x | grep nginx | grep -v grep
+~~~
 
-
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Updating%20Apache%20to%20nginx/started.png)
 
