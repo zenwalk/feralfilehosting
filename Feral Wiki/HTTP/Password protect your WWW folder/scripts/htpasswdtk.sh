@@ -306,21 +306,31 @@ while [ 1 ]
         ;;
 ##########
 "11")
+if [[ -f ~/private/.htpasswd ]]
+then
 echo 'location /links {
     auth_basic "Please log in";
     auth_basic_user_file '$HOME'/private/.htpasswd;
 }' > ~/.nginx/conf.d/000-default-server.d/links.conf
 killall -9 nginx php5-fpm -u $(whoami)
-echo "Now wait up to 5 minutes for nginx to restart" 
+echo "Now wait up to 5 minutes for nginx to restart"
+else
+    echo "Files does not exist"
+fi
 ;;
 ##########
 "12")
+if [[ -f ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]]
+then
 echo 'location /links {
     auth_basic "Please log in";
     auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;
 }' > ~/.nginx/conf.d/000-default-server.d/links.conf
 killall -9 nginx php5-fpm -u $(whoami)
-echo "Now wait up to 5 minutes for nginx to restart" 
+echo "Now wait up to 5 minutes for nginx to restart"
+else
+    echo "Files does not exist"
+fi
 ;;
 ##########
 
