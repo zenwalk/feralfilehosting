@@ -113,7 +113,7 @@ then
     fi
     echo -e "\033[33m""Here is the command you have just created:""\e[0m"
     echo
-    echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+    echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
     echo
     read -ep "Would you like to try and run this command in a screen [y] or exit now [e]: " confirmscreen1
     echo
@@ -154,7 +154,7 @@ then
             #
             echo
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
-            echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
             echo -e "The command that uses our public/private key file pair."
             echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
@@ -195,7 +195,7 @@ then
     fi
     echo -e "\033[33m""Here is the command you have just created:""\e[0m"
     echo
-    echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+    echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
     echo
     read -ep "Would you like to try and run this command in a screen [y] or exit now [e]: " confirmscreen1
     echo
@@ -236,7 +236,7 @@ then
             #
             echo
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
-            echo -e "\033[31m""rsync" "\033[32m""-avhPS" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
             echo -e "The command that uses our public/private key file pair."
             echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
