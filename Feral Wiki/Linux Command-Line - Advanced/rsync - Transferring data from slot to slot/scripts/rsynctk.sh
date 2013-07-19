@@ -1,6 +1,6 @@
 #!/bin/bash
 # rsynctk
-scriptversion="1.0.8"
+scriptversion="1.0.9"
 scriptname="rsync"
 # randomessence
 ############################
@@ -39,16 +39,14 @@ mish="$(shuf -i 1-100 -n 1)"
 ###### Self Updater Starts
 mkdir -p $HOME/bin
 #
-if [ ! -f  ~/rsynctk.sh ]
+if [ ! -f ~/rsynctk.sh ]
 then
     wget -qNO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
 fi
-if [ ! -f  ~/bin/rsynctk ]
+if [ ! -f ~/bin/rsynctk ]
 then
     wget -qNO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
 fi
-#
-sleep 2
 #
 wget -qNO $HOME/000rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
 #
@@ -108,9 +106,7 @@ then
     echo
     if [[ $confirm =~ ^[Yy]$ ]]
     then
-        echo -e "\033[31m""DO NOT USE the" "\033[37m""~" "\033[31m""symbol. It is inlcuded already. Just use a relative path""\e[0m"
-        echo
-        read -ep "What is the name or path of the folder in your server root i.e private/rtorrent: " path
+        read -ep "Please enter the relative path to the folder you wish to copy: ~/" path
         echo
     else
         exit 1
@@ -192,9 +188,7 @@ then
     echo
     if [[ $confirm =~ ^[Yy]$ ]]
     then
-        echo -e "\033[31m""DO NOT USE the" "\033[37m""~" "\033[31m""symbol. It is inlcuded already. Just use a relative path""\e[0m"
-        echo
-        read -ep "What is the name or path of the folder in your server root i.e private/rtorrent: " path
+        read -ep "Please enter the relative path to the folder you wish to copy: ~/" path
         echo
     else
         exit 1
