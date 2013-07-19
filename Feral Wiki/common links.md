@@ -19,4 +19,4 @@ You will need to have Mysql already installed. You can do this from the [**Insta
 
 The press and hold `CTRL` then press `x` to save. Press `y` to confirm.
 
-The press and hold `CTRL` then press `d` to detach from the screen. This leaves it running in the background.
+The press and hold `CTRL` and `a` then press `d` to detach from the screen. This leaves it running in the background.
