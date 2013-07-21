@@ -60,6 +60,14 @@ Once it has loaded copy or type these commands to configure your username. Where
 /channel ADD -auto #feral What-Network
 ~~~
 
+You can add more commands if required. They are separated by a `;` like this:
+
+For example, this version works for me to ghost my username on connect to make sure I always connect as the same user.
+
+~~~
+/network ADD -autosendcmd "/msg NickServ GHOST username YourPassGoesHere;wait 2000;/nick username;wait 2000;/msg NickServ IDENTIFY YourPassGoesHere;wait 2000" What-Network
+~~~
+
 **6:** Save your configuration changes
 
 ~~~

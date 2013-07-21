@@ -22,15 +22,13 @@ This FAQ requires you SSH into your box. You can read more about how to SSH into
 
 After you’re connected to your box, run the following commands:
 
-`We highly recommend that you perform a clean install when switching from the official release of autodl-irssi to prevent any possible conflicts. Running these commands:`
+We highly recommend that you perform a clean install when switching from the official release of autodl-irssi to prevent any possible conflicts. Running these commands in your terminal or deleting that directory through an FTP client is suggested:
 
 ```
-rm -r ~/.irssi/scripts/AutodlIrssi
+rm -rf ~/.irssi/scripts/AutodlIrssi
 rm -f ~/.irssi/scripts/autorun/autodl-irssi.pl
-rm -r ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi
+rm -rf ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi
 ```
-
-In your terminal or deleting that directory through an FTP client is suggested.
 
 ### Automated installation
 
