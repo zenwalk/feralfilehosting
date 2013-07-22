@@ -79,14 +79,15 @@ tar -xzf $HOME/proftpd.tar.gz -C $HOME/
 rm -f $HOME/proftpd.tar.gz
 cd $HOME/proftpd-1.3.4d
 echo -e "\033[32m""About to configure, make and install proftpd. This could take some time to comlplete. Be patient.""\e[0m"
-sleep 2
+echo
 # configure and install
+echo "Starting to 1: configure, 2: make, 3 make install"
 install_user=$(whoami) install_group=$(whoami) ./configure --prefix=$HOME/proftpd --enable-openssl --enable-dso --enable-nls --enable-ctrls --with-shared=mod_ratio:mod_readme:mod_sftp:mod_tls:mod_ban > $HOME/proftpd/install_logs/configure.log 2>&1
-echo "Configuration complete"
+echo "1: configure complete, moving to 2 of 3"
 make > $HOME/proftpd/install_logs/make.log 2>&1
-echo "Starting Installation"
+echo "2: make complete, moving to 3 of 3"
 make install > $HOME/proftpd/install_logs/make_install.log 2>&1
-echo "Installaltion complete"
+echo "3: make install complete, moving to post installation configuration"
 echo
 # Some tidy up
 cd $HOME/
@@ -119,6 +120,7 @@ echo
 echo -e "This is your" "\033[32m""FTPS""\e[0m" "port:" "\033[32m""$(sed -n -e 's/^Port \(.*\)/\1/p' ~/proftpd/etc/ftps.conf)""\e[0m"
 echo
 echo -e "The basic setup and cofiguration has been completed. Please continue with the FAQ from Step 4"
+echo
 #
 ############################
 ####### Script Ends  #######
