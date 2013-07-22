@@ -298,7 +298,7 @@ chmod -f 700 ~/bin/subsonicron
 #
 echo -e "The" "\033[36m""~/bin/subsonicrsk""\e[0m" "has been updated."
 echo
-read -ep "Do you want to continue with the installer? [y] or quit now? [n] : "  confirm
+read -ep "Do you want to continue with the installer? [y] or quit now? [n] : " confirm
 echo
 # A check if the user wants to exit or continue after updating the scripts.
 #
