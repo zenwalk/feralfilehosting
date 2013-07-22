@@ -1,7 +1,9 @@
 
 ### To set up your own SFTP or FTPS server with your own virtual users on your slot, follow this guide:
 
-This bash script will perform the **basic setup** outlined in Steps 1 through 3 only.
+This bash script will perform the **basic setup** outlined in Steps 1 through 6 only. 
+
+So if you use the bash script and complete it successfully you can continue from Step 7 of the FAQ.
 
 ```
 wget -qNO ~/proftpd.sh http://git.io/nMVKJA && bash ~/proftpd.sh
