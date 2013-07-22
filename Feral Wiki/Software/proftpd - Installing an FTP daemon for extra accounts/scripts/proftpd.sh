@@ -119,8 +119,9 @@ sed -i 's|Port 23002|Port '$(shuf -i 6000-50000 -n 1)'|g' $HOME/proftpd/etc/ftps
 echo
 echo -e "This is your" "\033[32m""FTPS""\e[0m" "port:" "\033[32m""$(sed -n -e 's/^Port \(.*\)/\1/p' ~/proftpd/etc/ftps.conf)""\e[0m"
 echo
-echo -e "The basic setup and cofiguration has been completed. Please continue with the FAQ from Step 4"
+echo -e "The basic setup and cofiguration has been completed. Please now enter a password for your main, unlimited user"
 echo
+~/proftpd/bin/ftpasswd --passwd --name $(whoami) --file ~/proftpd/etc/ftpd.passwd --uid $(id -u $(whoami)) --gid $(id -g $(whoami)) --home $HOME/ --shell /bin/false
 #
 ############################
 ####### Script Ends  #######
