@@ -1,7 +1,7 @@
 #!/bin/bash
 # proftpd basic setup script
-scriptversion="1.0.2"
-scriptname="proftpd Steps 1-3"
+scriptversion="1.0.3"
+scriptname="proftpd Steps 1-5"
 proftpdversion="proftpd 1.3.4d"
 # randomessence
 ############################
@@ -102,6 +102,15 @@ echo -e "This is your" "\033[31m""SFTP""\e[0m" "port:" "\033[31m""$(sed -n -e 's
 sed -i 's|/media/DiskID/home/my_username|'$HOME'|g' $HOME/proftpd/etc/ftps.conf
 sed -i 's|Port 23002|Port '$(shuf -i 6000-50000 -n 1)'|g' $HOME/proftpd/etc/ftps.conf
 echo
+#
+# Generate our keyfiles
+ssh-keygen -q -t rsa -f ~/proftpd/etc/keys/sftp_rsa -N '' && ssh-keygen -q -t dsa -f ~/proftpd/etc/keys/sftp_dsa -N ''
+echo "rsa keys generated with no passphrase"
+openssl req -new -x509 -nodes -days 365 -subj '/C=GB/ST=none/L=none/CN=none' -newkey rsa:2048 -keyout ~/proftpd/ssl/proftpd.key.pem -out ~/proftpd/ssl/proftpd.cert.pem > /dev/null 2>&1
+echo "ssl keys generated"
+echo
+#
+#
 echo -e "This is your" "\033[32m""FTPS""\e[0m" "port:" "\033[32m""$(sed -n -e 's/^Port \(.*\)/\1/p' ~/proftpd/etc/ftps.conf)""\e[0m"
 echo
 echo -e "The basic setup and cofiguration has been completed. Please continue with the FAQ from Step 4"
