@@ -13,9 +13,9 @@ wget -qNO ~/proftpd.sh http://git.io/nMVKJA && bash ~/proftpd.sh
 
 ```
 mkdir -p ~/proftpd/etc/sftp/authorized_keys ~/proftpd/etc/keys ~/proftpd/ssl
-wget -qNO proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.4c.tar.gz
+wget -qNO proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.4d.tar.gz
 tar -xzf ~/proftpd.tar.gz -C ~/ && rm -f ~/proftpd.tar.gz
-cd ~/proftpd-1.3.4c
+cd ~/proftpd-1.3.4d
 ```
 
 ### Step 2: Configure and then install it:
@@ -23,7 +23,7 @@ cd ~/proftpd-1.3.4c
 ```
 install_user=$(whoami) install_group=$(whoami) ./configure --prefix=$HOME/proftpd --enable-openssl --enable-dso --enable-nls --enable-ctrls --with-shared=mod_ratio:mod_readme:mod_sftp:mod_tls:mod_ban
 make && make install
-cd && rm -rf ~/proftpd-1.3.4c
+cd && rm -rf ~/proftpd-1.3.4d
 ```
 
 ### Step 3.1: Download and create some required configuration files we need:
