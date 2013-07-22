@@ -1,6 +1,6 @@
 #!/bin/bash
 # proftpd basic setup script
-scriptversion="1.0.3"
+scriptversion="1.0.4"
 scriptname="proftpd Steps 1-5"
 proftpdversion="proftpd 1.3.4d"
 # randomessence
@@ -78,14 +78,28 @@ wget -qNO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.
 tar -xzf $HOME/proftpd.tar.gz -C $HOME/
 rm -f $HOME/proftpd.tar.gz
 cd $HOME/proftpd-1.3.4d
-echo -e "\033[32m""About to configure, make and install proftpd. This could take some time with a lot of information shown. Be patient.""\e[0m"
+echo -e "\033[32m""About to configure, make and install proftpd. This could take some time to comlplete. Be patient.""\e[0m"
 sleep 2
 # configure and install
 install_user=$(whoami) install_group=$(whoami) ./configure --prefix=$HOME/proftpd --enable-openssl --enable-dso --enable-nls --enable-ctrls --with-shared=mod_ratio:mod_readme:mod_sftp:mod_tls:mod_ban > $HOME/proftpd/install_logs/configure.log 2>&1
-make > $HOME/proftpd/install_logs/make.log 2>&1 && make install > $HOME/proftpd/install_logs/make_install.log 2>&1
+echo "Configuration complete"
+make > $HOME/proftpd/install_logs/make.log 2>&1
+echo "Starting Installation"
+make install > $HOME/proftpd/install_logs/make_install.log 2>&1
+echo "Installaltion complete"
+echo
+# Some tidy up
 cd $HOME/
 rm -rf $HOME/proftpd-1.3.4d
-# the conf files from github
+# Generate our keyfiles
+ssh-keygen -q -t rsa -f ~/proftpd/etc/keys/sftp_rsa -N '' && ssh-keygen -q -t dsa -f ~/proftpd/etc/keys/sftp_dsa -N ''
+echo "rsa keys generated with no passphrase"
+openssl req -new -x509 -nodes -days 365 -subj '/C=GB/ST=none/L=none/CN=none' -newkey rsa:2048 -keyout ~/proftpd/ssl/proftpd.key.pem -out ~/proftpd/ssl/proftpd.cert.pem > /dev/null 2>&1
+echo "ssl keys generated"
+echo
+# Get the conf files from github and configure them for this user
+echo "Downloading and configuring the .conf files."
+echo
 wget -qN http://git.io/CbaIJQ -O $HOME/proftpd/etc/proftpd.conf
 wget -qN http://git.io/SFHs5g -O $HOME/proftpd/etc/sftp.conf
 wget -qN http://git.io/ee86Hw -O $HOME/proftpd/etc/ftps.conf
@@ -97,21 +111,11 @@ sed -i 's|AllowUser my_username|AllowUser '$(whoami)'|g' $HOME/proftpd/etc/proft
 # sftp.conf
 sed -i 's|/media/DiskID/home/my_username|'$HOME'|g' $HOME/proftpd/etc/sftp.conf
 sed -i 's|Port 23001|Port '$(shuf -i 6000-50000 -n 1)'|g' $HOME/proftpd/etc/sftp.conf
-echo
 echo -e "This is your" "\033[31m""SFTP""\e[0m" "port:" "\033[31m""$(sed -n -e 's/^Port \(.*\)/\1/p' ~/proftpd/etc/sftp.conf)""\e[0m"
 # ftps.conf
 sed -i 's|/media/DiskID/home/my_username|'$HOME'|g' $HOME/proftpd/etc/ftps.conf
 sed -i 's|Port 23002|Port '$(shuf -i 6000-50000 -n 1)'|g' $HOME/proftpd/etc/ftps.conf
 echo
-#
-# Generate our keyfiles
-ssh-keygen -q -t rsa -f ~/proftpd/etc/keys/sftp_rsa -N '' && ssh-keygen -q -t dsa -f ~/proftpd/etc/keys/sftp_dsa -N ''
-echo "rsa keys generated with no passphrase"
-openssl req -new -x509 -nodes -days 365 -subj '/C=GB/ST=none/L=none/CN=none' -newkey rsa:2048 -keyout ~/proftpd/ssl/proftpd.key.pem -out ~/proftpd/ssl/proftpd.cert.pem > /dev/null 2>&1
-echo "ssl keys generated"
-echo
-#
-#
 echo -e "This is your" "\033[32m""FTPS""\e[0m" "port:" "\033[32m""$(sed -n -e 's/^Port \(.*\)/\1/p' ~/proftpd/etc/ftps.conf)""\e[0m"
 echo
 echo -e "The basic setup and cofiguration has been completed. Please continue with the FAQ from Step 4"
