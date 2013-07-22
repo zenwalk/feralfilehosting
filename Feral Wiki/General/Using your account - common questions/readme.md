@@ -15,6 +15,22 @@ Transmission + Transmission remote GUI - [Transmission and Transmission Remote G
 MYSQL - [Using Mysql](https://www.feralhosting.com/faq/view?question=9)
 OpenVPN - [Using Openvpn](https://www.feralhosting.com/faq/view?question=5)
 
+**Q:** What software is installed on my slot?
+
+A: You can check this yourself by using these command in [SSH](https://www.feralhosting.com/faq/view?question=12)
+
+To see if a specific programs is installed you can do this:
+
+~~~
+aptitude show programname | grep State
+~~~
+
+To see every installed program use this commands to create a new file in your server root called `software.txt` that will list all installed programs:
+
+~~~
+dpkg --get-selections > ~/software.txt
+~~~
+
 **Q:** Can I install Deluge,rtorrent/rutorrent, rtorrent/wuTorrent and transmission or can I only use one?
 
 A: You can install and use all four applications if you want. All software on the Install Software page can be installed at the same time and actively used. You can also run more than one instance of certain applications, like Deluge as well. Staff might not support or troubleshoot your second running instances though, but if they do it is at their discretion.

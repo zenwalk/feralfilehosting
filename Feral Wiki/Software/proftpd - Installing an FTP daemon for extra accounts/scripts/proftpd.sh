@@ -71,17 +71,17 @@ then
 mkdir -p $HOME/proftpd/etc/sftp/authorized_keys
 mkdir -p $HOME/proftpd/etc/keys
 mkdir -p $HOME/proftpd/ssl
-wget -qNO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.4c.tar.gz
+wget -qNO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.4d.tar.gz
 tar -xzf $HOME/proftpd.tar.gz -C $HOME/
 rm -f $HOME/proftpd.tar.gz
-cd $HOME/proftpd-1.3.4c
+cd $HOME/proftpd-1.3.4d
 echo -e "\033[32m""About to configure, make and install proftpd. This could take some time with a lot of information shown. Be patient.""\e[0m"
 sleep 2
 # configure and install
 install_user=$(whoami) install_group=$(whoami) ./configure --prefix=$HOME/proftpd --enable-openssl --enable-dso --enable-nls --enable-ctrls --with-shared=mod_ratio:mod_readme:mod_sftp:mod_tls:mod_ban
 make && make install
 cd $HOME/
-rm -rf $HOME/proftpd-1.3.4c
+rm -rf $HOME/proftpd-1.3.4d
 # the conf files from github
 wget -qN http://git.io/CbaIJQ -O $HOME/proftpd/etc/proftpd.conf
 wget -qN http://git.io/SFHs5g -O $HOME/proftpd/etc/sftp.conf

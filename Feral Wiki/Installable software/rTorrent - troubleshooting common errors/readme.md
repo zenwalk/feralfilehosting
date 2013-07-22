@@ -223,9 +223,13 @@ screen rtorrent
  
 but it just returns an error:
 
+**Important note:** This is not an rtorrent error, this is a screen command error.
+
 ```
 Screen is terminating
 ```
+
+
 
 You can then start Screen with a command:
 
