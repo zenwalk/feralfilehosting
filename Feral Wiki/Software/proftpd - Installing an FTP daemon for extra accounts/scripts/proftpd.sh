@@ -52,8 +52,8 @@ then
 fi
 #
 echo
-echo -e "Hello $(whoami), you have the latest version of the" "\033[36m""$scriptname""\e[0m" "script. This script version is:" "\033[31m""$scriptversion""\e[0m"
-echo -e "This script is using" "\033[33m""$proftpdversion""\e[0m"
+echo -e "Hello $(whoami), you have the latest version of the" "\033[32m""$scriptname""\e[0m" "script. This script version is:" "\033[31m""$scriptversion""\e[0m"
+echo -e "This script is using" "\033[32m""$proftpdversion""\e[0m"
 echo
 #
 rm -f $HOME/000proftpd.sh $HOME/111proftpd.sh $HOME/222proftpd.sh
