@@ -80,7 +80,7 @@ cd $HOME/proftpd-1.3.4d
 echo -e "\033[32m""About to configure, make and install proftpd. This could take some time with a lot of information shown. Be patient.""\e[0m"
 sleep 2
 # configure and install
-install_user=$(whoami) install_group=$(whoami) ./configure --prefix=$HOME/proftpd --enable-openssl --enable-dso --enable-nls --enable-ctrls --with-shared=mod_ratio:mod_readme:mod_sftp:mod_tls:mod_ban
+install_user=$(whoami) install_group=$(whoami) ./configure --prefix=$HOME/proftpd --enable-openssl --enable-dso --enable-nls --enable-ctrls --with-shared=mod_ratio:mod_readme:mod_sftp:mod_tls:mod_ban > ~/proftpdinstall.log 2>&1
 make && make install
 cd $HOME/
 rm -rf $HOME/proftpd-1.3.4d
