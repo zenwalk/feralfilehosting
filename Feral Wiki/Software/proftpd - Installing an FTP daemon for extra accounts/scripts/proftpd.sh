@@ -1,7 +1,8 @@
 #!/bin/bash
 # proftpd basic setup script
-scriptversion="1.0.1"
+scriptversion="1.0.2"
 scriptname="proftpd Steps 1-3"
+proftpdversion="proftpd 1.3.4d"
 # randomessence
 ############################
 ## Version History Starts ##
@@ -18,11 +19,11 @@ scriptname="proftpd Steps 1-3"
 #
 mkdir -p $HOME/bin
 #
-if [ ! -f  $HOME/proftpd.sh ]
+if [ ! -f $HOME/proftpd.sh ]
 then
     wget -qNO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 fi
-if [ ! -f  $HOME/bin/proftpd ]
+if [ ! -f $HOME/bin/proftpd ]
 then
     wget -qNO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 fi
@@ -52,6 +53,7 @@ fi
 #
 echo
 echo -e "Hello $(whoami), you have the latest version of the" "\033[36m""$scriptname""\e[0m" "script. This script version is:" "\033[31m""$scriptversion""\e[0m"
+echo -e "This script is using" "\033[33m""$proftpdversion""\e[0m"
 echo
 #
 rm -f $HOME/000proftpd.sh $HOME/111proftpd.sh $HOME/222proftpd.sh
