@@ -1,7 +1,7 @@
 #!/bin/bash
 # proftpd basic setup script
 scriptversion="1.0.4"
-scriptname="proftpd Steps 1-5"
+scriptname="proftpd Steps 1-6"
 proftpdversion="proftpd 1.3.4d"
 # randomessence
 ############################
@@ -122,6 +122,8 @@ echo
 echo -e "The basic setup and cofiguration has been completed. Please now enter a password for your main, unlimited user"
 echo
 ~/proftpd/bin/ftpasswd --passwd --name $(whoami) --file ~/proftpd/etc/ftpd.passwd --uid $(id -u $(whoami)) --gid $(id -g $(whoami)) --home $HOME/ --shell /bin/false
+echo
+echo -e "You have completed Steps 1 through 6. Please continue with teh FAQ from Step 7 onwards."
 #
 ############################
 ####### Script Ends  #######
