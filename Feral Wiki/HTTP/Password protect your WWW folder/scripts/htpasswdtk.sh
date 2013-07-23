@@ -335,28 +335,26 @@ while [ 1 ]
         ;;
 ##########
         "13") # Protect the /links directory using the ~/private/.htpasswd
-        if [[ -f ~/private/.htpasswd ]]
+        if [[ -f ~/private/.htpasswd && -d ~/.nginx/conf.d  ]]
         then
         echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/private/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
         killall -9 nginx php5-fpm -u $(whoami)
         echo "Now wait up to 5 minutes for nginx to restart"
         else
-            echo
-            echo -e "\033[31m""File does not exist""\e[0m"
+            echo -e "\033[31m""required files and the folder" "\033[36m""~/.nginx/conf.d""\e[0m" "\033[31m""do not exist""\e[0m"
             echo
             sleep 2
         fi
         ;;
 ##########
         "14") # Protect the /links directory using the /rutorrent/.htpasswd
-        if [[ -f ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]]
+        if [[ -f ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd && -d ~/.nginx/conf.d ]]
         then
         echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
         killall -9 nginx php5-fpm -u $(whoami)
         echo "Now wait up to 5 minutes for nginx to restart"
         else
-            echo
-            echo -e "\033[31m""File does not exist""\e[0m"
+            echo -e "\033[31m""required files and the folder" "\033[36m""~/.nginx/conf.d""\e[0m" "\033[31m""do not exist""\e[0m"
             echo
             sleep 2
         fi
