@@ -1,100 +1,194 @@
 
-I am assuming you are moving from wtorrent/rtorrent to transmission. Of course, you can do it the opposite way and it will work. Just replace rtorrent with transmission and it is easy as pie.
-
-### USING FTP:
-
-**1:** Stop your torrents in rtorrent or wtorrent before beginning so you don't run into any problems.
-
-**2:** Login to a FTP.
-
-**3:** Find the url 
-
-~~~
-~/private/rtorrent/data/
-~~~
-
-**4:** Once there copy/move your torrent data to
-
-~~~
-~/private/transmission/data/
-~~~
-
-This will take quite awhile depending on your speeds and how much info you have.
-
-**5:** After that is completed, the go to: 
-
-~~~
-~/private/rtorrent/watch/
-~~~
-
-or
-
-~~~
-~/private/rtorrent/work/
-~~~
-
-and copy your `.torrent` files to
-
-~~~
-~/private/transmission/watch/
-~~~
-
-**6:** Open up your Web Gui and then it should be checking your torrents data to make sure it is all there and once that is completed it will begin uploading. However, if material is missing, it will begin downloading the missing material to complete the download.
-
-**7:** If you want, you can go back to rtorrent and delete the torrent from there, but you really don't have to. There isn't much harm there. But I did, just so I wouldn't have any complications with my private trackers.
-
-**8:** DONE
-
 ### Using SSH with PuTTy:
 
-**1:** Login to your server via PuTTY
+**1:** Login to your server via [SSH](https://www.feralhosting.com/faq/view?question=12)
 
-Choose a command that suits your needs, or customize one of them to reflect them.
+**Important note:** You can pick to either move the files or to copy the files. Both commands are listed below, you do not have to do both.
 
-Enter this code to move the torrent files from watch folder of rtorrent to the watch folder of transmission: 
+Should I move or copy? It is up to you and depends what you are aiming to do. 
 
-~~~
-mv ~/private/rtorrent/watch/* ~/private/transmission/watch
-~~~
+**Move** (mv) if you do not plan to use to the old client any more and are permanently moving to another client.
 
-Copy:
+**Copy** (cp) if you want to still use the client and seed files file you transition into another client. If you have the space to spare.
 
-~~~
-cp -rf ~/private/rtorrent/watch/* ~/private/transmission/watch
-~~~
+**Important note:** Ignore errors about non existing files. It just means there was nothing to move or copy
 
-Enter this code to move the torrent files from work folder of rtorrent to the watch folder of transmission: 
+### Rutorrent throttle
 
-~~~
-mv ~/private/rtorrent/work/* ~/private/transmission/watch
-~~~
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/General/Completing%20a%20data%20transfer/rutorrent.png)
 
-Copy:
+### rtorrent to transmission
+
+**1:** To move (mv) or copy (cp) `~/private/rtorrent/data` contents:
 
 ~~~
-cp -rf ~/private/rtorrent/work/* ~/private/transmission/watch
+mv -f ~/private/rtorrent/data/. ~/private/transmission/data
+
+cp -rf ~/private/rtorrent/data/. ~/private/transmission/data
 ~~~
 
-Enter this code to move the data from rtorrent to transmission:
+**2:** To move (mv) or copy (cp) the `~/private/rtorrent/watch` contents:
 
 ~~~
-mv ~/private/rtorrent/data/* ~/private/transmission/data
+mv -f ~/private/rtorrent/watch/*.torrent ~/private/transmission/watch
+
+cp -rf ~/private/rtorrent/watch/*.torrent ~/private/transmission/watch
 ~~~
 
-Copy:
+**3:** To move (mv) or copy (cp) the `~/private/rtorrent/work` contents:
 
 ~~~
-cp -rf ~/private/rtorrent/data/* ~/private/transmission/data
+mv -f ~/private/rtorrent/work/*.torrent ~/private/transmission/watch
+
+cp -rf ~/private/rtorrent/work/*.torrent ~/private/transmission/watch
 ~~~
 
-**3:** Once completed, simply check out the Web Gui and make sure everything is up and running.
+### rtorrent to deluge
 
-**4:** DONE
+**1:** To move (mv) or copy (cp) the `~/private/rtorrent/data` contents:
+
+~~~
+mv -f ~/private/rtorrent/data/. ~/private/deluge/data
+
+cp -rf ~/private/rtorrent/data/. ~/private/deluge/data
+~~~
+
+**2:** To move (mv) or copy (cp) the `~/private/rtorrent/watch` contents:
+
+~~~
+mv -f ~/private/rtorrent/watch/*.torrent ~/private/deluge/watch
+
+cp -rf ~/private/rtorrent/watch/*.torrent ~/private/deluge/watch
+~~~
+
+**3:** To move (mv) or copy (cp) the `~/private/rtorrent/work` contents: 
+
+~~~
+mv -f ~/private/rtorrent/work/*.torrent ~/private/deluge/watch
+
+cp -rf ~/private/rtorrent/work/*.torrent ~/private/deluge/watch
+~~~
+
+### Transmission throttle
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/General/Completing%20a%20data%20transfer/transmission 1.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/General/Completing%20a%20data%20transfer/transmission 2.png)
+
+### transmission to rtorrent
+
+**1:** To move (mv) or copy (cp) the `~/private/transmission/data` contents:
+
+~~~
+mv -f ~/private/transmission/data/. ~/private/rtorrent/data
+
+cp -rf ~/private/transmission/data/. ~/private/rtorrent/data
+~~~
+
+**2:** To move (mv) or copy (cp) the `~/.config/transmission-daemon/torrents` contents:
+
+~~~
+mv -f ~/.config/transmission-daemon/torrents/*.torrent ~/private/rtorrent/watch
+
+cp -rf ~/.config/transmission-daemon/torrents/*.torrent ~/private/rtorrent/watch
+~~~
+
+**3:** To move (mv) or copy (cp) the `~/private/transmission/watch` contents:
+
+~~~
+mv -f ~/private/transmission/watch/*.torrent ~/private/rtorrent/watch
+
+cp -rf ~/private/transmission/watch/*.torrent ~/private/rtorrent/watch
+~~~
+
+### transmission to deluge
+
+**1:** To move (mv) or copy (cp) the `~/private/transmission/data` contents:
+
+~~~
+mv -f ~/private/transmission/data/. ~/private/deluge/data
+
+cp -rf ~/private/transmission/data/. ~/private/deluge/data
+~~~
+
+**2:** To move (mv) or copy (cp) the `~/private/transmission/watch` contents:
+
+~~~
+mv -f ~/private/transmission/watch/*.torrent ~/private/deluge/watch
+
+cp -rf ~/private/transmission/watch/*.torrent ~/private/deluge/watch
+~~~
+
+**3:** To move (mv) or copy (cp) the `~/.config/transmission-daemon/torrents` contents:
+
+~~~
+mv -f ~/.config/transmission-daemon/torrents/*.torrent ~/private/deluge/watch
+
+cp -rf ~/.config/transmission-daemon/torrents/*.torrent ~/private/deluge/watch
+~~~
+
+### Deluge throttle
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/General/Completing%20a%20data%20transfer/deluge.png)
+
+### deluge to rtorrent
+
+**1:** To move (mv) or copy (cp) the `~/private/deluge/data` contents:
+
+~~~
+mv -f ~/private/deluge/data/. ~/private/rtorrent/data
+
+cp -rf ~/private/deluge/data/. ~/private/rtorrent/data
+~~~
+
+**2:** To move (mv) or copy (cp) the `~/private/deluge/watch` contents:
+
+~~~
+mv -f ~/private/deluge/watch/*.torrent ~/private/rtorrent/watch
+
+cp -rf ~/private/deluge/watch/*.torrent ~/private/rtorrent/watch
+~~~
+
+**3:** To move (mv) or copy (cp) the `~/private/deluge/torrents` contents:
+
+~~~
+mv -f /private/deluge/torrents/*.torrent ~/private/rtorrent/watch
+
+cp -rf /private/deluge/torrents/torrents/*.torrent ~/private/rtorrent/watch
+~~~
+
+### deluge to transmission
+
+**1:** To move (mv) or copy (cp) the `~/private/deluge/data` contents:
+
+~~~
+mv -f ~/private/deluge/data/. ~/private/transmission/data
+
+cp -rf ~/private/deluge/data/. ~/private/transmission/data
+~~~
+
+**2:** To move (mv) or copy (cp) the `~/private/deluge/watch` contents:
+
+~~~
+mv -f ~/private/deluge/watch/*.torrent ~/private/transmission/watch
+
+cp -rf ~/private/deluge/watch/*.torrent ~/private/transmission/watch
+~~~
+
+**3:** To move (mv) or copy (cp) the `~/private/deluge/torrents` contents:
+
+~~~
+mv -f /private/deluge/torrents/*.torrent ~/private/transmission/watch
+
+cp -rf /private/deluge/torrents/torrents/*.torrent ~/private/transmission/watch
+~~~
+
+### After you have transferred the files
+
+Once completed, simply check out the Web Gui and make sure everything is up and running.
+
+Then un-throttle your client/s.
 
 ### Other:
 
-- username means YOUR username here...self explanatory really.
 - If the torrents don't automatically begin checking for the material in the new folder, simply right click the torrent and click Verify local data and it should force it to begin.
-
-
 

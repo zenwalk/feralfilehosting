@@ -63,7 +63,7 @@ When you have filled out the fields correctly  click OK and you will be automati
 
 If transmission is frozen you will need to kill it. Log into your slot via  [SSH](https://www.feralhosting.com/faq/view?question=12), and run these commands:
 
-**1** type:
+To kill the transmission daemon:
 
 ~~~
 killall -9 transmission-daemon -u $(whoami)
