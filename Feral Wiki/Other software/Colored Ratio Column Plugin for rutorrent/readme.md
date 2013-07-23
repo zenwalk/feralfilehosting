@@ -1,6 +1,5 @@
-This rutorret plugin automatically changes the text in the rutorrent ratio column, from red to green, based on the users upload ratio.
 
-I don't know if anyone will want to use this or not, but I wanted to redesign the ratiocolor plugin so that it would be a bit better looking and more appealing with dark backgrounds.
+This rutorret plugin automatically changes the text in the rutorrent ratio column, from red to green, based on the users upload ratio.
 
 Install it using [SSH](https://www.feralhosting.com/faq/view?question=12):
 
@@ -12,22 +11,9 @@ rm -f ~/ratio.zip
 
 **Important note:** What is different from the original?
 
-Inside the `init.js` **changeWhat = "cell-background";** has been changed to **changeWhat = "font";**
+Inside the `init.js` **changeWhat = "cell-background";** has been changed to **changeWhat = "font";** So that the font is coloured instead the background. Based on this plugin: [https://github.com/Gyran/rutorrent-ratiocolor](https://github.com/Gyran/rutorrent-ratiocolor)
 
-~~~
-//changeWhatEnum = ["cell-background", "font"];
-
-// what to change:
-// cell-background
-// font
-changeWhat = "font";
-~~~
-
-Based on this plugin
-
-[https://github.com/Gyran/rutorrent-ratiocolor](https://github.com/Gyran/rutorrent-ratiocolor)
-
-Install the original plugin like this using [SSH](https://www.feralhosting.com/faq/view?question=12):
+Or install the original plugin like this using [SSH](https://www.feralhosting.com/faq/view?question=12) to have coloured backgrounds on the ratio column:
 
 It changes the background colour of the cell instead of the font.
 
