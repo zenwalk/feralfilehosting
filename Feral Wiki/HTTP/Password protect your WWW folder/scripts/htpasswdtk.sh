@@ -1,6 +1,6 @@
 #!/bin/bash
 # htpasswd user and password toolkit
-scriptversion="1.0.3"
+scriptversion="1.0.4"
 # randomessence
 ############################
 ## Version History Starts ##
@@ -14,6 +14,7 @@ scriptversion="1.0.3"
 # 1.0.1 wgets itself and puts it in the ~/bin with 700. Added files exist checks for all htpasswd calls. Cosmetics
 # 1.0.2 Better checks for option 1 with explanations on htaccess
 # 1.0.3 Updater included.
+# 1.0.4 nginx /links and apache /links options added
 #
 ############################
 ### Version History Ends ###
@@ -94,32 +95,36 @@ showMenu ()
     echo -e "\033[31m""2""\e[0m" "Add a new user or update an existing user in your" "\033[36m""~/private/.htpasswd""\e[0m"
     #
     echo -e "\033[31m""3""\e[0m" "Delete a user from your" "\033[36m""~/private/.htpasswd""\e[0m"
+    #
+    echo -e "\033[31m""4""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using" "\033[36m""~/private/.htpasswd""\e[0m"
     #   
-    echo -e "\033[31m""4""\e[0m" "List" "\033[36m""~/private/.htpasswd""\e[0m" "users and their order"
+    echo -e "\033[31m""5""\e[0m" "List" "\033[36m""~/private/.htpasswd""\e[0m" "users and their order"
     #
     echo -e "\033[31m""Rutorrent specific options section""\e[0m"
     #
-    echo -e "\033[31m""5""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Change the existing Rutorrent .htaccess to use" "\033[36m""~/private/.htpasswd""\e[0m"
+    echo -e "\033[31m""6""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Change the existing Rutorrent .htaccess to use" "\033[36m""~/private/.htpasswd""\e[0m"
     #
-    echo -e "\033[31m""6""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Add or edit a user in the existing Rutorrent .htpasswd"
+    echo -e "\033[31m""7""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Add or edit a user in the existing Rutorrent .htpasswd"
     #
-    echo -e "\033[31m""7""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Delete a user in the existing Rutorrent .htpasswd"
+    echo -e "\033[31m""8""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Delete a user in the existing Rutorrent .htpasswd"
     #
-    echo -e "\033[31m""8""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "List .htpasswd users and their order"
+    echo -e "\033[31m""9""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using" "\033[36m""/rutorrent/.htpasswd""\e[0m"
+    #
+    echo -e "\033[31m""10""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "List" "\033[36m""/rutorrent/.htpasswd""\e[0m" "users and their order"
     #
     echo -e "\033[31m""Other tools section""\e[0m"
     #
-    echo -e "\033[31m""9""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use the" "\033[36m""~/private/.htpasswd""\e[0m" "AuthFile path" "\033[33m""(if present)""\e[0m"
+    echo -e "\033[31m""11""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use the" "\033[36m""~/private/.htpasswd""\e[0m" "AuthFile path" "\033[33m""(if present)""\e[0m"
     #
-    echo -e "\033[31m""10""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use a custom AuthFile path" "\033[33m""(if present)""\e[0m"
+    echo -e "\033[31m""12""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use a custom AuthFile path" "\033[33m""(if present)""\e[0m"
     #
     echo -e "\033[31m""Nginx specific options section""\e[0m"
     #
-    echo -e "\033[31m""11""\e[0m" "Protect the /links directory using the ~/private/.htpasswd"
+    echo -e "\033[31m""13""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using the" "\033[36m""~/private/.htpasswd""\e[0m"
     #
-    echo -e "\033[31m""12""\e[0m" "Protect the /links directory using the /rutorrent/.htpasswd"
+    echo -e "\033[31m""14""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using the" "\033[36m""/rutorrent/.htpasswd""\e[0m"
     #
-    echo -e "\033[31m""13""\e[0m" "\033[32m""Quit""\e[0m"
+    echo -e "\033[31m""15""\e[0m" "\033[32m""Quit""\e[0m"
 }
 ###
 #
@@ -129,6 +134,7 @@ while [ 1 ]
         showMenu
         echo
         read -ep "Enter the number of the action you wish to complete: " CHOICE
+        echo
         case "$CHOICE" in
 ##########
         "1") # Create a new ~/private/.htpasswd,user and .htaccess in public_html.
@@ -165,7 +171,7 @@ while [ 1 ]
                 echo -e "\033[32m""The" "\033[36m"".htaccess""\e[0m" "\033[32m""is only created in the WWW root and not in subdirectories.""\e[0m" "\033[33m""It created a template for you to use in other directories""\e[0m"
                 echo -e "\033[32m""Make a directory user specific: Copy the .htaccess there, change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
                 echo -e "Now only the user $username will have access to that folder."
-                sleep 6
+                sleep 4
             fi
         fi
         ;;
@@ -173,8 +179,9 @@ while [ 1 ]
         "2") # Add a new user or update an existing user, in your ~/private/.htpasswd
         if [ -f $HOME/private/.htpasswd ]
         then
-            echo -e "\033[1;32m" "Note: Use a good password manager like keepass so you can easily manage good passwords.""\e[0m"
-            echo -e "\033[31m" "Enter an existing username to update, or a new username to create an entry.""\e[0m"
+            echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage good passwords.""\e[0m"
+            echo -e "\033[31m""Enter an existing username to update, or a new username to create an entry.""\e[0m"
+            echo
             echo -e "Here is a list of the usernames and their order in your" "\033[36m""$HOME/private/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
             cat $HOME/private/.htpasswd | cut -d:  -f1
@@ -209,7 +216,18 @@ while [ 1 ]
             
         ;;
 ##########
-        "4") # List ~/private/.htpasswd users and their order
+        "4") # Protect the /links directory using ~/private/.htpasswd
+        if [ -d $HOME/www/$(whoami).$(hostname)/public_html/links ]
+        then
+            echo -ne "######\nAuthUserFile $HOME/private/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" > $HOME/www/$(whoami).$(hostname)/public_html/links/.htaccess
+            echo -e "The" "\033[36m""/links""\e[0m" "directory has been protected using the" "\033[36m""~/private/.htpasswd""\e[0m"
+        else
+            echo -e "The" "\033[36m""$HOME/www/$(whoami).$(hostname)/public_html/links""\e[0m" "does not exist"
+        fi
+        sleep 2
+        ;;
+##########
+        "5") # List ~/private/.htpasswd users and their order
         if [ -f $HOME/private/.htpasswd ]
         then
             echo -e "Here is a list of the usernames and their order in your" "\033[36m""$HOME/private/.htpasswd""\e[0m"
@@ -223,7 +241,7 @@ while [ 1 ]
         fi
         ;;
 ##########
-        "5") # RuTorrent: Change the existing Rutorrent .htaccess to use ~/private/.htpasswd
+        "6") # RuTorrent: Change the existing Rutorrent .htaccess to use ~/private/.htpasswd
         if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htaccess ]
         then
             echo -e "\033[32m""This will change where the rutorrent htaccess looks for the htpasswd file""\e[0m"
@@ -239,7 +257,7 @@ while [ 1 ]
         fi
         ;;
 ##########
-        "6") # RuTorrent: Add or edit a user in the existing Rutorrent .htpasswd
+        "7") # RuTorrent: Add or edit a user in the existing Rutorrent .htpasswd
         if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]
         then
             echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage good passwords.""\e[0m"
@@ -257,7 +275,7 @@ while [ 1 ]
         fi
         ;;
 ##########
-        "7") # RuTorrent: Delete a user in the existing Rutorrent .htpasswd
+        "8") # RuTorrent: Delete a user in the existing Rutorrent .htpasswd
         if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]
         then
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent/.htpasswd""\e[0m"
@@ -274,7 +292,18 @@ while [ 1 ]
         fi
         ;;
 ##########
-        "8") # RuTorrent: List .htpasswd users and their order
+        "9") #RuTorrent: Protect the /links directory using /rutorrent/.htpasswd
+        if [ -d $HOME/www/$(whoami).$(hostname)/public_html/links ]
+        then
+            echo -ne "######\nAuthUserFile $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" > $HOME/www/$(whoami).$(hostname)/public_html/links/.htaccess
+            echo -e "The" "\033[36m""/links""\e[0m" "directory has been protected using the" "\033[36m""/rutorrent/.htpasswd""\e[0m"
+        else
+            echo -e "The" "\033[36m""$HOME/www/$(whoami).$(hostname)/public_html/links""\e[0m" "does not exist"
+        fi
+        sleep 2
+        ;;
+##########
+        "10") # RuTorrent: List .htpasswd users and their order
         if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]
         then
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent/.htpasswd""\e[0m"
@@ -288,7 +317,7 @@ while [ 1 ]
         fi
         ;;
 ##########
-        "9") # Change all public_html .htaccess to use the ~/private/.htpasswd AuthFile path (if present)
+        "11") # Change all public_html .htaccess to use the ~/private/.htpasswd AuthFile path (if present)
             echo -e "This will change all" "\033[31m"".htaccess""\e[0m" "files AuthFile line if it is present"
             read -ep "Do you wish to do this? [y] yes or [n] no: " confirm
             if [[ $confirm =~ ^[Yy]$ ]]
@@ -297,7 +326,7 @@ while [ 1 ]
             fi
         ;;
 ##########
-        "10") # Change all public_html .htaccess to use a custom AuthFile path (if present)
+        "12") # Change all public_html .htaccess to use a custom AuthFile path (if present)
             echo -e "\033[32m""Use a relative path but \033[33mDO NOT USE""\e[0m" "\033[31m""~" "\033[32m""in your path""\e[0m"
             echo -e "Please include" "\033[31m"".htpasswd""\e[0m" "in your path"
             echo -e "For example" "\033[31m""private/.htpasswd""\e[0m" "will work"
@@ -305,45 +334,39 @@ while [ 1 ]
             find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec sed -i "s|AuthUserFile .*|AuthUserFile \"$HOME/$path\"|g" {} \; -exec chmod 644 {} \;
         ;;
 ##########
-"11")
-if [[ -f ~/private/.htpasswd ]]
-then
-echo 'location /links {
-    auth_basic "Please log in";
-    auth_basic_user_file '$HOME'/private/.htpasswd;
-}' > ~/.nginx/conf.d/000-default-server.d/links.conf
-killall -9 nginx php5-fpm -u $(whoami)
-echo "Now wait up to 5 minutes for nginx to restart"
-else
-    echo
-    echo -e "\033[31m""File does not exist""\e[0m"
-    echo
-    sleep 2
-fi
-;;
+        "13") # Protect the /links directory using the ~/private/.htpasswd
+        if [[ -f ~/private/.htpasswd ]]
+        then
+        echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/private/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
+        killall -9 nginx php5-fpm -u $(whoami)
+        echo "Now wait up to 5 minutes for nginx to restart"
+        else
+            echo
+            echo -e "\033[31m""File does not exist""\e[0m"
+            echo
+            sleep 2
+        fi
+        ;;
 ##########
-"12")
-if [[ -f ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]]
-then
-echo 'location /links {
-    auth_basic "Please log in";
-    auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;
-}' > ~/.nginx/conf.d/000-default-server.d/links.conf
-killall -9 nginx php5-fpm -u $(whoami)
-echo "Now wait up to 5 minutes for nginx to restart"
-else
-    echo
-    echo -e "\033[31m""File does not exist""\e[0m"
-    echo
-    sleep 2
-fi
-;;
+        "14") # Protect the /links directory using the /rutorrent/.htpasswd
+        if [[ -f ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd ]]
+        then
+        echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
+        killall -9 nginx php5-fpm -u $(whoami)
+        echo "Now wait up to 5 minutes for nginx to restart"
+        else
+            echo
+            echo -e "\033[31m""File does not exist""\e[0m"
+            echo
+            sleep 2
+        fi
+        ;;
 ##########
 
 ##########
-"13")
-exit
-;;
+        "15") # Quit
+        exit 1
+        ;;
 ##########
     esac
 done
