@@ -7,9 +7,19 @@ Mac
 
 This software can be installed from the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for the slot you wish to use it on.
 
-**Remote GUI Clients for Transmission**
+In [SSH](https://www.feralhosting.com/faq/view?question=12) run this command to see you main info except the password:
 
-The host name entered should be your server, and the username and password the same for the web interface.
+~~~
+wget -qNO ~/info.sh http://git.io/QsfUKA && bash ~/info.sh
+~~~
+
+To see you password you must click on the Slot Details page of the relevant slot in your [Account Manager](https://www.feralhosting.com/manager/) and it will look like this:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/Transmission%20and%20Transmission%20Remote%20GUI/transslotdetail.png)
+
+### Remote GUI Client for Transmission
+
+Download it from here and then install it.
 
 [transmisson-remote-gui](http://code.google.com/p/transmisson-remote-gui/)
 
@@ -17,45 +27,49 @@ The host name entered should be your server, and the username and password the s
 
 ### Transmission Remote GUI Configuration*
 
-![](http://i45.tinypic.com/n5lg5d.jpg)
+Once you open transmisson-remote-gui you will see something like this:
 
-**use your own username, password, server name and port number**
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/Transmission%20and%20Transmission%20Remote%20GUI/1.png)
 
-The **RPC** port can be found in the file. This port is needed to the **Remote Gui** to control Transmission
+This is where you will need to click to create a new connection:
 
-~~~
-~/.config/transmission-daemon/settings.json
-~~~
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/Transmission%20and%20Transmission%20Remote%20GUI/2.png)
 
-As the number on the line with **rpc-port** in it. This can be found quickly [via SSH](https://www.feralhosting.com/faq/view?question=12) by running the command 
+This is what you will see and it is also where you will enter you connection information:
 
-~~~
-grep rpc-port ~/.config/transmission-daemon/settings.json
-~~~
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/Transmission%20and%20Transmission%20Remote%20GUI/3.png)
 
-Users with a large amount of torrents in their account may experience a slow down as it takes much longer to load and subsequently refresh. wTorrent suffers less from this as it does not automatically refresh.
+It will start to look something like this:
 
-**When Transmission is Unresponsive**
+**Important note:** Do not check SSL, this will cause the connection to fail.
 
-If transmission is frozen you will need to kill it. [Log in via SSH](https://www.feralhosting.com/faq/view?question=12), and:
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/Transmission%20and%20Transmission%20Remote%20GUI/4.png)
+ 
+Please use the bash script linked above to get most of this information using a single command.
+
+**Connection:** A name for this connection. Filled in automatically as you fill in the `Remote host:` field.
+
+**Remote host:** You server hostname for example, `chronos.feralhosting.com`
+
+**Port:** The `rpc-port` listed port in the `~/.config/transmission-daemon/settings.json` file.
+
+**User name:** Your Feral username
+
+**Password:** As listed under the Transmission section of your Slot Details page for the relevant slot.
+
+When you have filled out the fields correctly  click OK and you will be automatically connected to transmission running on the selected slot.
+
+### When Transmission is Unresponsive
+
+If transmission is frozen you will need to kill it. Log into your slot via  [SSH](https://www.feralhosting.com/faq/view?question=12), and run these commands:
 
 **1** type:
 
 ~~~
-ps x
+killall -9 transmission-daemon -u $(whoami)
 ~~~
 
-This will list all processes / PIDs under your username).
-
-**2** type:
-
-~~~
-kill -9 PID
-~~~
-
-Where **PID** is the process **ID** listed in the left column for transmission. This **ID** is in the form of a 4 to 5 digit number
-
-You can now restart transmission by typing: 
+You can now restart transmission again by typing: 
 
 ~~~
 transmission-daemon
@@ -67,12 +81,11 @@ Transmission should now be accessible through web interface or remote GUI.
 
 **What Version of Transmission Am I Running?**
 
-[SSH to your server](https://www.feralhosting.com/faq/view?question=12), and type:
+[SSH](https://www.feralhosting.com/faq/view?question=12) to your server, and type:
 
 ~~~
 transmission-daemon -V
 ~~~
 
-Press **enter** to confirm.
 
-Press **ctrl+d** to log out and terminate session.
+
