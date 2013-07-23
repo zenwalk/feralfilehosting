@@ -2,7 +2,7 @@
 # author: randomessence
 # transmission remote gui basic info.sh
 # wget -qNO ~/info.sh http://git.io/QsfUKA && bash ~/info.sh
-if [ -f $/.config/transmission-daemon ]
+if [ -f $HOME/.config/transmission-daemon/settings.json ]
 then
     echo
     echo -e "Your hostname is:" "\033[33m""$(hostname)""\e[0m"

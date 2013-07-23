@@ -1,11 +1,11 @@
 
-### Supported platforms:
+### transmisson-remote-gui supported platforms:
 
 Windows
 Linux
 Mac
 
-This software can be installed from the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/)
+This software can be installed from the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for the slot you wish to use it on.
 
 **Remote GUI Clients for Transmission**
 
