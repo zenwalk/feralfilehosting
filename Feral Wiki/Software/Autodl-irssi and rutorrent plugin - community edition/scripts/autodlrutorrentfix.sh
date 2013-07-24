@@ -40,11 +40,11 @@ scriptname="autodlrutorrentfix"
 #
 mkdir -p $HOME/bin
 #
-if [ ! -f  $HOME/autodlrutorrentfix.sh ]
+if [ ! -f $HOME/autodlrutorrentfix.sh ]
 then
     wget -qNO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
 fi
-if [ ! -f  $HOME/bin/autodlrutorrentfix ]
+if [ ! -f $HOME/bin/autodlrutorrentfix ]
 then
     wget -qNO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
 fi
