@@ -109,6 +109,8 @@ then
             exit 1
         elif [[ $agree2update =~ ^[Ee]$ ]]
         then
+            echo "You chose to exit"
+            echo
             exit 1
         else
             read -ep "Are you sure you want to do a full reinstall, all settings, jails and users will be lost? [y]es i am sure or [e]xit: " areyousure
@@ -116,6 +118,8 @@ then
             then
                 killall -9 proftpd -u $(whoami) > /dev/null 2>&1
             else
+                echo "You chose to exit"
+                echo
                 exit 1
             fi
         fi
