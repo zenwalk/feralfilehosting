@@ -32,6 +32,7 @@ After you’re connected to your box, run the following commands:
 We highly recommend that you perform a clean install when switching from the official release of autodl-irssi to prevent any possible conflicts. Running these commands in your terminal or deleting that directory through an FTP client is suggested:
 
 ```
+killall -9 irssi -u $(whoami); screen -wipe
 rm -rf ~/.irssi/scripts/AutodlIrssi
 rm -f ~/.irssi/scripts/autorun/autodl-irssi.pl
 rm -rf ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi
