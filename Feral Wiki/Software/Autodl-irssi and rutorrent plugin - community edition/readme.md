@@ -1,18 +1,25 @@
+
 ### rtorrent change 30.06.2013
 
 rtorrent was changed to use a socket and this has broken the autodl rutorrent plugin, not autodl itself.
-
-[Try this manual fix](http://pastebin.com/y7jNijsS)
-
-Or the bash script. Apply to an existing installation. Tested with the autodl installer script below.
 
 ```
 wget -qNO ~/autodlrutorrentfix.sh http://git.io/BBUryw && bash ~/autodlrutorrentfix.sh
 ```
 
-It has been reported as working
+[Or manually apply the fix](http://pastebin.com/y7jNijsS)
 
-### What's changed?
+Apply to an existing installation. Tested with the autodl installer script below.
+
+### Reset the password and port for autodl and the rutorrent plugin
+
+This script will ask you for you password and then update the `autodl.cfg` and the rutorrent `conf.php` and then restart irssi.
+
+~~~
+wget -qNO ~/autodlport.sh http://git.io/vCft_Q && bash ~/autodlport.sh
+~~~
+
+### What's changed from the original Autodl to the new github release?
 
 The main application on [ autodl on Sourceforge](http://sourceforge.net/projects/autodl-irssi/) was not being actively developed and the author was M.I.A. The official forum was removed also. This is a new community driven version that has been forked to [autodl on github.com](https://github.com/autodl-community/autodl-irssi) and is now actively maintained, updated and developed. It is also the new home of the new wiki and other information resources.
 
