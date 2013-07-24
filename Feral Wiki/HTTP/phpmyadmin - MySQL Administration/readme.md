@@ -12,11 +12,11 @@ In SSH do these commands. Use this faq if you do not know how to SSH into your s
 Download the phpMyAdmin package:
 
 ```
-wget -qNO ~/phpMyAdmin.zip http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.0.4.1/phpMyAdmin-4.0.4.1-all-languages.zip
+wget -qNO ~/phpMyAdmin.zip http://sourceforge.net/projects/phpmyadmin/files/latest/download
 unzip -qo phpMyAdmin.zip -d ~/www/$(whoami).$(hostname)/public_html/
-cp -rf ~/www/$(whoami).$(hostname)/public_html/phpMyAdmin-4.0.4.1-all-languages/. ~/www/$(whoami).$(hostname)/public_html/phpmyadmin
+cp -rf ~/www/$(whoami).$(hostname)/public_html/phpMyAdmin-*-all-languages/. ~/www/$(whoami).$(hostname)/public_html/phpmyadmin
 mkdir -p ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config
-rm -rf ~/phpMyAdmin.zip ~/www/$(whoami).$(hostname)/public_html/phpMyAdmin-4.0.4.1-all-languages
+rm -rf ~/phpMyAdmin.zip ~/www/$(whoami).$(hostname)/public_html/phpMyAdmin-*-languages
 ```
 
 The rest of this FAQ must be completed in a Browser.

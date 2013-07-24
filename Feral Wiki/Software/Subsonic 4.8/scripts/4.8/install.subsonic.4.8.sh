@@ -1,10 +1,10 @@
 #!/bin/bash
 # Install Subsonic
 #
-scriptversion="1.5.5"
+scriptversion="1.5.6"
 scriptname="subsonic.4.8.sh"
 subsonicversion="4.8"
-madsonicversion="5.0 Beta3 Build 3510"
+madsonicversion="5.0 Beta4 Build 3560"
 javaversion="1.7 Update 25"
 #
 # Bobtentpeg 01/30/2013
@@ -66,6 +66,7 @@ javaversion="1.7 Update 25"
 # v 1.5.3 Java installation must reload the shell or Subsonic will run using the stock java, which is broken.
 # v 1.5.4 added the creation of a small ~/bin script that a user can call in crontab to restart at reboot. it checks to see it the PID is already running.
 # v 1.5.5 RSK updateda and various readability tweaks
+# v 1.5.6 Madsonic 5.0 Beta4 Build 3560 with custom Audioffmpeg and ffmpeg. Some hardcoded things changed to variables for easier updating of the script
 #
 ############################
 ### Version History Ends ###
@@ -75,16 +76,27 @@ javaversion="1.7 Update 25"
 ###### Variable Start ######
 ############################
 #
-http=$(shuf -i 6000-50000 -n 1)
 # Sets a random port between 6000-50000 for http
-https=$(expr 1 + $http)
+http=$(shuf -i 6000-50000 -n 1)
 # Defines https as + 1 from http
-submemory="512"
+https=$(expr 1 + $http)
 # Defines the submemory memory variable
-installedjavaversion=$(cat ~/private/java/javaversion 2> /dev/null)
+submemory="512"
 # Gets the Java version from the last time this scrip installed Java
-bashrcpath=$(sed -n '/PATH=~\/private\/java\/bin:\$PATH/p' ~/.bashrc 2> /dev/null)
+installedjavaversion=$(cat ~/private/java/javaversion 2> /dev/null)
 # Checks if the Java path was already added to the ~/.bashrc
+bashrcpath=$(sed -n '/PATH=~\/private\/java\/bin:\$PATH/p' ~/.bashrc 2> /dev/null)
+# Some variable links for subsonic
+subsonicfv="https://sourceforge.net/projects/subsonic/files/subsonic/4.8/subsonic-4.8-standalone.tar.gz"
+subsonicfvs="subsonic-4.8-standalone.tar.gz"
+sffmpegfv="https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.static.64bit.2013-06-14.tar.gz"
+sffmpegfvs="ffmpeg.static.64bit.2013-06-14.tar.gz"
+# Some variable links for madsonic
+madsonicfv="https://bitbucket.org/feralhosting/feralfiles/downloads/5.0.3560.beta4XE-standalone.zip"
+madsonicfvs="5.0.3560.beta4XE-standalone.zip"
+# Madsonic custom ffmpeg with Audioffmpeg
+mffmpegfvc="https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.2013-07-11.zip"
+mffmpegfvcs="ffmpeg.2013-07-11.zip"
 #
 ############################
 ####### Variable End #######
@@ -352,9 +364,9 @@ then
             echo
             # Creates some directories we need for configuring the start-up script
             #
-            echo -e "\033[32m""subsonic-4.8-standalone.tar.gz""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/subsonic.tar.gz http://sourceforge.net/projects/subsonic/files/subsonic/4.8/subsonic-4.8-standalone.tar.gz
-            echo -e "\033[36m""subsonic-4.8-standalone.tar.gz""\e[0m" "Has been downloaded and renamed to" "\033[36m""subsonic.tar.gz\e[0m"
+            echo -e "\033[32m""$subsonicfvs""\e[0m" "Is downloading now."
+            wget -qNO ~/private/subsonic/subsonic.tar.gz $subsonicfv
+            echo -e "\033[36m""$subsonicfvs""\e[0m" "Has been downloaded and renamed to" "\033[36m""subsonic.tar.gz\e[0m"
             # Gets the latest version of subsonic from sourceforge. Currently at 4.8
             #
             echo -e "\033[36m""subsonic.tar.gz""\e[0m" "Is unpacking now."
@@ -367,14 +379,15 @@ then
             echo
             # tidy up
             #
-            echo -e "\033[32m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/transcode/ffmpeg.tar.gz https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.static.64bit.2013-06-14.tar.gz
-            echo -e "\033[36m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Has been downloaded and renamed to" "\033[36m""ffmpeg.tar.gz\e[0m"
+            echo -e "\033[32m""$sffmpegfvs""\e[0m" "Is downloading now."
+            wget -qNO ~/private/subsonic/transcode/ffmpeg.tar.gz $sffmpegfv
+            echo -e "\033[36m""$sffmpegfvs""\e[0m" "Has been downloaded and renamed to" "\033[36m""ffmpeg.tar.gz\e[0m"
             # Downloads a perma hosted version of ffmpeg static and renames it to ffmpeg.tar.gz. Dated at 14/06/2013
             #
-            echo -e "\033[36m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Is being unpacked now."
+            echo -e "\033[36m""$sffmpegfvs""\e[0m" "Is being unpacked now."
             tar -xzf ~/private/subsonic/transcode/ffmpeg.tar.gz -C ~/private/subsonic/transcode/
-            echo -e "\033[36m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Has been unpacked to" "\033[36m~/private/subsonic/transcode/\e[0m"
+            chmod -f 700 ~/private/subsonic/transcode/ffmpeg
+            echo -e "\033[36m""$sffmpegfvs""\e[0m" "Has been unpacked to" "\033[36m~/private/subsonic/transcode/\e[0m"
             # Unpacks this static ffmpeg binary from its tar.gz archive to ~/private/subsonic/transcode/
             #
             rm -f ~/private/subsonic/transcode/ffmpeg.tar.gz
@@ -384,6 +397,7 @@ then
             #
             echo -e "\033[32m""Copying over a local version of lame.""\e[0m"
             cp -f /usr/local/bin/lame ~/private/subsonic/transcode/ 2> /dev/null
+            chmod -f 700 ~/private/subsonic/transcode/lame
             echo -e "Lame copied to" "\033[36m""~/private/subsonic/transcode/\e[0m"
             sleep 1
             echo
@@ -391,6 +405,7 @@ then
             #
             echo -e "\033[32m""Copying over a local version of flac.""\e[0m"
             cp -f /usr/bin/flac ~/private/subsonic/transcode/ 2> /dev/null
+            chmod -f 700 ~/private/subsonic/transcode/flac
             echo -e "Flac copied to" "\033[36m""~/private/subsonic/transcode/""\e[0m"
             sleep 1
             echo
@@ -458,14 +473,14 @@ then
             mkdir -p ~/private/subsonic/transcode
             mkdir -p ~/private/subsonic/playlists
             mkdir -p ~/private/subsonic/Podcast
-            mkdir -p ~/private/subsonic/upload
+            mkdir -p ~/private/subsonic/Incoming
             mkdir -p ~/private/subsonic/playlist-export
             echo
             # Creates some directories we need for configuring the start-up script
             #
-            echo -e "\033[32m""5.0.3510.beta3XE-standalone.zip""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/madsonic.zip https://bitbucket.org/feralhosting/feralfiles/downloads/5.0.3510.beta3XE-standalone.zip
-            echo -e "\033[36m""5.0.3510.beta3XE-standalone.zip""\e[0m" "Has been downloaded and renamed to" "\033[36m""madsonic.zip\e[0m"
+            echo -e "\033[32m""$madsonicfvs""\e[0m" "Is downloading now."
+            wget -qNO ~/private/subsonic/madsonic.zip $madsonicfv
+            echo -e "\033[36m""$madsonicfvs""\e[0m" "Has been downloaded and renamed to" "\033[36m""madsonic.zip\e[0m"
             # Gets the latest version of subsonic from sourceforge. Currently at 4.8
             #
             echo -e "\033[36m""madsonic.zip""\e[0m" "Is unpacking now."
@@ -478,24 +493,26 @@ then
             echo
             # tidy up
             #
-            echo -e "\033[32m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/transcode/ffmpeg.tar.gz https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.static.64bit.2013-06-14.tar.gz
-            echo -e "\033[36m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Has been downloaded and renamed to" "\033[36m""ffmpeg.tar.gz\e[0m"
+            echo -e "\033[32m""$mffmpegfvcs""\e[0m" "Is downloading now."
+            wget -qNO ~/private/subsonic/transcode/ffmpeg.zip $mffmpegfvc
+            echo -e "\033[36m""$mffmpegfvcs""\e[0m" "Has been downloaded and renamed to" "\033[36m""ffmpeg.tar.gz\e[0m"
             # Downloads a perma hosted version of ffmpeg static and renames it to ffmpeg.tar.gz. Dated at 04/24/2013
             #
-            echo -e "\033[36m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Is being unpacked now."
-            tar -xzf ~/private/subsonic/transcode/ffmpeg.tar.gz -C ~/private/subsonic/transcode/
-            cp -f ~/private/subsonic/transcode/ffmpeg ~/private/subsonic/transcode/Audioffmpeg 2> /dev/null
-            echo -e "\033[36m""ffmpeg.static.64bit.2013-06-14.tar.gz""\e[0m" "Has been unpacked to" "\033[36m~/private/subsonic/transcode/\e[0m"
+            echo -e "\033[36m""$mffmpegfvcs""\e[0m" "Is being unpacked now."
+            unzip -qo ~/private/subsonic/transcode/ffmpeg.zip -d ~/private/subsonic/transcode/
+            chmod -f 700 ~/private/subsonic/transcode/Audioffmpeg ~/private/subsonic/transcode/ffmpeg
+            # cp -f ~/private/subsonic/transcode/ffmpeg ~/private/subsonic/transcode/Audioffmpeg 2> /dev/null
+            echo -e "\033[36m""$mffmpegfvcs""\e[0m" "Has been unpacked to" "\033[36m~/private/subsonic/transcode/\e[0m"
             # Unpacks this static ffmpeg binary from its tar.gz archive to ~/private/subsonic/transcode/
             #
-            rm -f ~/private/subsonic/transcode/ffmpeg.tar.gz
+            rm -f ~/private/subsonic/transcode/ffmpeg.zip
             sleep 1
             echo
             # tidy up
             #
             echo -e "\033[32m""Copying over a local version of lame.""\e[0m"
             cp -f /usr/local/bin/lame ~/private/subsonic/transcode/ 2> /dev/null
+            chmod -f 700 ~/private/subsonic/transcode/lame
             echo -e "Lame copied to" "\033[36m""~/private/subsonic/transcode/\e[0m"
             sleep 1
             echo
@@ -503,6 +520,7 @@ then
             #
             echo -e "\033[32m""Copying over a local version of Flac.""\e[0m"
             cp -f /usr/bin/flac ~/private/subsonic/transcode/ 2> /dev/null
+            chmod -f 700 ~/private/subsonic/transcode/flac
             echo -e "Flac copied to" "\033[36m""~/private/subsonic/transcode/""\e[0m"
             sleep 1
             echo
@@ -520,11 +538,11 @@ then
             # Edit the mains settings.
             #
             read -ep "Enter the path to your media or leave blank and press enter to skip: " path
-            sed -i "s|SUBSONIC_DEFAULT_MUSIC_FOLDER=/var/music|SUBSONIC_DEFAULT_MUSIC_FOLDER=$path|g" ~/private/subsonic/subsonic.sh
-            sed -i 's|SUBSONIC_DEFAULT_PODCAST_FOLDER=/var/music/Podcast|SUBSONIC_DEFAULT_PODCAST_FOLDER=~/private/subsonic/Podcast|g' ~/private/subsonic/subsonic.sh
-            sed -i 's|SUBSONIC_DEFAULT_PLAYLIST_FOLDER=/var/playlist|SUBSONIC_DEFAULT_PLAYLIST_FOLDER=~/private/subsonic/playlists|g' ~/private/subsonic/subsonic.sh
-            sed -i 's|SUBSONIC_DEFAULT_UPLOAD_FOLDER=/var/music/Incoming|SUBSONIC_DEFAULT_UPLOAD_FOLDER=~/private/subsonic/upload|g' ~/private/subsonic/subsonic.sh
-            sed -i 's|SUBSONIC_DEFAULT_PLAYLIST_EXPORT_FOLDER=/var/playlist-export|SUBSONIC_DEFAULT_PLAYLIST_EXPORT_FOLDER=~/private/subsonic/playlist-export|g' ~/private/subsonic/subsonic.sh
+            sed -i "s|SUBSONIC_DEFAULT_MUSIC_FOLDER=/var/media|SUBSONIC_DEFAULT_MUSIC_FOLDER=$path|g" ~/private/subsonic/subsonic.sh
+            sed -i 's|SUBSONIC_DEFAULT_PODCAST_FOLDER=/var/media/Podcast|SUBSONIC_DEFAULT_PODCAST_FOLDER=~/private/subsonic/Podcast|g' ~/private/subsonic/subsonic.sh
+            sed -i 's|SUBSONIC_DEFAULT_PLAYLIST_FOLDER=/var/media/playlist|SUBSONIC_DEFAULT_PLAYLIST_FOLDER=~/private/subsonic/playlists|g' ~/private/subsonic/subsonic.sh
+            sed -i 's|SUBSONIC_DEFAULT_UPLOAD_FOLDER=/var/media/Incoming|SUBSONIC_DEFAULT_UPLOAD_FOLDER=~/private/subsonic/Incoming|g' ~/private/subsonic/subsonic.sh
+            sed -i 's|SUBSONIC_DEFAULT_PLAYLIST_EXPORT_FOLDER=/var/media/playlist-export|SUBSONIC_DEFAULT_PLAYLIST_EXPORT_FOLDER=~/private/subsonic/playlist-export|g' ~/private/subsonic/subsonic.sh
             # Edit the paths
             #
             sed -i 's/quiet=0/quiet=1/g' ~/private/subsonic/subsonic.sh
