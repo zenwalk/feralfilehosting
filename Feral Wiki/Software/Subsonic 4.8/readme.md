@@ -105,6 +105,7 @@ If you would like to install a newer Java version you can use this guide:
 - The bash script makes installation and management of Subsonic and Madsonic very easy. Consider using it over the manual steps.
 - Use the version used of ffmpeg linked in this guide as the newer or older versions may play well with Subsonic. 
 - Subsonic will ask for a license key after 30 days, that you can get by donating to the creator of the program. After 30 days, video streaming and mobile application support are deactivated. You can use the bash script to install Madsonic instead, that has no such restrictions.
+- HTML5 - [Minisub Chrome App](https://chrome.google.com/webstore/detail/minisub/jccdpflnecheidefpofmlblgebobbloc) (if you use https you must visit the subsonic server URL and accept the cert first
 
 ### Reinstalling or stopping the subsonic server
 
