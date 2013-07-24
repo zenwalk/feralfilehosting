@@ -86,6 +86,7 @@ then
         if [[ $agree2update =~ ^[Yy]$ ]]
         then
             killall -9 proftpd -u $(whoami) > /dev/null 2>&1
+            mkdir -p $HOME/proftpd/install_logs
             wget -qNO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/$proftpdversion.tar.gz
             tar -xzf $HOME/proftpd.tar.gz -C $HOME/
             echo -n "$proftpdversion" > $HOME/proftpd/.proftpdversion
