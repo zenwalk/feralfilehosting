@@ -138,7 +138,7 @@ then
     killall -9 irssi -u $(whoami) 2> /dev/null 
     screen -wipe > /dev/null 2>&1
     screen -dmS autodl irssi
-    echo -e "\033[33m""Checking we restarted irssi or if there are multiple screens/process""\e[0m"
+    echo -e "\033[33m""Checking we restarted irssi or if there are multiple screens/processes""\e[0m"
     echo
     screen -ls | grep autodl
     echo
