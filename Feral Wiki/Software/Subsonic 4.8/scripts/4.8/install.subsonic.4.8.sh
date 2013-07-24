@@ -189,8 +189,8 @@ fi
 if [ \"\$(ps -U \$(whoami) | grep -c java)\" -gt \"1\" ]
 then
     echo -e \"There are currently \\\033[31m\$(ps -U \$(whoami) | grep -c java 2> /dev/null)\\\e[0m running Java processes.\"
-    echo -e \"\\\033[31mWarning:\\\e[0m \\\033[32mSubsonic or Madsonic might load or be unpredicatable with multiple instances\\\e[0m\"
-    echo -e \"\\\033[33mIf there are multiple Subsonic or Madsonic processes please use the killall option by pressing [a] so then restart.\\\e[0m\"
+    echo -e \"\\\033[31mWarning:\\\e[0m \\\033[32mSubsonic or Madsonic might not load or be unpredicatable with multiple instances running.\\\e[0m\"
+    echo -e \"\\\033[33mIf there are multiple Subsonic or Madsonic processes please use the killall by using option [a] then use the restart option.\\\e[0m\"
     echo -e \"\\\033[31m\"
     ps -U \$(whoami) | grep java
     echo -e \"\\\e[0m\"
