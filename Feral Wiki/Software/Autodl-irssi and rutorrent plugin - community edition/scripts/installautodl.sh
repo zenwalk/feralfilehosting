@@ -61,6 +61,9 @@ then
             #and to allow ample time to give user feedback
             #Downloads the newest  RELEASE version  of the autodl community edition and saves it as a zip file
             #Substitute googlecode link with "https://github.com/autodl-community/autodl-rutorrent/archive/master.zip" for devel
+            # Kill any existing processes
+            killall -9 irssi -u $(whoami) 2> /dev/null 
+            screen -wipe > /dev/null 2>&1
             echo "Downloading autodl-irssi"
             wget -qNO ~/autodl-irssi.zip https://autodl-irssi-community.googlecode.com/files/autodl-irssi-community.zip  2> /dev/null
             echo "autodl-irssi download finished"
