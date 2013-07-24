@@ -21,7 +21,7 @@ port=$(shuf -i 6000-50000 -n 1)
         screen -dmS autodl irssi
         echo "The port and password have been updated. Attach to the running screen using this command:"
         echo
-        echo "screen -r autodl"
+        echo -e "\033[32m""screen -r autodl""\e[0m"
         echo
         else
             bash ~/autodlport.sh
