@@ -50,9 +50,11 @@ else
     echo
     if [[ $confirm =~ ^[Yy]$ ]]
     then
-        echo -e "Downloading and extracting latest version to: $(whoami).$(hostname)/wordpress"
+        echo -e "Downloading and extracting latest version to:"
+        echo
+        echo -e "\033[32m""$(whoami).$(hostname)/wordpress""\e[0m"
         echo "and (they are the same physical location)"
-        echo -e "$(hostname)/$(whoami)/wordpress"
+        echo -e "\033[33m""$(hostname)/$(whoami)/wordpress""\e[0m"
         wget -qNO $HOME/latest.tar.gz http://wordpress.org/latest.tar.gz
         tar -xzf $HOME/latest.tar.gz -C $HOME/www/$(whoami).$(hostname)/public_html
         rm -f $HOME/latest.tar.gz

@@ -51,17 +51,29 @@ Now Visit your `public_html/wordpress` directory in a Web Browser and complete t
 
 ### Mysql connection with a socket:
 
+**Important note:** This is the default connection option.
+
+When you install MySQL you are provided with a `socket` to connect to the database server. You can find this on the Slot details page for the relevant slot.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/mysqlsocket.png)
+
+This images shows the hows the fields would be filled out when using a socket.
+
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/socket.png)
 
 ### Mysql connection with networking enabled:
 
 Please see this [FAQ](https://www.feralhosting.com/faq/view?question=9) for enabling networking.
 
+This images shows the hows the fields would be filled out when using networking.
+
+Where:
+
+IP = Your servers hostname such as `server.feralhosting.com` or the [IP of your slot](https://www.feralhosting.com/faq/view?question=74).
+
+PORT = Is the port shown when you followed this [FAQ](https://www.feralhosting.com/faq/view?question=9) to enable networking in MySQL.
+
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/networking.png)
-
-
-
-
 
 
 
