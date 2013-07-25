@@ -1,7 +1,7 @@
 
 **1:** First, go to the [Account Manager](https://www.feralhosting.com/manager/) and then use the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for that slot.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/installmysql.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/installmysql.png)
 
 **Important note:** MySQL can take up to 15 minutes to install as it is compiled upon request of installation so please be patient.
 
@@ -52,6 +52,12 @@ When you install MySQL you are provided with a `socket` to connect to the databa
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/mysqlsocket.png)
 
 This images shows the hows the fields would be filled out when using a socket.
+
+**Important note:** Put the socket path in the `hostname/server` field prefixed with a [colon :](http://en.wikipedia.org/wiki/Colon_%28punctuation%29) for example:
+
+~~~
+:/media/DiskID/home/username/private/mysql/socket
+~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/socket.png)
 

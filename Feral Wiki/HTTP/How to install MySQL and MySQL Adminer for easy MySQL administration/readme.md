@@ -1,6 +1,8 @@
 
 **1:** First, go to the [Account Manager](https://www.feralhosting.com/manager/) and then use the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for that slot.
 
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/installmysql.png)
+
 **2:** Install MySQL via the Software Page (selecting the radio button to the left of Mysql):
 
 **Important note:** Take note of your `Socket` path and your `Password` once the installation is completed. You do not need them until Step 2. Your user-name should be `root`.
