@@ -151,9 +151,9 @@ cp -rf ~/private/deluge/watch/*.torrent ~/private/rtorrent/watch
 **3:** To move (mv) or copy (cp) the `~/private/deluge/torrents` contents:
 
 ~~~
-mv -f /private/deluge/torrents/*.torrent ~/private/rtorrent/watch
+mv -f ~/private/deluge/torrents/*.torrent ~/private/rtorrent/watch
 
-cp -rf /private/deluge/torrents/torrents/*.torrent ~/private/rtorrent/watch
+cp -rf ~/private/deluge/torrents/*.torrent ~/private/rtorrent/watch
 ~~~
 
 ### deluge to transmission
@@ -177,9 +177,9 @@ cp -rf ~/private/deluge/watch/*.torrent ~/private/transmission/watch
 **3:** To move (mv) or copy (cp) the `~/private/deluge/torrents` contents:
 
 ~~~
-mv -f /private/deluge/torrents/*.torrent ~/private/transmission/watch
+mv -f ~/private/deluge/torrents/*.torrent ~/private/transmission/watch
 
-cp -rf /private/deluge/torrents/torrents/*.torrent ~/private/transmission/watch
+cp -rf ~/private/deluge/torrents/*.torrent ~/private/transmission/watch
 ~~~
 
 ### After you have transferred the files

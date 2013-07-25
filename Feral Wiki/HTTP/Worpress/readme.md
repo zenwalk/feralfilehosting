@@ -59,6 +59,8 @@ This images shows the hows the fields would be filled out when using a socket.
 :/media/DiskID/home/username/private/mysql/socket
 ~~~
 
+**Important note:** If you set the `mysql.default_sockect` and `mysqli.default_sockect` in this FAQ: [PHP - modify settings](https://www.feralhosting.com/faq/view?question=213) you only need to enter `localhost` as the host to use the socket.
+
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/socket.png)
 
 ### Mysql connection with networking enabled:
@@ -72,6 +74,8 @@ Where:
 **IP** = Your servers hostname such as `server.feralhosting.com` or the [IP of your slot](https://www.feralhosting.com/faq/view?question=74).
 
 **PORT** = Is the port shown when you followed this [FAQ](https://www.feralhosting.com/faq/view?question=9) to enable networking in MySQL.
+
+**Important note:** If you set the `mysql.default_port` and `mysqli.default_port` in this FAQ: [PHP - modify settings](https://www.feralhosting.com/faq/view?question=213) you only need to enter the hostname or IP without the PORT for a network connection.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/networking.png)
 

@@ -1,7 +1,7 @@
 
 **1:** First, go to the [Account Manager](https://www.feralhosting.com/manager/) and then use the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for that slot.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/installmysql.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/installmysql.png)
 
 **2:** Install MySQL via the Software Page (selecting the radio button to the left of Mysql):
 
@@ -36,21 +36,23 @@ You can use https if you accept the Feral certificate, which is a mismatch to th
 https://username.server.feralhosting.com/adminer
 ~~~
 
-**2:** You will need the `Socket` path, `username` and `password` you obtained after installing the MySQL server from the very first step.
+**2:** You will need the `Socket` path, `username` and `password` you obtained after installing the MySQL server from the very first step as shown on the Slot Details page for the relevant slot.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/0.0.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/mysqlsocket.png)
 
-**3:** Put the socket path in the `hostname/server` field prefixed with a [colon :](http://en.wikipedia.org/wiki/Colon_%28punctuation%29)
+**Important note:** Put the socket path in the `hostname/server` field prefixed with a [colon :](http://en.wikipedia.org/wiki/Colon_%28punctuation%29), for example:
 
 ~~~
 :/media/DiskID/home/username/private/mysql/socket
 ~~~
 
-**4:** Put in `root` for the `username`
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/0.0.png)
 
-**5:** Put in the `password` obtained from the software install page.
+**3:** Put in `root` for the `username`
 
-Here is a very simple view of creating a New Database and User.
+**4:** Put in the `password` obtained from the software install page.
+
+### A very simple overview of creating a New Database and User.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/0.png)
 
