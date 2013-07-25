@@ -35,6 +35,10 @@ Cygwin will now download the files lists.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/7.png)
 
+IF this is the first time you have installed Cygwin you will see this Alert. It is not an error, simply a warning. Click OK to continue.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/alert.png)
+
 ### Step 2: Select out packages
 
 This is what you will see once you have completed Step 1. This screen can seem quite overwhelming at first, but it is quite simple.
@@ -112,9 +116,25 @@ Check both options here so it is easier to start the Cygwin terminal.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/finish.3.png)
 
-You have now successfully installed Cygwin and are ready to start using LFTP.
+You have now successfully installed Cygwin.
 
-**Important note:** Re run the setup-x86.exe at any time to add new programs or revome them
+**Important note:** Re run the `setup-x86.exe` at any time to add new programs or remove them
+
+### Cygwin first run
+
+On your Desktop look for the Cygwin icon:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/shortcut.png)
+
+Double click the short cut to start the cygwin terminal. You will something like this on your first time running the cygwin terminal:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/firstrun.png)
+
+From now on when you run the Cygwin terminal it will simply look like this:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/secondrun.png)
+
+And that is it. You have now successfully run Cygwin for the first time and are ready to start using the programs you installed.
 
 ### Notes:
 
