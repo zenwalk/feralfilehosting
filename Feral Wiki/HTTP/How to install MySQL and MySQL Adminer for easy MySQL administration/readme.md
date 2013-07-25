@@ -60,7 +60,17 @@ Here is a very simple view of creating a New Database and User.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/3.png)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/4.png)
+You can edit the user in the next step as well.
+
+**Important note:** This user is going to be restricted `localhost` connections only by default. Meaning if you do not use a socket they will not be able to connect to the database.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/4.local.png)
+
+If you require that your user has network access (networking has been enabled) to the Database you would do this instead:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/4.any.png)
+
+Where the Server files has had `localhost` has been changed to `%` allowing outside connections to the Database.
 
 **Important note:** These are safe to use privileges that will work with most (pretty much all) web applications.
 
