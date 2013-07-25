@@ -74,6 +74,8 @@ Where the Server files has had `localhost` has been changed to `%` allowing outs
 
 **Important note:** These are safe to use privileges that will work with most (pretty much all) web applications.
 
+IN this image you can see that we are editing the privileges for the databae `example` that we just created:
+
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/adminerpriv.png)
 
 Once saved you are ready to use this new Database and user with your web applications.
