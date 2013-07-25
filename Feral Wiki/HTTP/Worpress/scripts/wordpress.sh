@@ -31,6 +31,7 @@ mkdir -p $HOME/bin
 wget -qNO $HOME/bin/wordpress https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/scripts/wordpress.sh
 chmod -f 700 $HOME/bin/wordpress
 echo -e "Done"
+echo
 #
 if [ ! -d $HOME/www/$(whoami).$(hostname)/public_html/wordpress ]
 then
@@ -59,6 +60,7 @@ else
         tar -xzf $HOME/latest.tar.gz -C $HOME/www/$(whoami).$(hostname)/public_html
         rm -f $HOME/latest.tar.gz
         echo -e "Done: Visit your WWW/wordpress to complete the installaion."
+        echo
     fi
 fi
 cd && bash

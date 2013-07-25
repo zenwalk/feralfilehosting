@@ -18,13 +18,7 @@ This is a relevant FAQ: [PHP - modify settings](https://www.feralhosting.com/faq
 This bash script will download and extract Wordpress for you to your default WWW directory.
 
 ~~~
-wget -qNO ~/wordpress.sh http://git.io/sBXgog
-~~~
-
-Now do this to execute it:
-
-~~~
-bash ~/wordpress.sh
+wget -qNO ~/wordpress.sh http://git.io/sBXgog && bash ~/wordpress.sh
 ~~~
 
 Done.
