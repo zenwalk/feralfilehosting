@@ -1,11 +1,11 @@
 
-**First:** go to the software install page for feralhosting at: [Install Software](https://www.feralhosting.com/manager/slot/install).
+**1:** First, go to the [Account Manager](https://www.feralhosting.com/manager/) and then use the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for that slot.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/installmysql.png)
 
-**NOTE:** MySQL can take up to 15 minutes to install as it is compiled upon request of installation so please be patient.
+**Important note:** MySQL can take up to 15 minutes to install as it is compiled upon request of installation so please be patient.
 
-**NOTE:** If you have your own domain you can use this [VHost FAQ](https://www.feralhosting.com/faq/view?question=52) to host it here.
+**Important note:** If you have your own domain you can use this [VHost FAQ](https://www.feralhosting.com/faq/view?question=52) to host it here.
 
 This is a relevant FAQ: [PHP - modify settings](https://www.feralhosting.com/faq/view?question=213)
 
@@ -63,9 +63,9 @@ This images shows the hows the fields would be filled out when using networking.
 
 Where:
 
-IP = Your servers hostname such as `server.feralhosting.com` or the [IP of your slot](https://www.feralhosting.com/faq/view?question=74).
+**IP** = Your servers hostname such as `server.feralhosting.com` or the [IP of your slot](https://www.feralhosting.com/faq/view?question=74).
 
-PORT = Is the port shown when you followed this [FAQ](https://www.feralhosting.com/faq/view?question=9) to enable networking in MySQL.
+**PORT** = Is the port shown when you followed this [FAQ](https://www.feralhosting.com/faq/view?question=9) to enable networking in MySQL.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/networking.png)
 
