@@ -5,11 +5,19 @@
 
 Password protect your WWW folder
 
+http to https / nginx
+
+Apache to nginx / rutorrent fix
+
 Worpress
 
 ### Installable Software
 
+Deluge troubleshooting / cron
+
 Deluge Daemon - Remote control with the local Thin client
+
+Transmission remote gui
 
 ### Linux Command-Line - Advanced
 
@@ -26,6 +34,10 @@ rsync - Transferring data from slot to slot
 Ampache - web based audio video streaming
 
 Autodl-irssi and rutorrent plugin - community edition (Bob}
+
+Autodl rutorrent fix
+
+Autodl port fix
 
 proftpd - Installing an FTP daemon for extra accounts
 
