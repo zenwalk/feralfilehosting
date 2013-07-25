@@ -90,6 +90,34 @@ It will now download an install the programs. This can take some time so be pati
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/finish.2.png)
 
-
+Check both options here so it is easier to start the Cygwin terminal.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/finish.3.png)
+
+You have now successfully installed Cygwin and are ready to start using LFTP.
+
+### Notes:
+
+I like to use nano in bash as the default editor (for things like crontab).
+
+You can do this per session:
+
+~~~
+export "EDITOR=nano"
+~~~
+
+Or make it permanent by adding it to your `.bashrc` file.
+
+Your `.bashrc` is located here in a default installation, where `username` if your Windows username:
+
+~~~
+C:/cygwin/home/username/.bashrc
+~~~
+
+~~~
+echo "export EDITOR=nano" >> ~/.bashrc
+~~~
+
+~~~
+source ~/.bashrc
+~~~
