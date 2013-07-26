@@ -1,17 +1,21 @@
 
-**1:** First, go to the [Account Manager](https://www.feralhosting.com/manager/) and then use the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for that slot.
+**Step 1:** First, go to the [Account Manager](https://www.feralhosting.com/manager/) and then use the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/) for that slot:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/installmysql.png)
 
-**2:** Install MySQL via the Software Page (selecting the radio button to the left of Mysql):
+**Step 2:** Install MySQL via the Software Page (selecting the radio button to the left of MySQL):
 
-**Important note:** Take note of your `Socket` path and your `Password` once the installation is completed. You do not need them until Step 2. Your user-name should be `root`.
+**Important note:** Take note of your `Socket` path and your `Password` once the installation is completed. You do not need them until Step 2. Your username should be `root`.
 
-**Important note:** MYSQL can take up to 15 minutes to install as it is compiled upon request of installation so please be patient:
+**Important note:** MySQL can take up to 15 minutes to install as it is compiled upon request of installation so please be patient:
 
-This next stage of the guide needs to be done in an SSH client such as PuTTy. [You can use this basic guide to connect using your Feral credentials.](https://www.feralhosting.com/faq/view?question=12)
+**Important note:** If you have your own domain you can use this [VHost FAQ](https://www.feralhosting.com/faq/view?question=52) to host it here.
 
-**3:** Now to install Adminer to configure your mysql, this is the procedure I used:
+This is a relevant (optional) FAQ: [PHP - modify settings](https://www.feralhosting.com/faq/view?question=213) for configuration of some PHP settings before you start.
+
+This next stage of the guide needs to be done in an SSH client such as PuTTy.How to [SSH](https://www.feralhosting.com/faq/view?question=12) to your slot.
+
+**Step 3:** Now to install Adminer to configure your MySQL using these SSH commands:
 
 ~~~
 cd ~/www/$(whoami).$(hostname)/public_html/
@@ -20,11 +24,10 @@ wget -qN http://downloads.sourceforge.net/project/adminer/Adminer/Adminer%203.7.
 ln -sf adminer-3.7.1.php index.php
 ~~~
 
-**Step 2:**
+**Step 4:**
 
-Please note, where you see `username` and `server` you are required to provide your relevant info for it to work.
 
-**1:** Now go to your slot HTTP URL which MUST be in this format.
+**1:** Now go to your slot HTTP URL which MUST be in this format, where `username` if your Feral username and `server` if the name of the server that the relevant slot is hosted on.
 
 ~~~
 http://username.server.feralhosting.com/adminer
@@ -35,6 +38,8 @@ You can use https if you accept the Feral certificate, which is a mismatch to th
 ~~~
 https://username.server.feralhosting.com/adminer
 ~~~
+
+**Important note:** The URL format `server.feralhosting.com/username/` will not work for Adminer.
 
 **2:** You will need the `Socket` path, `username` and `password` you obtained after installing the MySQL server from the very first step as shown on the Slot Details page for the relevant slot.
 
@@ -75,11 +80,11 @@ Where the Server files has had `localhost` has been changed to `%` allowing outs
 
 **Important note:** These are safe to use privileges that will work with most (pretty much all) web applications.
 
-IN this image you can see that we are editing the privileges for the databae `example` that we just created:
+In this image you can see that we are editing the privileges for the database `example` that we just created:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/adminerpriv.png)
 
-Once saved you are ready to use this new Database and user with your web applications.
+Once saved, you are ready to use this new Database and user with your web applications.
 
 
 
