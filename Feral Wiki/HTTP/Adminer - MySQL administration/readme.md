@@ -46,7 +46,7 @@ https://username.server.feralhosting.com/adminer
 :/media/DiskID/home/username/private/mysql/socket
 ~~~
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/0.0.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/0.0.png)
 
 **3:** Put in `root` for the `username`
 
@@ -54,23 +54,22 @@ https://username.server.feralhosting.com/adminer
 
 ### A very simple overview of creating a New Database and User.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/0.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/0.png)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/1.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/1.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/2.png)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/2.png)
-
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/3.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/3.png)
 
 You can edit the user in the next step as well.
 
 **Important note:** This user is going to be restricted `localhost` connections only by default. Meaning if you do not use a socket they will not be able to connect to the database.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/4.local.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/4.local.png)
 
 If you require that your user has network access (networking has been enabled) to the Database you would do this instead:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/4.any.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/4.any.png)
 
 Where the Server files has had `localhost` has been changed to `%` allowing outside connections to the Database.
 
@@ -78,7 +77,7 @@ Where the Server files has had `localhost` has been changed to `%` allowing outs
 
 IN this image you can see that we are editing the privileges for the databae `example` that we just created:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/How%20to%20install%20MySQL%20and%20MySQL%20Adminer%20for%20easy%20MySQL%20administration/adminerpriv.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Adminer%20-%20MySQL%20administration/adminerpriv.png)
 
 Once saved you are ready to use this new Database and user with your web applications.
 

@@ -19,7 +19,7 @@ It is recommended to leave the installation directory as the default and for all
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/3.png)
 
-This is where Cygwin will install the temp files/packages of the core files and the programs your select. Then click next:
+This is where Cygwin will download the temp files/packages of the core files and the programs your select. Then click next:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/4.png)
 
@@ -31,21 +31,21 @@ Here you can select a mirror for the files and files list. I always just use the
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/6.png)
 
-Cygwin will now download the files lists.
+Cygwin will now download the file lists.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/7.png)
 
-IF this is the first time you have installed Cygwin you will see this Alert. It is not an error, simply a warning. Click OK to continue.
+If this is the first time you have installed Cygwin you will see this Alert. It is not an error, simply a warning. Click OK to continue.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/alert.png)
 
 ### Step 2: Select out packages
 
-This is what you will see once you have completed Step 1. This screen can seem quite overwhelming at first, but it is quite simple.
+This is what you will see once you have completed Step 1. This screen can seem quite overwhelming at first, but it is quite simple once you know how to navigate it.
 
-**Important note:**By default Cygwin will only install the basic and critical files it needs to run. 
+**Important note:** By default Cygwin will only install the basic and critical files it needs to run. 
 
-We want to install these programs:
+We want to install these programs so we will have to find and select them for installation:
 
 ~~~
 cygrunsrv
@@ -58,7 +58,7 @@ nano
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.1.png)
 
-This is the first program we want to install:
+This is the first program we want to install, called:
 
 ~~~
 cygrunsrv
@@ -66,11 +66,15 @@ cygrunsrv
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.cygrunsrv.png)
 
+Now search for:
+
 ~~~
 lftp
 ~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.lftp.png)
+
+Now search for:
 
 ~~~
 cron
@@ -78,11 +82,15 @@ cron
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.cron.png)
 
+Now search for:
+
 ~~~
 openssh
 ~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.openssh.png)
+
+Now search for:
 
 ~~~
 openssl
@@ -90,11 +98,15 @@ openssl
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.openssl.png)
 
+Now search for:
+
 ~~~
 nano
 ~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.nano.png)
+
+**Important note:** For now just install these tools. You can easily add new programs later be re running the Cygwin setup.
 
 Once you have selected all the programs above for installation click on `Next` to start the installation process.
 
@@ -126,7 +138,7 @@ On your Desktop look for the Cygwin icon:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/shortcut.png)
 
-Double click the short cut to start the cygwin terminal. You will something like this on your first time running the cygwin terminal:
+Double click the short cut to start the Cygwin terminal. You will something like this on your first time running the Cygwin terminal:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/firstrun.png)
 
@@ -134,7 +146,7 @@ From now on when you run the Cygwin terminal it will simply look like this:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/secondrun.png)
 
-And that is it. You have now successfully run Cygwin for the first time and are ready to start using the programs you installed.
+And that is it. You have now successfully run Cygwin for the first time and are ready to start using the programs you installed. You can use these installed programs just how they are described in the FAQs here, except for where things like Path names and other variables are relative to you and your PC.
 
 ### Notes:
 
