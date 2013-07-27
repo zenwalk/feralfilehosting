@@ -57,6 +57,8 @@ Navigate to this extracted directory and double click on the `runme.vbs`.
 
 Customise the `aria2c.bat` start-up parameters as you see fit.
 
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/aria2ccustom.png)
+
 [aria2c custom setup](http://git.io/2uRWDA)
 
 ### aria2c Web Gui
@@ -64,6 +66,8 @@ Customise the `aria2c.bat` start-up parameters as you see fit.
 This can literally be run from anywhere you want.
 
 So extract the folder somewhere and then browse into it.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/webgui.png)
 
 ### uget a cross platform front end for aria2c.
 
