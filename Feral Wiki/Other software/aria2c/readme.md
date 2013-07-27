@@ -5,19 +5,19 @@ aria2 is a lightweight multi-protocol & multi-source command-line download utili
 
 ### Using the aria2c Windows Command line binary with the Web Gui
 
-1: Getting the [aria2c](http://aria2.sourceforge.net/) executable.
+**1:** Getting the [aria2c](http://aria2.sourceforge.net/) executable.
 
 **Important note:** This is required for use with the Web Gui. The Web Gui does not come with the binary.
 
 [aria2c 1.17.1 x86](http://sourceforge.net/projects/aria2/files/stable/aria2-1.17.1/aria2-1.17.1-win-32bit-build1.zip/download) or [aria2c 1.17.1 x64](http://sourceforge.net/projects/aria2/files/stable/aria2-1.17.1/aria2-1.17.1-win-64bit-build1.zip/download) - Windows command line executable. 
 
-2: Getting [Aria2c Web Gui](https://github.com/ziahamza/webui-aria2/) - A very simple Web App that you can download and run in any browser.
+**2:** Getting [Aria2c Web Gui](https://github.com/ziahamza/webui-aria2/) - A very simple Web App that you can download and run in any browser.
 
 [Aria2c Web Gui download](https://github.com/ziahamza/webui-aria2/archive/master.zip)
 
-3: Unpacking the files and set-up:
+**3:** Unpacking the files and set-up:
 
-**aria2c.exe**
+### aria2c.exe
 
 Extract the `aria2c.exe` the the root of your C drive.
 
@@ -31,25 +31,35 @@ Press and hold the `Windows Key` then press `R` to open the run prompt.
 
 If you copy and paste this command into the prompt it will load and run aria2c in the command prompt window.
 
-~~~
-C:\aria2c.exe --enable-rpc=true --check-certificate=false -d "%UserProfile%\My Documents\aria2c" -x 16
-~~~
-
-To have the program run in the background you will need to run this command from directly within a Command prompt window:
+**Important note:** This command is set to automatically use and create a folder in you `My Documents` directory called `aria2c downloads`. All downloads will be stored here providing you used this command to start `aria2c` or used the custom set-up below
 
 ~~~
-C:\aria2c.exe --enable-rpc=true --check-certificate=false -d "%UserProfile%\My Documents\aria2c" -x 16
+C:\aria2c.exe --enable-rpc=true --check-certificate=false -d "%UserProfile%\My Documents\aria2c downloads" -x 16 -j 10
 ~~~
 
-Or execute is as a `.bat` file.
+Now jump to the aria Web Gui section
 
-**Important note:** What is this? This is basically a file that when executed performs a pre-formatted command for you on windows using the command shown above.
+### aria2c custom
 
 aria2c or the Web Gui do not remember your configuration settings if you restart `aria2c.exe` The bat file is easily edited to add or remove command line options that suit your needs. This means it will always start with the settings you want
 
-[aria2c.bat](https://github.com/feralhosting/feralfilehosting/raw/master/Feral%20Wiki/Other%20software/aria2c/scripts/aria2c.bat)
+To have the program run in the background as akind of set and forget, you can use this custom set-up:
 
-**aria2c Web Gui**
+What is this? This is the aria2c v 1.17.1 x64 exe in a folder that includes a `aria2c.bat` and a `runme.vbs` file.
+
+The `aria2c.bat` file contains the commands we use to run aria2c. Easily customisable.
+
+The `runme.vbs` checks to see if aria is alreayd running executing the bat file to prevent duplicate running processes.
+
+Download the zip, extract the `aria2c` inside it to anywhere you like.
+
+Navigate to this extracted directory and double click on the `runme.vbs`.
+
+Customise the `aria2c.bat` start-up parameters as you see fit.
+
+[aria2c custom setup](http://git.io/2uRWDA)
+
+### aria2c Web Gui
 
 This can literally be run from anywhere you want.
 
