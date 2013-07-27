@@ -37,15 +37,17 @@ If you copy and paste this command into the prompt it will load and run aria2c i
 C:\aria2c.exe --enable-rpc=true --check-certificate=false -d "%UserProfile%\My Documents\aria2c downloads" -x 16 -j 10
 ~~~
 
+**Important note:** If you close the command prompt window that opens you will terminate the aria2c.exe process. See the custom setup below to avoid this.
+
 Now jump to the aria Web Gui section
 
-### aria2c custom
+### aria2c custom setup
 
 aria2c or the Web Gui do not remember your configuration settings if you restart `aria2c.exe` The bat file is easily edited to add or remove command line options that suit your needs. This means it will always start with the settings you want
 
-To have the program run in the background as akind of set and forget, you can use this custom set-up:
+To have the program run in the background making it set and forget. You can use this custom set-up:
 
-What is this? This is the aria2c v 1.17.1 x64 exe in a folder that includes a `aria2c.bat` and a `runme.vbs` file.
+**Important note:** What is this? This is the aria2c v1.17.1 x64 exe in a folder that includes a `aria2c.bat` and a `runme.vbs` file.
 
 The `aria2c.bat` file contains the commands we use to run aria2c. Easily customisable.
 
@@ -59,7 +61,7 @@ Customise the `aria2c.bat` start-up parameters as you see fit.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/aria2ccustom.png)
 
-[aria2c custom setup](http://git.io/2uRWDA)
+[Download the aria2c custom set-up zip](http://git.io/2uRWDA)
 
 ### aria2c Web Gui
 
@@ -69,7 +71,25 @@ So extract the folder somewhere and then browse into it.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/webgui.png)
 
+You should see this:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/webguisuccess.png)
+
+If you see this, aria2c is not running.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/webguifail.png)
+
+For each session you can configure settings via the Web Gui. 
+
+**Important note:** These settings will last until you close the `aria2c.exe` process.
+ 
 ### uget a cross platform front end for aria2c.
 
-1: Download [uget](http://sourceforge.net/projects/urlget/files/latest/download?source=files)
+[Uget download Manager](http://ugetdm.com/) is a cross platform program download manager. It is also a useful front end for aria2c.
+
+**Important note:** This program uses aria2c v1.16 x86
+
+1: Download [uget](http://sourceforge.net/projects/urlget/files/latest/download?source=files) for Windows.
+
+2: Extract the contents of the archive to a folder.
 
