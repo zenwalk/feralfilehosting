@@ -1,1 +1,1 @@
-START /MIN C:\aria2c.exe --enable-rpc=true --disable-ipv6=true --check-certificate=false --rpc-listen-port=6800 -x 16 -d "%UserProfile%\My Documents\aria2c"
+aria2c.exe --enable-rpc=true --disable-ipv6=true --check-certificate=false --rpc-listen-port=6800 -x 16 -d "%UserProfile%\My Documents\aria2c"
