@@ -84,7 +84,9 @@ then
 ### Self Updater Ends
 #
 ###### Start of menu script
-echo -e "\033[32m" "Hello $(whoami). This is the htpasswd user and password toolkit." "\e[0m"
+echo -e "\033[32m""Hello $(whoami).""\e[0m" "This is the htpasswd user and password toolkit." "\e[0m"
+echo -e "\033[33m""This toolkit is designed to complement the FAQ and it not a replacement for the FAQ""\e[0m"
+echo
 #
 showMenu () 
 {
