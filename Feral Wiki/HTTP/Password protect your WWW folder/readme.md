@@ -18,14 +18,6 @@ So after you have run it for the first time you can simply do:
 htpasswdtk
 ~~~
 
-From anywhere in a SSH session. The script will perform this check each time it is run. So run the script, exit and use the command:
-
-~~~
-htpasswdtk
-~~~
-
-Then you will be using the most current version.
-
 ### These are the basic steps to password protect a directory in SSH:
 
 Please use a good password where the at least the first 8 characters are not easily guessable.
