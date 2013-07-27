@@ -26,7 +26,7 @@ source ~/.bashrc
 easy_install --user virtualenv
 ~~~
 
-Other mods can be installed using teh `--user` argument, for example:
+Other mods can be installed using the `--user` argument, for example:
 
 ~~~
 easy_install --user somemodule
