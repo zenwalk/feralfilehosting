@@ -61,7 +61,9 @@ The `runme.vbs` checks to see if aria is already running before executing the ba
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/aria2ccustom.png)
 
-[Download the aria2c custom set-up zip](http://git.io/2uRWDA)
+[Download the aria2c x64 custom set-up zip]()
+
+[Download the aria2c x86 custom set-up zip]()
 
 ### aria2c Web Gui
 

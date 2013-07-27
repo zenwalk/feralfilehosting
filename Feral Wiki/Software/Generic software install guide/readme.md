@@ -1,6 +1,6 @@
 ### What this guide is:
 
-This guide outlines the installation of generic Linux software. Following this guide is a good place to get started installing most, but not all Linux packages. Please keep in mind that Feralhosting.com is does not officially support any software installed via this method -- but you might get lucky on the IRC channel -- many of the other customers volunteer to help out with unofficial support there.
+This guide outlines the installation of generic Linux software. Following this guide is a good place to get started installing most, but not all Linux packages. Please keep in mind that Feralhosting.com does not officially support any software installed via this method. You might get lucky on the IRC channel -- many of the other customers volunteer to help out with unofficial support there.
 
 You may wish to use this guide instead of one you found via Google -- any guide that has any of the following commands **will not work as written** on Feralhosting.com slots.
 
@@ -149,11 +149,7 @@ mkdir -p ~/bin
 ln -s  ~/user_apps/znc/current/bin/znc ~/bin/
 ~~~
 
-This makes it so we just have to run `~/bin/znc` to start our new application.
-
-BUT WAIT, THERE' S MORE!!
-
-We can be even lazier:
+Once you have created the `~/bin` directory and then created the short-cut, use the command below that matches your server set-up (or both to be sure):
 
 On older slots (non Cogent) do this command:
 
@@ -168,6 +164,8 @@ source ~/.profile
 ~~~
 
 Now all you need to do is run "znc" -- about as short as you can make it.
+
+If you do not use these commands to reload your `~/.bashrc` or `~/.profile` you will have to start a new SSH session for the change to take effect.
 
 
 

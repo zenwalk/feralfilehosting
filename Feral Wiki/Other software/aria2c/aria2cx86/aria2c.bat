@@ -1,0 +1,1 @@
+aria2c.exe -q --enable-rpc=true --disable-ipv6=true --rpc-listen-port=6800 --check-certificate=false -d "%UserProfile%\My Documents\aria2c downloads" -x 16 -j 10
