@@ -28,10 +28,10 @@ C:\aria2c.exe
 
 Press and hold the `Windows Key` then press `R` to open the run prompt.
 
-IF you copy and paste this command into the promtp it will laod and run aria2c in the command promtp window.
+If you copy and paste this command into the prompt it will load and run aria2c in the command prompt window.
 
 ~~~
-C:\aria2c.exe --enable-rpc=true --check-certificate=false --rpc-listen-port=6800 -x 16 -d "%UserProfile%\My Documents\aria2c"
+C:\aria2c.exe --enable-rpc=true --check-certificate=false -x 16 -d "%UserProfile%\My Documents\aria2c"
 ~~~
 
 To have the program run in the background you will need to run this command from with Command prompt directly:
@@ -45,5 +45,3 @@ Or execute is as a `.bat` file.
 2: [uget](http://sourceforge.net/projects/urlget/files/latest/download?source=files)
 
 3: With the command line.
-
-aria2c.exe --enable-rpc=true -D --check-certificate=false --rpc-listen-port=6800
