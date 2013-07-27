@@ -61,9 +61,9 @@ The `runme.vbs` checks to see if aria is already running before executing the ba
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/aria2ccustom.png)
 
-[Download the aria2c x64 custom set-up zip]()
+[Download the aria2c x64 custom set-up zip](http://git.io/aNq7DA)
 
-[Download the aria2c x86 custom set-up zip]()
+[Download the aria2c x86 custom set-up zip](http://git.io/YBHVGA)
 
 ### aria2c Web Gui
 
@@ -120,4 +120,6 @@ Activate the use of aria2c. Customise the commands if needed.
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/aria2c/uget6.png)
 
 You are now ready to use aria 2 c with uget.
+
+
 
