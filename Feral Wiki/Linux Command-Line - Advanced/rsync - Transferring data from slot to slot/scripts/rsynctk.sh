@@ -121,14 +121,9 @@ then
     then
         if [ ! -f ~/.ssh/rsynctk_rsa ]
         then
-            echo -e "\033[31m""Please just press enter at the password prompts. No need for a password for this.""\e[0m"
-            echo
-            sleep 2
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
-            echo -e "\033[31m""The" "\033[37m""public/private" "\033[31m""key pair exist. New ones are only generated if the first set is missing.""\e[0m"
+            echo
         fi
-        echo
-        echo
         echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         echo
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command""\e[0m"
@@ -203,15 +198,10 @@ then
     then
         if [ ! -f ~/.ssh/rsynctk_rsa ]
         then
-            echo -e "\033[31m""Please just press enter at the password prompts. No need for a password for this.""\e[0m"
-            echo
-            sleep 2
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
-            echo -e "\033[31m""The" "\033[37m""public/private" "\033[31m""key pair exist. New ones are only generated if the first set is missing.""\e[0m"
+            echo
         fi
-        echo
-        echo
-        cho -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
+        echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         echo
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command""\e[0m"
         echo -e "\033[32m""If you say""\e[0m" "[Y]" "\033[32m""below , please then type" "\033[33m""yes""\e[0m" "\033[32m""in the next step to accept the other slots host key""\e[0m"
