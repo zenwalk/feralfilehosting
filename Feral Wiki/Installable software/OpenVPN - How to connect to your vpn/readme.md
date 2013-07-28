@@ -39,9 +39,11 @@ You will see inside it:
 
 **2:** keys directory
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral Wiki/Installable software/OpenVPN - How to connect to your vpn/keysdirectory.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/OpenVPN%20-%20How%20to%20connect%20to%20your%20vpn/keysdirectory.png)
 
 Now start the opengui as admin, once it has loaded you should be able to right click on the icon and Connect.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/OpenVPN%20-%20How%20to%20connect%20to%20your%20vpn/connect.png)
 
 **NOTE:** After some recent windows updates it seem you must run openvpn GUI as Admin. To check it is working after openvpn has connected and the icon is green check your IP in your default browser
 
