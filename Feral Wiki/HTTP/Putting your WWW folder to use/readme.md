@@ -84,14 +84,14 @@ The screenshot below illustrates the result:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Putting%20your%20WWW%20folder%20to%20use/h5ai.png)
 
-Version 0.22.1 has a problem. This is a problem with the two url formats available at Feral. It will work with one
-and not the other. To fix this you will need to use this custom version of v0.22.1 that works for both URL types at 
+Version 0.23 has a problem. This is a problem with the two url formats available at Feral. It will work with one
+and not the other. To fix this you will need to use this custom version of v0.23 that works for both URL types at 
 the same time.
 
-To download _h5ai 0.22.1 (custom with dual url format fix) use these commands in ssh.
+To download _h5ai 0.23 (custom with dual url format fix) use these commands in ssh.
 
 ~~~
-wget -qNO ~/h5ai.zip http://git.io/qH4VdA
+wget -qNO ~/h5ai.zip http://git.io/QdyWzg
 unzip -qo ~/h5ai.zip -d ~/www/$(whoami).$(hostname)/public_html/
 ~~~
 

@@ -1,13 +1,21 @@
 
 ### rtorrent change 30.06.2013
 
-rtorrent was changed to use a socket and this has broken the autodl rutorrent plugin, not autodl itself.
+rtorrent was changed to use a socket and this has broken the way autodl rutorrent plugin and autodl connect to each other. Both sides will need to be patched for it to work again.
 
-```
+If you see this error in your rutorrent Web Gui:
+
+~~~
+Error downloading files. Make sure autodl-irssi is started and configured properly (eg. password, port number): Error getting files listing: Error: Could not connect: (111) Connection refused
+~~~
+
+You must apply this fix:
+
+~~~
 wget -qNO ~/autodlrutorrentfix.sh http://git.io/BBUryw && bash ~/autodlrutorrentfix.sh
-```
+~~~
 
-[Or manually apply the fix](http://pastebin.com/y7jNijsS)
+[Here are the manual steps to apply the fix in SSH](http://pastebin.com/y7jNijsS)
 
 Apply to an existing installation. Tested with the autodl installer script below.
 
@@ -31,12 +39,12 @@ After you’re connected to your box, run the following commands:
 
 We highly recommend that you perform a clean install when switching from the official release of autodl-irssi to prevent any possible conflicts. Running these commands in your terminal or deleting that directory through an FTP client is suggested:
 
-```
+~~~
 killall -9 irssi -u $(whoami); screen -wipe
 rm -rf ~/.irssi/scripts/AutodlIrssi
 rm -f ~/.irssi/scripts/autorun/autodl-irssi.pl
 rm -rf ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi
-```
+~~~
 
 ### Automated installation
 
@@ -44,9 +52,9 @@ After SSH'ing into your slot run the following commands
 
 **Important note:**  If you have IRSSI configured already, this may screw with your server configurations.
 
-```
+~~~
 wget -qNO ~/installautodl.sh http://git.io/Ch0LqA && bash ~/installautodl.sh
-```
+~~~
 
 Now follow the prompts, if you don't like your password entering 'n' at the confirmation step will prompt you for a new password.  In some cases, this script will fail to properly setup your autodl, it does not check if the port it randomly generates is open.  If your autodl does not connect, please change the ports in the two configuration files mentioned in the manual section
 
@@ -67,9 +75,9 @@ To configure autodl-irssi for rutorrent:
 
 You can use any torrent client. You just need the rutorrent UI installed to use this feature.
 
-```
+~~~
 nano ~/.autodl/autodl.cfg
-```
+~~~
 
 The `autodl.cfg` it will look like this
 
@@ -87,7 +95,7 @@ Save the file by Pressing **CTRL X** then **Y**
 
 **These next commands are to download and then edit the GUI plugin to connect with the process. And are required if you wish to use the rutorrent GUI to manage autodl-irssi.**
 
-```
+~~~
 cd ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/
 wget -qNO autodl-rutorrent.zip https://github.com/autodl-community/autodl-rutorrent/archive/master.zip
 unzip -qo autodl-rutorrent.zip
@@ -95,33 +103,33 @@ cp -rf autodl-rutorrent-master/. autodl-irssi
 rm -rf autodl-rutorrent.zip autodl-rutorrent-master
 cp -f autodl-irssi/_conf.php autodl-irssi/conf.php
 nano autodl-irssi/conf.php
-```
+~~~
 
 **Edit this info:**
 
-```
+~~~
 $autodlPort = 15896; // Set the same port value as you set earlier (the one in ~/.autodl/autodl.cfg)
-```
+~~~
 
-```
+~~~
 $autodlPassword = "ey47DT7heE7E8"; // Set the same password as before (while editing ~/.autodl/autodl.cfg)
-```
+~~~
 
 Save the file by Pressing **CTRL X** then **Y**
 
 **Run Irssi in a screen**
  
-```
+~~~
 screen -dmS autodl irssi
-```
+~~~
 
 Press and hold **CTRL A D** ( in that order ) to detach from the screen leaving the process running in the background.
 
 To re attach to this screen in SSH to control irssi type this command in your shell:
 
-```
+~~~
 screen -r autodl
-```
+~~~
 
 **Using rutorrent autodl-irssi plugin:**
 
@@ -131,9 +139,12 @@ screen -r autodl
 
 If you are running the autodl-irssi-community version (installed here) and `NOT` the autodl-irssi version from months ago, you can update to the latest plugin version by re-running these steps, or running the following command in irssi:
 
-```
+**Important note:** If you update the program you will have to apply the fix at the top of this FAQ again.
+
+~~~
 /autodl update
-```
+~~~
+
 
 
 
