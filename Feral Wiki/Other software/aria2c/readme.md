@@ -25,29 +25,57 @@ Extract the `aria2c.exe` the the root of your C drive.
 C:\aria2c.exe
 ~~~
 
-**Important note:** The command below uses this location.
+**Important note:** The command below uses this location to start aria2c.
+
+**Important note:** A note on download paths: aria2c will download files to the location from which the `aria2c.exe` from executed by default. 
+
+To deal with this you can:
+
+1: You can set a path in the Web Gui once `aria2c.exe`. This will stick for this session only (until aria2c.exe is restarted)
+
+2: Using the arguments `--dir=some/path` or `-d some/path` when starting `aria2c.exe`. When used like this:
+
+~~~
+-d downloads
+~~~
+
+or 
+
+~~~
+--dir=downloads
+~~~
+
+aria2c will create a new folder relative (in the same place) to the `aria2c.exe` when you start a download and use this location to store downloads.
+
+**Important note:** I tried using dynamic Windows paths using `%UserProfile%` in the start up parameters. While this seems to work at first, on restart aria2c gets confused about this path refuses to work. You will need to use direct links to folders or paths relative to the `aria2c.exe` (paths relative to the `aria2c.exe`).
 
 Press and hold the `Windows Key` then press `R` to open the run prompt.
 
 If you copy and paste this command into the prompt it will load and run aria2c in the command prompt window.
 
-**Important note:** This command is set to automatically use and create a folder in you `My Documents` directory called `aria2c downloads`. All downloads will be stored here providing you used this command to start `aria2c` or used the custom set-up below
-
 ~~~
-C:\aria2c.exe --enable-rpc=true --check-certificate=false -d "%UserProfile%\My Documents\aria2c downloads" -x 16 -j 10
+C:\aria2c.exe --enable-rpc=true --check-certificate=false -d downloads -x 16 -s 16 -j 10
 ~~~
 
-**Important note:** If you close the command prompt window that opens you will terminate the aria2c.exe process. See the custom set-up below to avoid this.
+For a full list of options and their defaults please refer to this page:
+
+[aria2c command documentation](http://aria2.sourceforge.net/manual/en/html/aria2c.html)
+
+**Important note:** If you close the command prompt window that opens you will terminate the `aria2c.exe` process. See the custom set-up below to avoid this.
 
 Now jump to the aria Web Gui section
 
 ### aria2c custom setup
 
-aria2c or the Web Gui do not remember your configuration settings if you restart `aria2c.exe` The `aria2c.bat` file is easily edited to add or remove command line options that suit your needs. This means it will always start with the settings you want. Also to have the program run in the background (no command prompt window) making it set and forget you need to use this custom set-up:
+`aria2c.exe` or the Web Gui do not remember your configuration settings if you restart `aria2c.exe` The `aria2c.bat` file is easily edited to add or remove command line options that suit your needs. This means it will always start with the settings you want. Also to have the program run in the background (no command prompt window) making it set and forget you need to use this custom set-up:
 
-**Important note:** What is this then? This is the aria2c v1.17.1 x64 exe in a folder that includes a `aria2c.bat` and a `runme.vbs` file.
+**Important note:** What is this then? This is the aria2c v1.17.1 x64 exe in a folder that includes a `aria2c.bat`, a `runme.vbs` file and a custom `aria2.conf` with some pre configured settings.
 
-The `aria2c.bat` file contains the commands we use to run aria2c. Easily customisable.
+The `aria2c.bat` file contains the command we use to run aria2c. In this case executing it an loading our custom `aria2.conf`. You can tweak the `aria2c.bat` or the `aria2.conf` to decide start-up parameters
+
+The `aria2.conf` contains our unique settings in a way that is easily customisable.
+
+**Important note:** Where a setting has not been included in the `aria2.conf` it is because the default setting is more than fine for almost all needs. For a full list of options and their defaults please refer to this page:
 
 [aria2c command documentation](http://aria2.sourceforge.net/manual/en/html/aria2c.html)
 
