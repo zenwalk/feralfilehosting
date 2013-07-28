@@ -35,30 +35,30 @@ function format_filesize() {
 }
 
 # Lookup used diskspace and available diskspace
-used=`du -s --si -B 1MB $HOME/ | cut -f 1`;
-quota=`cat ~/.quotaspace`;
-available=`echo "$quota-$used" | bc `;
+used=$(du -s --si -B 1MB $HOME/ | cut -f 1);
+quota=$(cat ~/.quotaspace);
+available=$(echo "$quota-$used" | bc );
 
 # Format results
-quota_fmt=`echo "$quota" | format_filesize `;
-used_fmt=`echo "$used" | format_filesize `;
-available_fmt=`echo "$available" | format_filesize`;
+quota_fmt=$(echo "$quota" | format_filesize );
+used_fmt=$(echo "$used" | format_filesize );
+available_fmt=$(echo "$available" | format_filesize);
 
 # Output results
 
 # Format header in purple with bold and underlined text
-echo -e "\033[1;35;4mDisk usage for user `whoami`@`hostname`\e[0m";
+echo -e "\033[1;35;4mDisk usage for user $(whoami)@$(hostname)\e[0m";
 
 # Format first part as bold with cyan text
 echo -e "\033[36;1mHome:\e[00m       $HOME";
-echo -e "\033[36;1mQuota:\e[00m `pad_left "$quota_fmt" 14`";
-echo -e "\033[36;1mUsed:\e[00m `pad_left "$used_fmt" 15`";
+echo -e "\033[36;1mQuota:\e[00m $(pad_left "$quota_fmt" 14)";
+echo -e "\033[36;1mUsed:\e[00m $(pad_left "$used_fmt" 15)";
 
 # Check if you are under or over your available diskspace
 if [ "$available" -lt "0" ]; then
 	# Format amount in red
-	echo -e "\033[36;1mAvailable:\e[00m \e[00;31m`pad_left "$available_fmt" 10`\e[00m";
+	echo -e "\033[36;1mAvailable:\e[00m \e[00;31m$(pad_left "$available_fmt" 10)\e[00m";
 else
 	# Format amount in green
-	echo -e "\033[36;1mAvailable:\e[00m \e[00;32m`pad_left "$available_fmt" 10`\e[00m";
+	echo -e "\033[36;1mAvailable:\e[00m \e[00;32m$(pad_left "$available_fmt" 10)\e[00m";
 fi;
