@@ -17,6 +17,7 @@ scriptname="rsync"
 # 1.0.6 removed partials
 # 1.0.7 screen .... -p 0 was the secret sauce. Otherwise you need to be attached to the screen for the command to work
 # 1.0.8 users can run a feral or whatbox version of the script.
+# 1.1.1 some visual tweaks and clearer echoes
 #
 ############################
 ### Version History Ends ###
@@ -145,6 +146,7 @@ then
             screen -dmS rsynctk$mish
             sleep 2
             screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.feralhosting.com:~/$path ~/rsync
+            echo
             echo "Here is the screen process"
             echo
             screen -ls | grep rsynctk$mish
@@ -224,6 +226,7 @@ then
             screen -dmS rsynctk$mish
             sleep 2
             screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.whatbox.ca:~/$path ~/rsync
+            echo
             echo "Here is the screen process"
             echo
             screen -ls | grep rsynctk$mish
