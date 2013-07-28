@@ -1,6 +1,6 @@
 #!/bin/bash
 # rsynctk
-scriptversion="1.0.9"
+scriptversion="1.1.0"
 scriptname="rsync"
 # randomessence
 ############################
