@@ -124,8 +124,8 @@ then
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
             echo
             echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
+            echo
         fi
-        echo
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command""\e[0m"
         echo -e "\033[32m""If you say""\e[0m" "[Y]" "\033[32m""below , please then type" "\033[33m""yes""\e[0m" "\033[32m""in the next step to accept the other slots host key""\e[0m"
         echo
@@ -136,7 +136,7 @@ then
             ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.feralhosting.com
             echo
         fi
-        read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] " confirmscreen2
+        read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] or [n] " confirmscreen2
         echo
         if [[ $confirmscreen2 =~ ^[Yy]$ ]]
         then
@@ -204,8 +204,8 @@ then
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
             echo
             echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
+            echo
         fi
-        echo
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command""\e[0m"
         echo -e "\033[32m""If you say""\e[0m" "[Y]" "\033[32m""below , please then type" "\033[33m""yes""\e[0m" "\033[32m""in the next step to accept the other slots host key""\e[0m"
         echo
@@ -216,7 +216,6 @@ then
             ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.whatbox.ca
             echo
         fi
-        echo
         read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] " confirmscreen2
         echo
         if [[ $confirmscreen2 =~ ^[Yy]$ ]]
