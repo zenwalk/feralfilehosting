@@ -1,6 +1,6 @@
 #!/bin/bash
 # rsynctk
-scriptversion="1.1.0"
+scriptversion="1.1.1"
 scriptname="rsync"
 # randomessence
 ############################
@@ -123,8 +123,8 @@ then
         then
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
             echo
+            echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         fi
-        echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         echo
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command""\e[0m"
         echo -e "\033[32m""If you say""\e[0m" "[Y]" "\033[32m""below , please then type" "\033[33m""yes""\e[0m" "\033[32m""in the next step to accept the other slots host key""\e[0m"
@@ -133,9 +133,9 @@ then
         echo
         if [[ $sshcopy =~ ^[Yy]$ ]]
         then
-        ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.feralhosting.com
+            ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.feralhosting.com
+            echo
         fi
-        echo
         read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] " confirmscreen2
         echo
         if [[ $confirmscreen2 =~ ^[Yy]$ ]]
@@ -146,8 +146,11 @@ then
             screen -dmS rsynctk$mish
             sleep 2
             screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.feralhosting.com:~/$path ~/rsync
-            #
+            echo "Here is the screen process"
             echo
+            screen -ls | grep rsynctk$mish
+            echo
+            echo "\033[31m""Useful Notes:""\e[0m"
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
             echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
@@ -200,8 +203,8 @@ then
         then
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
             echo
+            echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         fi
-        echo -e "Copy the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         echo
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command""\e[0m"
         echo -e "\033[32m""If you say""\e[0m" "[Y]" "\033[32m""below , please then type" "\033[33m""yes""\e[0m" "\033[32m""in the next step to accept the other slots host key""\e[0m"
@@ -210,7 +213,8 @@ then
         echo
         if [[ $sshcopy =~ ^[Yy]$ ]]
         then
-        ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.whatbox.ca
+            ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.whatbox.ca
+            echo
         fi
         echo
         read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] " confirmscreen2
@@ -223,8 +227,11 @@ then
             screen -dmS rsynctk$mish
             sleep 2
             screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.whatbox.ca:~/$path ~/rsync
-            #
+            echo "Here is the screen process"
             echo
+            screen -ls | grep rsynctk$mish
+            echo
+            echo "\033[31m""Useful Notes:""\e[0m"
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
             echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
             echo
@@ -239,7 +246,7 @@ then
         fi
     fi
 else
-    echo "i am confused let me start over"
+    echo "I am confused let me start over"
     bash ~/rsynctk.sh
     exit 1
 fi
