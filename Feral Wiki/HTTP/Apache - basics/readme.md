@@ -14,7 +14,7 @@ Then restart Apache.
 **Restart Apache 2**
 
 ```
-pkill -u $(whomami) apache2
+pkill -u $(whoami) apache2
 ```
 
 Then wait for the daemon to be automatically restarted, it can take up to five minutes for Apache to restart.
@@ -56,7 +56,7 @@ Save by pressing and holding `CTRL` and then pressing `x` then press `Y` to conf
 Now restart Apache using this command:
 
 ```
-pkill -u $(whomami) apache2
+pkill -u $(whoami) apache2
 ```
 
 **Important note:** It can take up to five minutes for Apache to restart.
