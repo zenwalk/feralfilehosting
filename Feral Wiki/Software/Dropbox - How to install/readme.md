@@ -9,6 +9,7 @@ In SSH do these commands. Use this faq if you do not know how to SSH into your s
 mkdir -p ~/bin && bash
 wget -qNO ~/dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64" && tar -xzf dropbox.tar.gz
 wget -qNO ~/bin/dropbox.py "http://www.dropbox.com/download?dl=packages/dropbox.py" && chmod 700 ~/bin/dropbox.py
+source ~/.bashrc && source ~/.profile
 rm -f ~/dropbox.tar.gz
 ```
 
