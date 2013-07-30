@@ -1,31 +1,51 @@
 
 You will need to have Mysql already installed. You can do this from the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Worpress/installmysql.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/0%20Generic/installmysql.png)
 
 This is a relevant FAQ: [Mysql - Change php settings using htaccess](https://www.feralhosting.com/faq/view?question=213)
 
-In SSH do these commands. Use this faq if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
+In SSH do these commands. Use this FAQ if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
 
 ### phpmyadmin basic setup
 
 Download the phpMyAdmin package:
 
-```
+~~~
 wget -qNO ~/phpMyAdmin.zip http://sourceforge.net/projects/phpmyadmin/files/latest/download
-unzip -qo phpMyAdmin.zip -d ~/www/$(whoami).$(hostname)/public_html/
-cp -rf ~/www/$(whoami).$(hostname)/public_html/phpMyAdmin-*-all-languages/. ~/www/$(whoami).$(hostname)/public_html/phpmyadmin
+unzip -qo phpMyAdmin.zip 
+cp -rf ~/phpMyAdmin-*-all-languages/. ~/www/$(whoami).$(hostname)/public_html/phpmyadmin
 mkdir -p ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config
-rm -rf ~/phpMyAdmin.zip ~/www/$(whoami).$(hostname)/public_html/phpMyAdmin-*-languages
-```
+rm -rf ~/phpMyAdmin.zip ~/phpMyAdmin-*-languages
+~~~
+
+### https URL redirect fix:
+
+**Important note:** These commands only apply to a fresh installation. For example updating Apache to nginx will break the fix.
+
+Please run the command below that matches your Web server. The Default is Apache. It will only be nginx if you manually updated Apache to nginx.
+
+**Default: Apache**
+
+~~~
+sed -i 's/443/80/g' ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/libraries/Config.class.php
+~~~
+
+**nginx**
+
+~~~
+sed -i 's/443/8080/g' ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/libraries/Config.class.php
+~~~
+
+### Completing the Setup
 
 The rest of this FAQ must be completed in a Browser.
 
 Visit this page in a browser, replacing Your username with your Feral username and server with your slot servername
 
-```
+~~~
 http://username.server.feralhosting.com/phpmyadmin/setup/
-```
+~~~
 
 Now you will see this page.
 
@@ -47,26 +67,33 @@ You should see this dialogue once you have saved:
 
 Once you have saved the configuration you need to run these two command in SSH to finalise the installation:
 
-```
-cp -f ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config/config.inc.php ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config.inc.php
-rm -rf ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config
-```
+~~~
+cd ~/www/$(whoami).$(hostname)/public_html/
+cp -f phpmyadmin/config/config.inc.php ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config.inc.php
+rm -rf ~/www/$(whoami).$(hostname)/public_html/phpmyadmin/config && cd
+~~~
 
-Now you can return to the main page and login.
+Now you can return to the main page and login at:
+
+~~~
+/phpmyadmin
+~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/phpmyadmin%20-%20MySQL%20Administration/5.png)
 
-**Important note:** If you force https you will most likely see this error after you log in. This is not actually a problem, just a nuisance. You are logged in just fine.
+### https URL redirect issue
 
-All you need to do is press back in your browser on using your mouse button (if available) when you see the error
+**Important note:** If you force https and you did not run the fix commands above the you will most likely see this error after you log in.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/phpmyadmin%20-%20MySQL%20Administration/6.png)
 
+If you don't want to use the command you need to press back in your browser or using your mouse button (if available) when you see the error.
+
 What is happening is that the application tries to redirect on the wrong port and gets confused.
 
-```
+~~~
 https://somesite.com:80/...
-```
+~~~
 
 For nginx:
 
