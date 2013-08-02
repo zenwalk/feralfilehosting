@@ -1,24 +1,23 @@
+
 If all you need is very quick and simple SSH access using PuTTy or Mac [use this guide](https://www.feralhosting.com/faq/view?question=12).
 
 **Please read this Section First:**
 
 The guide follows a specific format for each section.
 
-1: Basic connection using the default pass phrase (usually image 1 & 2 only)
+**1:** Basic connection using the default pass phrase (usually image 1 & 2 only)
 
-2: Using keyfiles to connect ( the guide assumes you have already created these as it does not explain how)
+**2:** Using keyfiles to connect ( the guide assumes you have already created these as it does not explain how)
 
-3: Creating SSH Tunnels.
+**3:** Creating SSH Tunnels.
 
-4: SFTP Bridges where applicable.
+**4:** SFTP Bridges where applicable.
 
-**You ONLY need to use the stages that apply to what you want to do.**
+**Important note:** You ONLY need to use the stages that apply to what you want to do.
 
-The guide is **Comprehensive** so it covers all stages. You do not actually need to complete every stage. Just the relevant ones.
+The guide is **Comprehensive** so it covers all stages. You do not actually need to complete every stage. Just the relevant ones. So if you only want to connect using a password for Kitty then follow those steps first section of the Kitty guide.
 
-So if you only want to connect using a password for Kitty then follow those steps first section of the Kitty guide.
-
-If you want to connect using a pass-phrase and key file then create a ssh tunnel using Xshell then use only steps 2 & 3 from the Xshell section.
+If you want to connect using a pass-phrase and key file then create a SSH tunnel using XShell then use only steps 2 & 3 from the XShell section.
 
 Each Section is labelled. 
 
@@ -35,11 +34,7 @@ We are going to cover 4 SSH client/programs for basic usage with Feral. The guid
 
 ### CONTENTS OF THIS GUIDE
 
-```
-Each listed Contents has a Legend to help easily locate the section of the guide you are interested in.
-
-Search for text on the page using CTRL + F and use the Legends, for example: xsssh
-```
+**Important note:** Each listed Contents has a Legend to help easily locate the section of the guide you are interested in. Search for text on the page pressing and holding `CTRL` and then pressing `F`. Now search for the legends, for example: `xsssh` will return the start of the XShell section
 
 #### SSH Clients:
 
@@ -55,9 +50,11 @@ OS X Built-In SSH client - oxssh
 
 #### Mounting Remote file systems as local drives using:
 
-Netdrive - ndmnt
+Netdrive - requires an SFTP Bridge - ndmnt
 
-Gladinet (starter edition) - gnmnt
+Gladinet (starter edition) - requires an SFTP Bridge - gnmnt
+
+SFTP Net Drive - sftpnd
 
 #### Key File management:
 
@@ -75,11 +72,13 @@ Chrome - chrme
 
 Xshell is a very good SSH client with many useful and advanced features such as tabbed sessions, saving passwords, themes and lots more all available for free for home/personal use.
 
-#### DOWNLOAD xshell - [Get from their website - email required](http://www.netsarang.com/download/down_xsh.html)
+#### Download XShell - 
 
-If you are asked to save the HOSTs Key say yes and check and box that says to remember/always do this.
+[Download XShell - email required](http://www.netsarang.com/download/down_xsh.html)
 
-This guide assumes you have created a private key according to this** Guide :** [Setting up Public Key Authentication for Password-less Login](https://www.feralhosting.com/faq/view?question=13)
+If you are asked to save the Host's Key, say yes and check to any options/boxes to remember this/always do this.
+
+This guide assumes you have created a private key according to this FAQ: [Setting up Public Key Authentication for Password-less Login](https://www.feralhosting.com/faq/view?question=13)
 
 #### Topics covered:
 
@@ -97,20 +96,20 @@ It is important to note that completing the whole guide is not Required to use x
 - Tabbed Gui
 - Gui is feature rich with copy and paste option, theme changing.
 
-**Can be used with the free for home use lightweight SFTP/FTP client [xftp4](http://www.netsarang.com/products/xfp_overview.html)**
+**Important note:** Can be used with the free for home use lightweight SFTP/FTP client [xftp4](http://www.netsarang.com/products/xfp_overview.html)
 
-Basically a very good ssh/terminal program.
+Basically a very good SSH/terminal program. Very customisable look and feel.
 
 #### Getting started
 
-After you have Downloaded and Installed Xshell 4, run the application and you will see a window similar to this: Follow the instructions in the images.
+After you have Downloaded and Installed XShell 4, run the application and you will see a window similar to this: Follow the instructions in the images.
 
-So click on the New Session icon to open the Session Properties. ( the shortcut for this ALT + N )
+So click on the `New Session` icon to open the Session Properties. ( the short cut for this ALT + N )
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/SSH%20guide%20Super%20-%20SSH%20basics%20-%20SSH%20tunnels%20-%20FTP%20to%20SFTP%20bridges/xshell/1.png)
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/SSH%20guide%20Super%20-%20SSH%20basics%20-%20SSH%20tunnels%20-%20FTP%20to%20SFTP%20bridges/xshell/2.png)
 
-NOTE: If you click OK and then connect here you can use Xshell in the conventional (putty) way with your default password found in your Manager/Slot/Server page.
+NOTE: If you click OK and then connect here you can use XShell in the conventional (putty) way with your default password found in your Manager/Slot/Server page.
 
 #### Authentication using a Username and Password
 
@@ -256,7 +255,7 @@ There are already a million and 1 guides for putty and we don't need another one
 
 ### Mindterm a java based SSH client - mtssh
 
-DOWNLOAD = [Mindterm 4.0 (recommended version)](http://tech.cryptzone.com/download/MindTerm-4.0/mindterm_4.0-bin.zip)
+DOWNLOAD = [Mindterm 4.1.1 (recommended version)](http://tech.cryptzone.com/download/MindTerm-4.1.1/mindterm_4.1.1-bin.zip)
 
 If you are asked to save the HOSTs Key say yes and check and box that says to remember/always do this.
 
@@ -281,7 +280,7 @@ It is important to note that completing the whole guide is not Required to use M
 - Can create SSH Tunnels
 - Can create FTP to SFTP Bridges to mount your slot as a local file system( this means you can browse it with Explorer like and external drive)[/i]
 
-#### Getting Started with Mindterm 4.0
+#### Getting Started with Mindterm 4.1.1
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/SSH%20guide%20Super%20-%20SSH%20basics%20-%20SSH%20tunnels%20-%20FTP%20to%20SFTP%20bridges/mindterm/1.png)
 
