@@ -59,6 +59,12 @@ Now browse to the location you installed it to (if no shortcut is created) for e
 C:\Program Files\Dokan\DokanSSHFS\
 ~~~
 
+Or
+
+~~~
+C:\Program Files (x86)\Dokan\DokanSSHFS\
+~~~
+
 You will need to copy the files from the Dokan sshfs 0.6.0 to this folder and overwrite the files.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0%201.png)
