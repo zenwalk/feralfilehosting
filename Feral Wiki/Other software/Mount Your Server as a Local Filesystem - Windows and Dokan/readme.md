@@ -11,33 +11,33 @@ To do this you need meet these requirements:
 
 **Important note:** Windows 8 users must use Windows 7 compatibility mode on this installer.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/compat 1.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/compat%201.png)
 
 Download and install this: 
 
 [Dokan Libraries](http://dokan-dev.net/wp-content/uploads/DokanInstall_0.6.0.exe) you will need to install this first, reboot if asked.
 
-If you see this box on Windows 8 just click "This program ran correctly" option:
+**Important note:** If you see this box on Windows 8 just click "This program ran correctly" option:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/compat 2.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/compat%202.png)
 
 ### Step 2
 
 This step requires some pre requisites in order to be installable:
 
-1: You will need to install `Net 2.0` if you do not already have it. It comes as part of the `Net 3.5` web installer linked here:
+**1:** You will need to install `Net 2.0` if you do not already have it. It comes as part of the `Net 3.5` web installer linked here:
 
 [Net 3.5 x86 and x64](http://www.microsoft.com/en-us/download/details.aspx?id=21)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/sshfs.0.2.0 1.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/sshfs.0.2.0%201.png)
 
-2: You must install this Visual C++ 2005 SP1 x86 in order to install Dokan sshfs 0201226. It does not matter if you are on a x64 OS. You must have this x86 runtime.
+**2:** You must install this Visual C++ 2005 SP1 x86 in order to install Dokan sshfs 0201226. It does not matter if you are on a x64 OS. You must have this x86 runtime.
 
 [Microsoft Visual C++ 2005 SP1 Redistributable Package (x86)](http://www.microsoft.com/en-gb/download/details.aspx?id=5638)
 
-IF you do not do this you will get this error when trying to install sshfs 0.2.0:
+If you do not do this you will get this error when trying to install sshfs 0.2.0:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/sshfs.0.2.0 2.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/sshfs.0.2.0%20error.png)
 
 Once you have installed both of these you can download and install the sshfs 0.2.0 executable.
 
@@ -57,13 +57,23 @@ Now browse to the location you installed it to (if no shortcut is created) for e
 
 ~~~
 C:\Program Files\Dokan\DokanSSHFS\
-~~~ 
+~~~
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0 1.png)
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0 2.png)
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0 3.png)
+You will need to copy the files from the Dokan sshfs 0.6.0 to this folder and overwrite the files.
 
-Then run the DokanSSHFS.exe and enter your details
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0%201.png)
+
+Confirm the overwrite action:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0%202.png)
+
+These are the files that have been updated:
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20and%20Dokan/update.0.2.0%203.png)
+
+### Step 4
+
+Then run the DokanSSHFS.exe  located in this folder and enter your details in the windows that pops up:
 
 One the program starts you will see something like this:
 
@@ -81,4 +91,8 @@ If you want to use a keyfile it will need to be in the OpenSSH format. To conver
 
 Upon connecting Dokan will tell you that is has started SFTP and then you should see you mounted volume in My computer with the driver letter assigned in the settings. If you get an error about assigning the driver letter check that the Dokanmounter service is running.
 
-this was done on Windows 7 x86 & x64 with no compatibility settings used.
+this was done on: 
+
+Windows 7 x86 & x64 with no compatibility settings used. Net 2 and 3.5 are included in an updated Windows 7. You must install Microsoft Visual C++ 2005 SP1 Redistributable Package (x86)
+
+Windows 8 x86 & x64 with Windows 7 compatibility settings used. Net 2 and 3.5 must be installed manually. You must install Microsoft Visual C++ 2005 SP1 Redistributable Package (x86)
