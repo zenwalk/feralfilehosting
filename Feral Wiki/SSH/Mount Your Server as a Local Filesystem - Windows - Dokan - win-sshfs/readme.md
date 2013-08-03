@@ -11,7 +11,7 @@ To do this you need meet these requirements:
 
 **Important note:** Windows 8 users must use Windows 7 compatibility mode on this installer.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%201.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%201.png)
 
 Download and install this: 
 
@@ -19,7 +19,7 @@ Download and install this:
 
 **Important note:** If you see this box on Windows 8 just click "This program ran correctly" option:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%202.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%202.png)
 
 ### Step 2
 
@@ -29,7 +29,7 @@ This step requires some pre requisites in order to be installable:
 
 [Net 3.5 x86 and x64](http://www.microsoft.com/en-us/download/details.aspx?id=21)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/sshfs.0.2.0%201.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/sshfs.0.2.0%201.png)
 
 **2:** You must install this Visual C++ 2005 SP1 x86 in order to install Dokan sshfs 0201226. It does not matter if you are on a x64 OS. You must have this x86 runtime.
 
@@ -37,7 +37,7 @@ This step requires some pre requisites in order to be installable:
 
 If you do not do this you will get this error when trying to install sshfs 0.2.0:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/sshfs.0.2.0%20error.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/sshfs.0.2.0%20error.png)
 
 Once you have installed both of these you can download and install the sshfs 0.2.0 executable.
 
@@ -67,15 +67,15 @@ C:\Program Files (x86)\Dokan\DokanSSHFS\
 
 You will need to copy the files from the Dokan sshfs 0.6.0 to this folder and overwrite the files.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/update.0.2.0%201.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/update.0.2.0%201.png)
 
 Confirm the overwrite action:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/update.0.2.0%202.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/update.0.2.0%202.png)
 
 These are the files that have been updated:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/update.0.2.0%203.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/update.0.2.0%203.png)
 
 ### Step 4
 
@@ -83,7 +83,7 @@ Then run the DokanSSHFS.exe  located in this folder and enter your details in th
 
 One the program starts you will see something like this:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/mount.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/mount.png)
 
 **Important note:** you need to specify the full path to the root of your home directory. So it will be something like:
 
@@ -93,7 +93,7 @@ One the program starts you will see something like this:
 
 If you want to use a keyfile it will need to be in the OpenSSH format. To convert your PuTTy PPK file to the OpenSSH format do this:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/puttygen.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/puttygen.png)
 
 Upon connecting Dokan will tell you that is has started SFTP and then you should see you mounted volume in My computer with the driver letter assigned in the settings. If you get an error about assigning the driver letter check that the Dokanmounter service is running.
 
@@ -112,7 +112,7 @@ Download and install the Dokan 0.6.0 Libraries. You can skip this step if you ha
 
 **Important note:** Windows 8 users must use Windows 7 compatibility mode on this installer.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%201.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%201.png)
 
 Download and install this: 
 
@@ -120,7 +120,7 @@ Download and install this:
 
 **Important note:** If you see this box on Windows 8 just click "This program ran correctly" option:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%202.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%202.png)
 
 **Step 2:**
 
@@ -128,11 +128,11 @@ Download and install win-sshfs:
 
 [Download win-sshfs](http://code.google.com/p/win-sshfs/downloads/list)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/1.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/1.png)
 
 You will need to meet all these requirements to install and use win_sshs
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/2.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/2.png)
 
 If you do not have Net Framework 4 installed you can get it from here.
 
@@ -142,22 +142,22 @@ If you do not have Net Framework 4 installed you can get it from here.
 
 Once install and running you will see the icon in the tray. Right click on it and click on "Show Manager":
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/2.5.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/2.5.png)
 
 This is the default screen you will see, click on "Add"
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/3.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/3.png)
 
 Fill in your information as shown in the image. The "Save" before trying to mount:
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/4.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/4.png)
 
-Once you have saved you will see something like this. Now you can try to mount the drive.
+Once you have saved you will see something like this. Now you can try to "Mount" the drive.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/5.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/5.png)
 
 If successful with no programs errors, the drive will now be available to access and use. Click "Unmount" to unmount the drive
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/6.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/6.png)
 
 **Important note:** You can create and use multiple connection profiles and use them as the same time. Select each profile and "Mount" the server.
