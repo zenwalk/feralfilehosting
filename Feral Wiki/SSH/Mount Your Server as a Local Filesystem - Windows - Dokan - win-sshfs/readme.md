@@ -1,6 +1,8 @@
 
 This Guide will allow you to mount your Feral slots remote file system as a local file system through SFTP.
 
+Recommended Method: Install Dokan 0.06 Libraries and then use win-sshfs.
+
 To do this you need meet these requirements:
 
 1: You have a Feral slot that has been activated and you can SSH to. This means that your FTP/SFTP/SSH user name and password have been set-up and and are visible from your [**Install Software** link in your Manager](https://www.feralhosting.com/manager/)
@@ -20,6 +22,8 @@ Download and install this:
 **Important note:** If you see this box on Windows 8 just click "This program ran correctly" option:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/Dokan/compat%202.png)
+
+You can now jump to the win-sshfs section.
 
 ### Step 2
 
@@ -108,7 +112,7 @@ Windows 8 x86 & x64 with Windows 7 compatibility settings used. Net 2 and 3.5 mu
 
 **Step 1:**
 
-Download and install the Dokan 0.6.0 Libraries. You can skip this step if you have done this previously.
+Make sure you have downloaded and installed the Dokan 0.6.0 Libraries. You can skip this step if you have done this previously.
 
 **Important note:** Windows 8 users must use Windows 7 compatibility mode on this installer.
 
@@ -133,6 +137,10 @@ Download and install win-sshfs:
 You will need to meet all these requirements to install and use win_sshs
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/2.png)
+
+IF you see this box when installing make sure to "Overwrite" the destination file.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Mount%20Your%20Server%20as%20a%20Local%20Filesystem%20-%20Windows%20-%20Dokan%20-%20win-sshfs/win-sshfs/overwrite.png)
 
 If you do not have Net Framework 4 installed you can get it from here.
 
