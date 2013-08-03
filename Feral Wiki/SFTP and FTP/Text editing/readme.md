@@ -1,3 +1,4 @@
+
 ### Text editing
 
 Text editing when using SFTP/FTP
@@ -37,12 +38,15 @@ Here you can force Binary transfer in WinSCP just to be certain:
 
 Here is an example of the recommend settings for Notepad ++ when creating or editing UNIX files.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/winscp/1.settings.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/notepad++/1.settings.png)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/winscp/2.new.file.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/notepad++/2.new.file.png)
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/winscp/3.tabs.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/notepad++/3.tabs.png)
 
 Here is an overview of the Notepad ++ Gui. It shows how to tell what type of file you are editing.
 
-![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/winscp/eol.png)
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SFTP%20and%20FTP/Text%20editing/notepad++/eol.png)
+
+
+
