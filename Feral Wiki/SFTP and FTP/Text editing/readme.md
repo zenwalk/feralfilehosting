@@ -7,9 +7,11 @@ Some FTP programs will ship with a default text editor of some type. They will a
 
 Why is this useful?
 
-1: It will allow you to download, edit/create and upload text files in an easy way and not as separate actions.
+1: It will preserve the EOL or End Of Line of the original document which is important.
 
-2: We can use a good text editor such as [Notepad ++](http://notepad-plus-plus.org/) or [Sublime2](http://www.sublimetext.com/2) with our setting requirements.
+2: It will allow you to download, edit/create and upload text files in an easy way and not as separate actions.
+
+3: We can use a good text editor such as [Notepad ++](http://notepad-plus-plus.org/) or [Sublime2](http://www.sublimetext.com/2) with our setting requirements.
 
 So get Notepad ++ and install it. - [http://notepad-plus-plus.org/](http://notepad-plus-plus.org/)
 

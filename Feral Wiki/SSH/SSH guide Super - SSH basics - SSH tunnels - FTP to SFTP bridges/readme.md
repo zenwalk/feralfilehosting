@@ -52,8 +52,6 @@ OS X Built-In SSH client - oxssh
 
 Netdrive - requires an SFTP Bridge - ndmnt
 
-Gladinet (starter edition) - requires an SFTP Bridge - gnmnt
-
 SFTP Net Drive - sftpnd
 
 #### Key File management:
@@ -241,7 +239,7 @@ It is important to note that completing the whole guide is not Required to use K
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/SSH%20guide%20Super%20-%20SSH%20basics%20-%20SSH%20tunnels%20-%20FTP%20to%20SFTP%20bridges/kitty/4.png)
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/SSH%20guide%20Super%20-%20SSH%20basics%20-%20SSH%20tunnels%20-%20FTP%20to%20SFTP%20bridges/kitty/5.png)
 
-#### Create a SSH Tunnel with KiTTy
+#### Create a SSH Tunnel with Kitty
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/SSH%20guide%20Super%20-%20SSH%20basics%20-%20SSH%20tunnels%20-%20FTP%20to%20SFTP%20bridges/kitty/6.png)
 
@@ -402,16 +400,13 @@ Well there are a few ways to achieve this.
 
 First way - [use the DOKAN guide here](https://www.feralhosting.com/faq/view?question=136).
 
-Two two other free programs are capable of creating a FTP to SFTP bridge that 2 more programs can then mount as a local filesystem.
+Two two other free programs are capable of creating a FTP to SFTP bridge that 2 more programs can then mount as a local file system.
 
-`You must have already set up either Bitvise SSH Client or Mindterm and created an FTP to SFTP Bridge before you can use Netdrive or Gladinet to mount your remote file system`
+You must have already set up either the Bitvise SSH Client or the Mindterm client and created an FTP to SFTP Bridge before you can use Netdrive or Gladinet to mount your remote file system
 
 [Bitvise Tunnelier](http://www.bitvise.com/ssh-client-download) + [Netdrive](http://www.netdrive.net/download.html) or [Gladinet (starter version)](http://gladinet.com/p/download_starter_V4.htm).
 
-[Mindterm 4.0 (recommended version)](http://tech.cryptzone.com/download/MindTerm-4.0/mindterm_4.0-bin.zip) (requires Jave Run Time) + [Netdrive](http://www.netdrive.net/download.html) - Gladinet does not play nice with Mindterm
-
-There are two versions of Mindterm. V4.0 and v3.4.2. For this guide i recommend version 4.0 as it is stable to use with Feral slots when using the FTP the SFTP Bridge with Netdrive.
-[Here is the link to the download page for both versions in case of issues and for the documentation](http://tech.cryptzone.com/mindterm/mindterm.html)
+[Mindterm 4.1.1 (recommended version)](http://tech.cryptzone.com/download/MindTerm-4.0/mindterm_4.0-bin.zip) (requires Jave Run Time) + [Netdrive](http://www.netdrive.net/download.html) - Gladinet does not play nice with Mindterm
 
 #### Settings For Netdrive - ndmnt
 
