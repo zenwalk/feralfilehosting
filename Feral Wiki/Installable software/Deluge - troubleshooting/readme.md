@@ -1,4 +1,10 @@
 
+**Important note:** If you are on the server `eros` and your deluge does not load properly it is most likely being blocked by an ad blocker. You will need to white list the URL:
+
+~~~
+eros.feralhosting.com
+~~~
+
 Deluge is our favoured client because for the time being, it is the most stable.
 
 If you do have problems it can be restarted by following these instructions: [Restarting - rtorrent - Deluge - Transmission - MySQL](https://www.feralhosting.com/faq/view?question=158)
