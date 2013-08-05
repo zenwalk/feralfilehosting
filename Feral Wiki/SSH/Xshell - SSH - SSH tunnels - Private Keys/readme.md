@@ -121,15 +121,21 @@ Select Dynamic (SOCKS4/5) from the drop down menu. Enter a port between 6000 and
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Xshell%20-%20SSH%20-%20SSH%20tunnels%20-%20Private%20Keys/tunnel.2.png)
 
-You will now see that our tunnel has been created and is listed in the list.
+You will now see that our tunnel has been created and is listed in the list. Optionally you can add more tunnels or click OK to save and start using the Session.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Xshell%20-%20SSH%20-%20SSH%20tunnels%20-%20Private%20Keys/tunnel.3.png)
 
-#### Finalizing the setup and connecting
+#### Finalizing the set-up and connecting
+
+This is the Session manager again. Here you can create, connect to or edits sessions. Make sure the box is ticked to "Show this dialog box at startup"
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Xshell%20-%20SSH%20-%20SSH%20tunnels%20-%20Private%20Keys/final.1.png)
 
+Change the view options so that we can see the Tunnelling pane. This will let us easily manage out SSH tunnels.
+
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Xshell%20-%20SSH%20-%20SSH%20tunnels%20-%20Private%20Keys/final.2.png)
+
+Click on the Forwarding Rules tab to see, edit, create and remove SSH tunnels for the current tabbed session.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/Xshell%20-%20SSH%20-%20SSH%20tunnels%20-%20Private%20Keys/final.3.png)
 
