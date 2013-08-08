@@ -79,6 +79,8 @@ Continue with the FAQ if you want to use Private Keys and SSH tunnels.
 
 #### Authentication using a public/private key and Username
 
+**Important note:** Please see last two sections of this FAQ for creating and managing keyfiles with XShell.
+
 XShell can also manage your private keys for your sessions with a built in SSH key manager.
 
 **Important note:** XShell uses the OpenSSH keyfile format. You will have to export your Putty PPK format keys using Puttygen to the OpenSSH format to use with XShell. please see the [Public Key Authentication for password-less login](https://www.feralhosting.com/faq/view?question=13) FAQ for how to do this. It is quite easy to do.
@@ -131,6 +133,10 @@ This is the Session manager again. Here you can create, connect to or edits sess
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/final.1.png)
 
+When you connect to a host for the first time you will get this warning box. Accept and Save the host key for your slot's server.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/hostkey.png)
+
 Change the view options so that we can see the Tunnelling pane. This will let us easily manage out SSH tunnels.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/final.2.png)
@@ -138,6 +144,48 @@ Change the view options so that we can see the Tunnelling pane. This will let us
 Click on the Forwarding Rules tab to see, edit, create and remove SSH tunnels for the current tabbed session.
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/final.3.png)
+
+### Creating Keyfiles.
+
+You can use XShell you create and manager your public and private key pairs. Click on Tools in the menu and then select "User Key Manager..."
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.0.png)
+
+Change the Key type to RSA and the Key length to 2048 then click Next.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.1.png)
+
+Wait for the key to be generated. Don't click Finish just yet, when the key is generated click Next.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.2.png)
+
+Here you can name your keyfile. The default name is usually descriptive of the properties of the keyfile itself. You can also passphrase protect your keyfile here. Click Next when done
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.3.png)
+
+Now it is recommended you "Save as a file..." to somewhere on your PC. You can also right click on the Public Key and "Select all" to paste it into your `~/.ssh/authorized_keys` files
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.4.png)
+
+Save it somewhere. You can give it any name you want. The private key does not require a file extension. Once you have saved the keyfile click Finish.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.5.png)
+
+Please see this the [Public Key Authentication for password-less login](https://www.feralhosting.com/faq/view?question=13) for information on how to add the public key to your slot so you can connect with this keyfile.
+
+### Managing Keyfiles
+
+Now back in the Key Manager you will see your newly created keyfile. We will quickly cover some ways to manage it. Select your keyfile and then click on Properties.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.6.png)
+
+In this windows you will have two tabs to use. The first is the General tab where you can 1: Change the key name 2: Change the passphrase for the keyfile.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.7.png)
+
+In the Public Key tab you can get your public key as well as save the file.
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/SSH/XShell%20-%20SSH%20-%20Private%20Keys%20-%20SSH%20tunnels/generate.8.png)
 
 
 

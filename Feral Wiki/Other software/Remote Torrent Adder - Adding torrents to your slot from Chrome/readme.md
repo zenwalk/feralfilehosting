@@ -1,9 +1,7 @@
 
 **1:** Start by installing the extension from here:
 
-~~~
-https://chrome.google.com/webstore/detail/oabphaconndgibllomdcjbfdghcmenci
-~~~
+[Remote torrent adder](https://chrome.google.com/webstore/detail/oabphaconndgibllomdcjbfdghcmenci)
 
 **2:** Open the settings for the extension.
 
@@ -57,7 +55,7 @@ on your slot.
 
 You will get an error like this:
 
-![]()
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Remote%20Torrent%20Adder%20-%20Adding%20torrents%20to%20your%20slot%20from%20Chrome/error.png)
 
 But it stills works.
 
@@ -71,8 +69,7 @@ But it stills works.
 
 **Password:** You Deluge Web Gui password as listed on your Slot Details page.
 
-
-**3:** Relative path is:
+**Relative path:**
 
 ~~~
 /username/deluge
@@ -86,6 +83,7 @@ the torrent link by deselecting the "clicks on links" in the "link catching" tab
 
 You will also override downloading this on your box by holding down Alt+Ctrl+Shift
 while clicking the link.
+
 
 
 
