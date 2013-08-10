@@ -38,15 +38,15 @@ scriptname="somescript"
 #
 if [ ! -f $HOME/somescript.sh ]
 then
-    wget -qNO $HOME/somescript.sh https://raw.github.com/feralhosting
+    wget -qO $HOME/somescript.sh https://raw.github.com/feralhosting
 fi
 #
-wget -qNO $HOME/000somescript.sh https://raw.github.com/feralhosting
+wget -qO $HOME/000somescript.sh https://raw.github.com/feralhosting
 #
 if ! diff -q $HOME/000somescript.sh $HOME/somescript.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/somescript.sh https://raw.github.com/feralhosting
+    wget -qO $HOME/somescript.sh https://raw.github.com/feralhosting
     bash $HOME/somescript.sh
     exit 1' > $HOME/111somescript.sh
     bash $HOME/111somescript.sh
