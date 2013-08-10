@@ -40,20 +40,20 @@ mkdir -p $HOME/bin
 #
 if [ ! -f ~/htpasswdtk.sh ]
 then
-    wget -qNO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+    wget -qO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
 fi
 if [ ! -f ~/bin/htpasswdtk ]
 then
-    wget -qNO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+    wget -qO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
 fi
 #
-wget -qNO $HOME/000htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+wget -qO $HOME/000htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
 #
 if ! diff -q $HOME/000htpasswdtk.sh $HOME/htpasswdtk.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
-    wget -qNO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+    wget -qO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+    wget -qO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
     bash $HOME/htpasswdtk.sh
     exit 1' > $HOME/111htpasswdtk.sh
     bash $HOME/111htpasswdtk.sh
@@ -62,8 +62,8 @@ fi
 if ! diff -q $HOME/000htpasswdtk.sh $HOME/bin/htpasswdtk > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
-    wget -qNO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+    wget -qO $HOME/htpasswdtk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
+    wget -qO $HOME/bin/htpasswdtk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/scripts/htpasswdtk.sh
     bash $HOME/htpasswdtk.sh
     exit 1' > $HOME/222htpasswdtk.sh
     bash $HOME/222htpasswdtk.sh
