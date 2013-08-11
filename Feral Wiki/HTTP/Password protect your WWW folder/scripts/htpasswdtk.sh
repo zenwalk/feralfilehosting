@@ -174,7 +174,7 @@ while [ 1 ]
                 htpasswd -cm $HOME/private/.htpasswd $username
                 chmod 600 $HOME/private/.htpasswd
                 echo "The .htpasswd file was created and the user: $username added"
-                echo -e "######\nAuthUserFile $HOME/private/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                echo -e "######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
                 find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
                 echo "The .htaccess file was created"
                 echo
@@ -193,7 +193,7 @@ while [ 1 ]
                 htpasswd -cm $HOME/private/.htpasswd $username
                 chmod 600 $HOME/private/.htpasswd
                 echo "The .htpasswd file was created and the user: $username added"
-                echo -e "######\nAuthUserFile $HOME/private/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                echo -e "######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
                 find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
                 echo "The .htaccess file was created"
                 echo
@@ -248,7 +248,7 @@ while [ 1 ]
         "5") # Protect the /links directory using ~/private/.htpasswd
         if [ -d $HOME/www/$(whoami).$(hostname)/public_html/links ]
         then
-            echo -ne "######\nAuthUserFile $HOME/private/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" > $HOME/www/$(whoami).$(hostname)/public_html/links/.htaccess
+            echo -e "######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" > $HOME/www/$(whoami).$(hostname)/public_html/links/.htaccess
             echo -e "The" "\033[36m""/links""\e[0m" "directory has been protected using the" "\033[36m""~/private/.htpasswd""\e[0m"
         else
             echo -e "The" "\033[36m""$HOME/www/$(whoami).$(hostname)/public_html/links""\e[0m" "does not exist"
@@ -324,7 +324,7 @@ while [ 1 ]
         "10") #RuTorrent: Protect the /links directory using /rutorrent/.htpasswd
         if [ -d $HOME/www/$(whoami).$(hostname)/public_html/links ]
         then
-            echo -ne "######\nAuthUserFile $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" > $HOME/www/$(whoami).$(hostname)/public_html/links/.htaccess
+            echo -e "######\nAuthUserFile \"$HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" > $HOME/www/$(whoami).$(hostname)/public_html/links/.htaccess
             echo -e "The" "\033[36m""/links""\e[0m" "directory has been protected using the" "\033[36m""/rutorrent/.htpasswd""\e[0m"
         else
             echo -e "The" "\033[36m""$HOME/www/$(whoami).$(hostname)/public_html/links""\e[0m" "does not exist"
