@@ -4,7 +4,7 @@
 Do this command on your **NEW** slot:
 
 ~~~
-wget -qNO ~/rsynctk.sh http://git.io/ikae7Q && bash ~/rsynctk.sh
+wget -qO ~/rsynctk.sh http://git.io/ikae7Q && bash ~/rsynctk.sh
 ~~~
 
 This script basically does 3 things.
