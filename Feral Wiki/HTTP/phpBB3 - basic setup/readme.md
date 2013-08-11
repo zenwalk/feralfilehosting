@@ -14,7 +14,7 @@ This is a relevant FAQ: [Mysql - Change php settings using htaccess](https://www
 Download the phpbb3 package:
 
 ```
-wget -qNO ~/phpBB-3.0.11.zip https://www.phpbb.com/files/release/phpBB-3.0.11.zip
+wget -qO ~/phpBB-3.0.11.zip https://www.phpbb.com/files/release/phpBB-3.0.11.zip
 ```
 
 Then extract the file archive:

@@ -4,7 +4,7 @@
 In SSH do these commands. Use this faq if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
 
 ```
-wget -qNO ~/ajaxex.zip http://downloads.sourceforge.net/project/ajaxplorer/ajaxplorer/stable-channel/5.0.2/ajaxplorer-core-5.0.2.zip
+wget -qO ~/ajaxex.zip http://downloads.sourceforge.net/project/ajaxplorer/ajaxplorer/stable-channel/5.0.2/ajaxplorer-core-5.0.2.zip
 unzip -qo ~/ajaxex.zip
 cp -rf ~/ajaxplorer-core-5.0.2/. ~/www/$(whoami).$(hostname)/public_html/ajaxplorer
 sed -i 's|//define("AJXP_LOCALE", "en_EN.UTF-8");|define("AJXP_LOCALE", "en_GB.UTF-8");|g' ~/www/$(whoami).$(hostname)/public_html/ajaxplorer/conf/bootstrap_conf.php

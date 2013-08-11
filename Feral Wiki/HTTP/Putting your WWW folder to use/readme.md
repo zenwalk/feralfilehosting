@@ -91,7 +91,7 @@ the same time.
 To download _h5ai 0.23 (custom with dual url format fix) use these commands in ssh.
 
 ~~~
-wget -qNO ~/h5ai.zip http://git.io/QdyWzg
+wget -qO ~/h5ai.zip http://git.io/QdyWzg
 unzip -qo ~/h5ai.zip -d ~/www/$(whoami).$(hostname)/public_html/
 ~~~
 

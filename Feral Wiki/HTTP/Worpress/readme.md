@@ -18,7 +18,7 @@ This is a relevant FAQ: [PHP - modify settings](https://www.feralhosting.com/faq
 This bash script will download and extract Wordpress for you to your default WWW directory.
 
 ~~~
-wget -qNO ~/wordpress.sh http://git.io/sBXgog && bash ~/wordpress.sh
+wget -qO ~/wordpress.sh http://git.io/sBXgog && bash ~/wordpress.sh
 ~~~
 
 Done.
@@ -26,7 +26,7 @@ Done.
 ### Manual installation via SSH:
 
 ~~~
-wget -qNO ~/latest.tar.gz http://wordpress.org/latest.tar.gz
+wget -qO ~/latest.tar.gz http://wordpress.org/latest.tar.gz
 ~~~
 
 Then do this command:
