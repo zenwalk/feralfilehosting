@@ -151,12 +151,12 @@ curl -s icanhazip.com
 **[wget](http://linux.die.net/man/1/wget)**
 
 -q quiet
--N Overwrite if newer or different
+-N Overwrite if newer or different (timestamps)
 -O Save to file.
 -P Set directory prefix to prefix. Is the directory where all other files and subdirectories will be saved to
 
 ```
-wget -qN www.somelink.com/script.sh -O thisfile.sh
+wget -q www.somelink.com/script.sh -O thisfile.sh
 ```
 
 **[tar](http://linux.die.net/man/1/tar)**
@@ -323,12 +323,12 @@ For example:
 @reboot bash -l ~/myscript.sh
 ~~~
 
-You can use this command to easily create a cronjob for users from inside a bash script, or in some sort of support capacity:
+You can use this command to easily create a cronjob for users in some sort of support capacity:
 
 ~~~
 (crontab -l ; echo "* * * * * some/cron/thing") |uniq - | crontab -
 ~~~
 
-This will create a specified cronjob while also checking to make sure it is not created more than once. So with a single command you can have create and insert a cronjob for a user.
+This will create a specified cronjob while also checking to make sure it is not created more than once. So with a single command you can have create and insert a cronjob for a user. It only checks vs the last entry though.
 
 
