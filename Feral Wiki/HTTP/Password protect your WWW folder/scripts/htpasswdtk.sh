@@ -216,7 +216,7 @@ while [ 1 ]
             cat $HOME/private/.htpasswd | cut -d:  -f1
             echo -e "\e[0m"
             read -ep "What is the username you wish to create, if they are not listed above, or edit if they exist?: " username
-            htpasswd -s $HOME/private/.htpasswd $username
+            htpasswd -m $HOME/private/.htpasswd $username
             sleep 3
         else
             echo -e "\033[31m" "The file does not exist." "\033[32m""Use option 1 first""\e[0m"
@@ -296,7 +296,7 @@ while [ 1 ]
             echo -e "\e[0m"
             echo -e "\033[33m""Enter an existing username to update or a new one to create an entry.""\e[0m"
             read -ep "What is the username you wish to create, if they are not listed above, or edit if they exist?: " username
-            htpasswd -s $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd $username
+            htpasswd -m $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd $username
             sleep 2
         else
             echo -e "\033[31m" "The file does not exist." "\033[32m""Is RuTorrent installed?""\e[0m"
