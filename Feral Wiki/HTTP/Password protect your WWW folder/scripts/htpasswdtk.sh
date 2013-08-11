@@ -146,7 +146,7 @@ while [ 1 ]
         then
                 echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
                 read -ep "What is the username you wish to create?: " username
-                htpasswd -cs $HOME/private/.htpasswd $username
+                htpasswd -cm $HOME/private/.htpasswd $username
                 chmod 600 $HOME/private/.htpasswd
                 echo "The .htpasswd file was created and the user: $username added"
                 sleep 2
@@ -157,7 +157,7 @@ while [ 1 ]
             then
                 echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
                 read -ep "What is the username you wish to create?: " username
-                htpasswd -cs $HOME/private/.htpasswd $username
+                htpasswd -cm $HOME/private/.htpasswd $username
                 chmod 600 $HOME/private/.htpasswd
                 echo "The .htpasswd file was created and the user: $username added"
                 sleep 2
@@ -171,7 +171,7 @@ while [ 1 ]
                 echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
                 echo -e "\033[33m""Note: This will append/add the settings if a .htaccess already exists in the web server root""\033[33m"
                 read -ep "What is the username you wish to create?: " username
-                htpasswd -cs $HOME/private/.htpasswd $username
+                htpasswd -cm $HOME/private/.htpasswd $username
                 chmod 600 $HOME/private/.htpasswd
                 echo "The .htpasswd file was created and the user: $username added"
                 echo -e "######\nAuthUserFile $HOME/private/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
@@ -190,7 +190,7 @@ while [ 1 ]
                 echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
                 echo -e "\033[33m""Note: This will append/add the settings if a .htaccess already exists in the web server root""\033[33m"
                 read -ep "What is the username you wish to create?: " username
-                htpasswd -cs $HOME/private/.htpasswd $username
+                htpasswd -cm $HOME/private/.htpasswd $username
                 chmod 600 $HOME/private/.htpasswd
                 echo "The .htpasswd file was created and the user: $username added"
                 echo -e "######\nAuthUserFile $HOME/private/.htpasswd\nAuthGroupFile /dev/null\nAuthName \"Authorization required\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
