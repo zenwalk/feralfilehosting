@@ -40,20 +40,20 @@ mkdir -p $HOME/bin
 #
 if [ ! -f $HOME/multirtru.sh ]
 then
-    wget -qO $HOME/multirtru.sh https://raw.github.com/feralhosting
+    wget -qO $HOME/multirtru.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
 fi
 if [ ! -f $HOME/bin/multirtru ]
 then
-    wget -qO $HOME/bin/multirtru https://raw.github.com/feralhosting
+    wget -qO $HOME/bin/multirtru https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
 fi
 #
-wget -qO $HOME/000multirtru.sh https://raw.github.com/feralhosting
+wget -qO $HOME/000multirtru.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
 #
 if ! diff -q $HOME/000multirtru.sh $HOME/multirtru.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qO $HOME/multirtru.sh https://raw.github.com/feralhosting
-    wget -qO $HOME/bin/multirtru https://raw.github.com/feralhosting
+    wget -qO $HOME/multirtru.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
+    wget -qO $HOME/bin/multirtru https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
     bash $HOME/multirtru.sh
     exit 1' > $HOME/111multirtru.sh
     bash $HOME/111multirtru.sh
@@ -62,8 +62,8 @@ fi
 if ! diff -q $HOME/000multirtru.sh $HOME/bin/multirtru > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qO $HOME/multirtru.sh https://raw.github.com/feralhosting
-    wget -qO $HOME/bin/multirtru https://raw.github.com/feralhosting
+    wget -qO $HOME/multirtru.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
+    wget -qO $HOME/bin/multirtru https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Multiple%20instances%20-%20rtorrent%20and%20rutorrent/script/multirtru.sh
     bash $HOME/multirtru.sh
     exit 1' > $HOME/222multirtru.sh
     bash $HOME/222multirtru.sh
