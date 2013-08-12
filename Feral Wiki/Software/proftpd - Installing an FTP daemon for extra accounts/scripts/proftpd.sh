@@ -9,7 +9,7 @@ installedproftpdversion=$(cat $HOME/proftpd/.proftpdversion 2> /dev/null)
 ## Version History Starts ##
 ############################
 #
-# 1.0.0 Doe some the basics.
+# 1.0.0 Do some of the basics.
 # 1.0.1 Better echoes.
 #
 ############################
@@ -22,20 +22,20 @@ mkdir -p $HOME/bin
 #
 if [ ! -f $HOME/proftpd.sh ]
 then
-    wget -qNO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+    wget -qO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 fi
 if [ ! -f $HOME/bin/proftpd ]
 then
-    wget -qNO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+    wget -qO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 fi
 #
-wget -qNO $HOME/000proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+wget -qO $HOME/000proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 #
 if ! diff -q $HOME/000proftpd.sh $HOME/proftpd.sh > /dev/null 2>&1
 then
 	echo '#!/bin/bash
-	wget -qNO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
-	wget -qNO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+	wget -qO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+	wget -qO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 	bash $HOME/proftpd.sh
 	exit 1' > $HOME/111proftpd.sh
 	bash $HOME/111proftpd.sh
@@ -44,8 +44,8 @@ fi
 if ! diff -q $HOME/000proftpd.sh $HOME/bin/proftpd > /dev/null 2>&1
 then
 	echo '#!/bin/bash
-	wget -qNO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
-	wget -qNO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+	wget -qO $HOME/proftpd.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
+	wget -qO $HOME/bin/proftpd https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/proftpd%20-%20Installing%20an%20FTP%20daemon%20for%20extra%20accounts/scripts/proftpd.sh
 	bash $HOME/proftpd.sh
 	exit 1' > $HOME/222proftpd.sh
 	bash $HOME/222proftpd.sh
@@ -87,7 +87,7 @@ then
         then
             killall -9 proftpd -u $(whoami) > /dev/null 2>&1
             mkdir -p $HOME/proftpd/install_logs
-            wget -qNO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/$proftpdversion.tar.gz
+            wget -qO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/$proftpdversion.tar.gz
             tar -xzf $HOME/proftpd.tar.gz -C $HOME/
             echo -n "$proftpdversion" > $HOME/proftpd/.proftpdversion
             rm -f $HOME/proftpd.tar.gz
@@ -129,7 +129,7 @@ then
     mkdir -p $HOME/proftpd/etc/keys
     mkdir -p $HOME/proftpd/ssl
     mkdir -p $HOME/proftpd/install_logs
-    wget -qNO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/$proftpdversion.tar.gz
+    wget -qO $HOME/proftpd.tar.gz ftp://ftp.proftpd.org/distrib/source/$proftpdversion.tar.gz
     tar -xzf $HOME/proftpd.tar.gz -C $HOME/
     echo -n "$proftpdversion" > $HOME/proftpd/.proftpdversion
     rm -f $HOME/proftpd.tar.gz
@@ -157,9 +157,9 @@ then
     # Get the conf files from github and configure them for this user
     echo "Downloading and configuring the .conf files."
     echo
-    wget -qNO $HOME/proftpd/etc/proftpd.conf http://git.io/CbaIJQ
-    wget -qNO $HOME/proftpd/etc/sftp.conf http://git.io/SFHs5g
-    wget -qNO $HOME/proftpd/etc/ftps.conf http://git.io/ee86Hw
+    wget -qO $HOME/proftpd/etc/proftpd.conf http://git.io/CbaIJQ
+    wget -qO $HOME/proftpd/etc/sftp.conf http://git.io/SFHs5g
+    wget -qO $HOME/proftpd/etc/ftps.conf http://git.io/ee86Hw
     # proftpd.conf
     sed -i 's|/media/DiskID/home/my_username|'$HOME'|g' $HOME/proftpd/etc/proftpd.conf
     sed -i 's|User my_username|User '$(whoami)'|g' $HOME/proftpd/etc/proftpd.conf
