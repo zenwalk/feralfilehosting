@@ -18,7 +18,7 @@ This bash script will do the following things for you.:
 You will then be able to connect to deluge using the thin client with the information printed by the script.
 
 ```
-wget -qNO ~/delugethin.sh http://git.io/obe0mA && bash ~/delugethin.sh
+wget -qO ~/delugethin.sh http://git.io/obe0mA && bash ~/delugethin.sh
 ```
 
 Manual steps:
