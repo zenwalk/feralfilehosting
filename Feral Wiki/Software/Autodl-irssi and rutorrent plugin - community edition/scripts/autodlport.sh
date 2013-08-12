@@ -15,16 +15,16 @@ then
     echo
     if [[ $confirm =~ ^[Yy]$ ]]
     then
-    sed -ri 's/(.*)gui-server-port =(.*)/gui-server-port = '$port'/g' ~/.autodl/autodl.cfg
-    sed -ri 's/(.*)gui-server-password =(.*)/gui-server-password = '$pass'/g' ~/.autodl/autodl.cfg
-    echo -e "<?php\n\$autodlPort = $port;\n\$autodlPassword = \"$pass\";\n?>" > ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi/conf.php
-    killall -9 irssi -u $(whoami) 2> /dev/null 
-    screen -wipe > /dev/null 2>&1
-    screen -dmS autodl irssi
-    echo "The port and password have been updated. Attach to the running screen using this command:"
-    echo
-    echo -e "\033[32m""screen -r autodl""\e[0m"
-    echo
+        sed -ri 's/(.*)gui-server-port =(.*)/gui-server-port = '$port'/g' ~/.autodl/autodl.cfg
+        sed -ri 's/(.*)gui-server-password =(.*)/gui-server-password = '$pass'/g' ~/.autodl/autodl.cfg
+        echo -e "<?php\n\$autodlPort = $port;\n\$autodlPassword = \"$pass\";\n?>" > ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi/conf.php
+        killall -9 irssi -u $(whoami) 2> /dev/null 
+        screen -wipe > /dev/null 2>&1
+        screen -dmS autodl irssi
+        echo "The port and password have been updated. Attach to the running screen using this command:"
+        echo
+        echo -e "\033[32m""screen -r autodl""\e[0m"
+        echo
     else
         bash ~/autodlport.sh
     fi        

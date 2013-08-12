@@ -7,7 +7,7 @@ To install in SSH:
 
 ```
 cd ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/
-wget -qNO feralstats.zip http://git.io/nB1WyA
+wget -qO feralstats.zip http://git.io/nB1WyA
 unzip -qo feralstats.zip && rm -f feralstats.zip
 ```
 
