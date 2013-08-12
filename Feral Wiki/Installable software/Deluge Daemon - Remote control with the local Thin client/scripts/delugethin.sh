@@ -63,25 +63,25 @@ then
 # Is it installed?
 if [ -f ~/.config/deluge/core.conf ]
 then
-# Get hostname
-echo -e "Your" "\033[36m""hostname""\e[0m" "is:" "\033[32m""$(hostname)""\e[0m"
-# Get port
-echo -e "Your" "\033[31m""daemon port""\e[0m" "for the thin client is:" "\033[31m""$(sed -n -e 's/  "daemon_port": \(.*\),/\1/p' ~/.config/deluge/core.conf)""\e[0m"
-# Get username
-echo -e "Your" "\033[33m""username""\e[0m" "is:" "\033[33m""$(whoami)""\e[0m"
-# Get Password
-echo -e "Your" "\033[32m""password""\e[0m" "for the thin client is:" "\033[32m""$(cat ~/.config/deluge/auth | grep $(whoami) | cut -d\:  -f2)""\e[0m"
-# Enable remote connections
-sed -i 's|"allow_remote": false|"allow_remote": true|g' ~/.config/deluge/core.conf
-# kill deluge and the web gui
-killall -9 -u $(whoami) deluged deluge-web
-# restart it.
-deluged && deluge-web --fork
-echo
+    # Get hostname
+    echo -e "Your" "\033[36m""hostname""\e[0m" "is:" "\033[36m""$(hostname)""\e[0m"
+    # Get port
+    echo -e "Your" "\033[31m""daemon port""\e[0m" "for the thin client is:" "\033[31m""$(sed -n -e 's/  "daemon_port": \(.*\),/\1/p' ~/.config/deluge/core.conf)""\e[0m"
+    # Get username
+    echo -e "Your" "\033[33m""username""\e[0m" "is:" "\033[33m""$(whoami)""\e[0m"
+    # Get Password
+    echo -e "Your" "\033[32m""password""\e[0m" "for the thin client is:" "\033[32m""$(cat ~/.config/deluge/auth | grep $(whoami) | cut -d\:  -f2)""\e[0m"
+    # Enable remote connections
+    sed -i 's|"allow_remote": false|"allow_remote": true|g' ~/.config/deluge/core.conf
+    # kill deluge and the web gui
+    killall -9 -u $(whoami) deluged deluge-web
+    # restart it.
+    deluged && deluge-web --fork
+    echo
 else
-echo -e "\033[31m""Deluge is not installed""\e[0m" "or the" "\033[36m""~/.config/deluge/core.conf""\e[0m" "is missing. Please install it via the software page in your manager first.""\e[0m"
-echo
-exit 1
+    echo -e "\033[31m""Deluge is not installed""\e[0m" "or the" "\033[36m""~/.config/deluge/core.conf""\e[0m" "is missing. Please install it via the software page in your manager first.""\e[0m"
+    echo
+    exit 1
 fi
 #
 ####################
