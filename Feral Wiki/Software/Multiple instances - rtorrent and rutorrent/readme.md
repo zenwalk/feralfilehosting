@@ -1,4 +1,19 @@
 
+### Bash script
+
+This script will:
+
+1: Ask you for a suffix for this unique instance of rtorrent and rutorrent.
+2: Clone the existing rtorrent/rutorrent installation files, adding this suffix
+3: Make the required edits to the files using this suffix
+4: Start rtorrent in a screen using the unique rtorrent/rc for this instance.
+
+It will not damage your existing installation or overwrite custom instances if the same suffix is used.
+
+~~~
+wget -qO ~/multirtru.sh http://git.io/m_dugQ && bash ~/multirtru.sh
+~~~
+
 ### Running multiple instances of rtorrent and rutorrent
 
 **Important note:** Please make sure you have installed rtorrent/rutorrent using the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/)
