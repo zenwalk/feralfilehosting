@@ -4,6 +4,8 @@ scriptversion="1.0.0"
 scriptname="multirtru"
 # Author name
 #
+# wget -qO ~/multirtru.sh http://git.io/m_dugQ && bash ~/multirtru.sh
+#
 ############################
 ## Version History Starts ##
 ############################
@@ -100,7 +102,6 @@ echo
 if [[ -z "$suffix" ]]
 then
     echo -e "\033[31m""You did not give a suffix to use. Please enter one. The script will restart""\e[0m"
-    echo
     bash ~/multirtru.sh
     exit 1
 else
@@ -131,7 +132,6 @@ else
         exit 1
     else
         echo -e "\033[31m""This particular suffix already exists, try another. The script will restart.""\e[0m"
-        echo
         bash ~/multirtru.sh
         exit 1
     fi
