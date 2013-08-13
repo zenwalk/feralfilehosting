@@ -93,7 +93,7 @@ then
     echo -e "\033[32m""Give the username of the feral account that controls the slot""\e[0m"
     read -ep " What is your username on the old slot? : " username
     echo
-    echo -e "\033[32m""Example, if your server is" "\033[31m""celadon.feralhosting.com" "\033[32m""then" "\033[33m""celadon" "\033[32m""is the server name""\e[0m"
+    echo -e "\033[32m""Example, if your server is" "\033[31m""hypnos.feralhosting.com" "\033[32m""then" "\033[33m""hypnos" "\033[32m""is the server name""\e[0m"
     read -ep " What is the server name of the slot with your files? : " servername
     echo
     echo -e "\033[31m""IMPORTANT INFO : Please read these comments.""\e[0m"
