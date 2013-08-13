@@ -1,6 +1,6 @@
 #!/bin/bash
 # rsynctk
-scriptversion="1.1.1"
+scriptversion="1.1.2"
 scriptname="rsync"
 # randomessence
 ############################
@@ -18,6 +18,7 @@ scriptname="rsync"
 # 1.0.7 screen .... -p 0 was the secret sauce. Otherwise you need to be attached to the screen for the command to work
 # 1.0.8 users can run a feral or whatbox version of the script.
 # 1.1.1 some visual tweaks and clearer echoes
+# 1.1.2 Option to select custom destination. Default is ~/rsync
 #
 ############################
 ### Version History Ends ###
@@ -28,6 +29,7 @@ scriptname="rsync"
 ############################
 #
 mish="$(shuf -i 1-100 -n 1)"
+defaultpath="rsync"
 #
 ############################
 ####### Variable End #######
@@ -42,20 +44,20 @@ mkdir -p $HOME/bin
 #
 if [ ! -f ~/rsynctk.sh ]
 then
-    wget -qNO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+    wget -qO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
 fi
 if [ ! -f ~/bin/rsynctk ]
 then
-    wget -qNO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+    wget -qO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
 fi
 #
-wget -qNO $HOME/000rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+wget -qO $HOME/000rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
 #
 if ! diff -q $HOME/000rsynctk.sh $HOME/rsynctk.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
-    wget -qNO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+    wget -qO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+    wget -qO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
     bash $HOME/rsynctk.sh
     exit 1' > $HOME/111rsynctk.sh
     bash $HOME/111rsynctk.sh
@@ -64,8 +66,8 @@ fi
 if ! diff -q $HOME/000rsynctk.sh $HOME/bin/rsynctk > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
-    wget -qNO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+    wget -qO $HOME/rsynctk.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
+    wget -qO $HOME/bin/rsynctk https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Linux%20Command-Line%20-%20Advanced/rsync%20-%20Transferring%20data%20from%20slot%20to%20slot/scripts/rsynctk.sh
     bash $HOME/rsynctk.sh
     exit 1' > $HOME/222rsynctk.sh
     bash $HOME/222rsynctk.sh
@@ -83,9 +85,9 @@ echo
 if [[ $updatestatus =~ ^[Yy]$ ]]
 then
 ### Self Updater Ends
-read -ep "Do you want to Copy from another Feral server [y] or import from whatbox.ca [w] : " feral
+read -ep "Do you want to Copy from another Feral server [f] or import from whatbox.ca [w] : " feral
 echo
-if [[ $feral =~ ^[Yy]$ ]]
+if [[ $feral =~ ^[Ff]$ ]]
 then
     mkdir -p ~/rsync
     echo -e "\033[32m""Give the username of the feral account that controls the slot""\e[0m"
@@ -109,12 +111,19 @@ then
     then
         read -ep "Please enter the relative path to the folder you wish to copy: ~/" path
         echo
+        read -ep "Would you like to select a custom destination for your files? [y]es or [n]o: " customdest
+        echo
+        if [[ $customdest =~ ^[Yy]$ ]]
+        then
+            read -ep "Please enter the relative path to the custom destination folder: ~/" defaultpath
+            echo
+        fi
     else
         exit 1
     fi
     echo -e "\033[33m""Here is the command you have just created:""\e[0m"
     echo
-    echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+    echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/$defaultpath""\e[0m"
     echo
     read -ep "Would you like to try and run this command in a screen [y] or exit now [e]: " confirmscreen1
     echo
@@ -145,7 +154,7 @@ then
             #
             screen -dmS rsynctk$mish
             sleep 2
-            screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.feralhosting.com:~/$path ~/rsync
+            screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.feralhosting.com:~/$path ~/$defaultpath
             echo
             echo "Here is the screen process"
             echo
@@ -153,10 +162,10 @@ then
             echo
             echo -e "\033[31m""Useful Notes:""\e[0m"
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
-            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/$defaultpath""\e[0m"
             echo
             echo -e "The command that uses our public/private key file pair."
-            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".feralhosting.com:""\033[36m""~/$path ~/$defaultpath""\e[0m"
             echo
             echo -e "\033[33m""The command to copy our public key to the old slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "\033[33m""file.""\e[0m"
             echo -e "ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.feralhosting.com"
@@ -189,12 +198,19 @@ then
     then
         read -ep "Please enter the relative path to the folder you wish to copy: ~/" path
         echo
+        read -ep "Would you like to select a custom destination for your files? [y]es or [n]o: " customdest
+        echo
+        if [[ $customdest =~ ^[Yy]$ ]]
+        then
+            read -ep "Please enter the relative path to the custom destination folder: ~/" defaultpath
+            echo
+        fi
     else
         exit 1
     fi
     echo -e "\033[33m""Here is the command you have just created:""\e[0m"
     echo
-    echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+    echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/$defaultpath""\e[0m"
     echo
     read -ep "Would you like to try and run this command in a screen [y] or exit now [e]: " confirmscreen1
     echo
@@ -225,7 +241,7 @@ then
             #
             screen -dmS rsynctk$mish
             sleep 2
-            screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.whatbox.ca:~/$path ~/rsync
+            screen -S rsynctk$mish -p 0 -X exec rsync -avhPS -e "ssh -i $HOME/.ssh/rsynctk_rsa" $username@$servername.whatbox.ca:~/$path ~/$defaultpath
             echo
             echo "Here is the screen process"
             echo
@@ -233,10 +249,10 @@ then
             echo
             echo -e "\033[31m""Useful Notes:""\e[0m"
             echo -e "The normal command, requires you create a screen an enter your old slot's SSH password"
-            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e ssh" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/$defaultpath""\e[0m"
             echo
             echo -e "The command that uses our public/private key file pair."
-            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/rsync""\e[0m"
+            echo -e "\033[31m""rsync" "\033[32m""-avhPS -e" "\e[0m""\033[37m""\"ssh -i $HOME/.ssh/rsynctk_rsa\"" "\033[35m""$username""\e[0m""@""\033[35m""$servername""\e[0m""\033[37m"".whatbox.ca:""\033[36m""~/$path ~/$defaultpath""\e[0m"
             echo
             echo -e "\033[33m""The command to copy our public key to the old slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "\033[33m""file.""\e[0m"
             echo -e "ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.whatbox.ca"
