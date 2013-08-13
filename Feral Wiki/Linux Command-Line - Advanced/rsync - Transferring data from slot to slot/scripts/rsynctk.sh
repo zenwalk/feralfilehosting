@@ -80,11 +80,11 @@ echo -e "Hello $(whoami), you have the latest version of the" "\033[36m""$script
 rm -f $HOME/000rsynctk.sh $HOME/111rsynctk.sh $HOME/222rsynctk.sh
 chmod -f 700 ~/bin/rsynctk
 echo
+### Self Updater Ends
 read -ep "The scripts have been updated, do you wish to continue [y] or exit now [q] : " updatestatus
 echo
 if [[ $updatestatus =~ ^[Yy]$ ]]
 then
-### Self Updater Ends
 read -ep "Do you want to Copy from another Feral server [f] or import from whatbox.ca [w] : " feral
 echo
 if [[ $feral =~ ^[Ff]$ ]]
@@ -116,6 +116,7 @@ then
         if [[ $customdest =~ ^[Yy]$ ]]
         then
             read -ep "Please enter the relative path to the custom destination folder: ~/" defaultpath
+            mkdir -p ~/$defaultpath
             echo
         fi
     else
@@ -132,7 +133,6 @@ then
         if [ ! -f ~/.ssh/rsynctk_rsa ]
         then
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
-            echo
         fi
         echo -e "Make sure you have copied the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command if you have not already done it.""\e[0m"
@@ -143,7 +143,6 @@ then
         if [[ $sshcopy =~ ^[Yy]$ ]]
         then
             ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.feralhosting.com
-            echo
         fi
         read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] or [n] " confirmscreen2
         echo
@@ -203,6 +202,7 @@ then
         if [[ $customdest =~ ^[Yy]$ ]]
         then
             read -ep "Please enter the relative path to the custom destination folder: ~/" defaultpath
+            mkdir -p ~/$defaultpath
             echo
         fi
     else
@@ -219,7 +219,6 @@ then
         if [ ! -f ~/.ssh/rsynctk_rsa ]
         then
             ssh-keygen -q -t rsa -b 2048 -f ~/.ssh/rsynctk_rsa -N ''
-            echo
         fi
         echo -e "Make sure you have copied the contents of the file:" "\033[36m""~/.ssh/rsynctk_rsa.pub""\e[0m" "we just generated, to your OLD slot's" "\033[36m""~/.ssh/authorized_keys""\e[0m" "file."
         echo -e "\033[31m""We can do this while the script is loaded using SSH and the ssh-copy-id command if you have not already done it.""\e[0m"
@@ -230,7 +229,6 @@ then
         if [[ $sshcopy =~ ^[Yy]$ ]]
         then
             ssh-copy-id -i ~/.ssh/rsynctk_rsa.pub $username@$servername.whatbox.ca
-            echo
         fi
         read -ep "Have you copied the ~/.ssh/rsynctk_rsa.pub contents to your old slot's ~/.ssh/authorized_keys file [y] " confirmscreen2
         echo
