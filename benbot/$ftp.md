@@ -1,3 +1,0 @@
-MY FTP/SFTP to Home is slow: You need to troubleshoot this by: Stating the name of your server - Use more than one thread in your FTP client for multiple files - Use an FTP client that supports multi-segmented downloads like CuteFTP (PRO) or Bitkinex. Testing SFTP vs FTP, since each ISP deals with encrypted traffic differently. SFTP being slow is a dated concept - Use your WWW/HTTP folder to download over HTTP/HTTPS to compare vs FTP speeds
-
-Is it peak time on your ISP and does your ISP package have conditions on your traffic in this time? - After taking steps to help us and you identify the issue, if you still feel the problem is with the feral server please open a ticket and ask them to look - Please check the FAQs related sections to expand on things mentioned here.

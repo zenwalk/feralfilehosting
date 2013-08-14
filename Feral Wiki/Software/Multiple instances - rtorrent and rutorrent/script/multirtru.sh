@@ -1,6 +1,6 @@
 #!/bin/bash
 # multi rtorrent/rutorrent
-scriptversion="1.0.0"
+scriptversion="1.0.2"
 scriptname="multirtru"
 # Author name
 #
@@ -92,7 +92,7 @@ then
 ####### Script Start #######
 ############################
 #
-echo -e "To do this we are going to clone the existing set-up and add a suffix to the end of it. For example:"
+echo -e "\033[31m""This script will create a new rutorrent and rtorrent instance using a suffix, for example:""\e[0m"
 echo
 echo -e "\033[32m""/public_html/rutorrent-1""\e[0m""," "\033[33m""~/.rtorrent-1.rc""\e[0m" "and" "\033[36m""~/private/rutorrent-1""\e[0m"
 echo
@@ -108,27 +108,72 @@ else
     if [[ ! -f ~/.rtorrent-$suffix.rc && ! -d ~/private/rutorrent-$suffix && ! -d ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix ]]
     then
         # clone the installation
-        echo "1: Cloning the installation"
+        echo -e "\033[31m""1:""\e[0m" "Creating the installation"
         echo
-        cp -f ~/.rtorrent.rc ~/.rtorrent-$suffix.rc
+        # Create some folders we need
         mkdir -p ~/private/rtorrent-$suffix/data ~/private/rtorrent-$suffix/watch ~/private/rtorrent-$suffix/work
-        cp -rf ~/www/$(whoami).$(hostname)/public_html/rutorrent/. ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix
-        # sed ~/.rtorrent-*.rc
-        echo "2 Part 1: Editing the files: rtorrent"
+        # Copy the Feral rutorrent template
+        cp -rf /opt/rutorrent/current/. ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix
+        # Download and install the Feral stats plugin
+        wget -qO ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/plugins/feralstats.zip http://git.io/nB1WyA
+        unzip -qo ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/plugins/feralstats.zip -d ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/plugins/
+        rm -f ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/feralstats.zip
+        # Download and install the ratio colour plugin
+        wget -qO ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/plugins/ratiocolor.zip http://git.io/5rBXAQ
+        unzip -qo ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/plugins/ratiocolor.zip -d ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/plugins/
+        rm -f ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/ratiocolor.zip
+        # Download and configure the custom .rtorrent.rc
+        wget -qO ~/.rtorrent-$suffix.rc http://git.io/oJ5P9w
+        #
+        # sed custom ~/.rtorrent.rc
+        echo -e "\033[31m""2""\e[0m" "\033[32m""Part 1:""\e[0m" "Editing the files: rtorrent"
         echo
-        sed -i 's|'$HOME'/private/rtorrent|'$HOME'/private/rtorrent-'$suffix'|g' ~/.rtorrent-$suffix.rc
-        sed -i 's|/public_html/rutorrent/php/initplugins.php|/public_html/rutorrent-'$suffix'/php/initplugins.php|g' ~/.rtorrent-$suffix.rc
+        sed -i 's|/media/DiskID/home/username/private/rtorrent/|'$HOME'/private/rtorrent-'$suffix'/|g' ~/.rtorrent-$suffix.rc
+        sed -i 's|/media/DiskID/home/username/www/username.server.feralhosting.com/public_html/rutorrent/php/initplugins.php username|'$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent-'$suffix'/php/initplugins.php '$(whoami)'|g' ~/.rtorrent-$suffix.rc
         # sed /rutorrent/
-        echo "2 Part 2: Editing the files: rutorrent"
+        echo -e "\033[31m""2""\e[0m" "\033[33m""Part 2:""\e[0m" "Editing the files: rutorrent"
         echo
         sed -i 's|/private/rtorrent/.socket|/private/rtorrent-'$suffix'/.socket|g' ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/conf/config.php
+        # Password protect the setup
+        echo -e "\033[31m""3:""\e[0m" "Password Protect the Installation"
+        echo
+        echo -e 'AuthType Basic\nAuthName "rtorrent-'$suffix'"\nAuthUserFile "'$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent-'$suffix'/.htpasswd"\nRequire valid-user' > ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htaccess
+        read -ep "Please give me a username for the user we are creating: " username
+        echo
+        if [[ -n "$username" ]]
+        then
+            echo -e "You entered" "\033[32m""$username""\e[0m" "as the choice of username"
+            echo
+            htpasswd -cm ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd $username
+        else
+            echo -e "No username was give so i am using a generic username which is:" "\033[32m""rutorrent-$suffix""\e[0m"
+            echo
+            htpasswd -cm ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd rutorrent-$suffix
+        fi
+        echo
+        echo -e "\033[31m""You can use the htpasswdtk script to manage these installations.""\e[0m"
+        chmod 644 ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htaccess ~/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd
+        echo
         # create the screen
-        echo "3: Creating the screen process"
+        echo -e "\033[32m""4:""\e[0m" "Creating the screen process"
         echo
         screen -dmS rtorrent-$suffix rtorrent -n -o import=~/.rtorrent-$suffix.rc
-        echo "Done. To reattach to this screen type:" 
-        echo "screen -r rtorrent-$suffix"
+        echo "Done. To reattach to this screen type:"
         echo
+        echo -e "\033[33m""screen -r rtorrent-$suffix""\e[0m"
+        echo
+        echo "Is it running?"
+        echo
+        screen -ls | grep rtorrent-$suffix
+        echo
+        if [[ -n "$username" ]]
+        then
+            echo -e "The username for this instance is:" "\033[32m""$username""\e[0m"
+            echo
+        else
+            echo -e "The username for this instance is:" "\033[32m""rutorrent-$suffix""\e[0m"
+            echo
+        fi
         exit 1
     else
         echo -e "\033[31m""This particular suffix already exists, try another. The script will restart.""\e[0m"
