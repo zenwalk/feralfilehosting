@@ -1,6 +1,6 @@
 #!/bin/bash
 # htpasswd user and password toolkit
-scriptversion="1.0.4"
+scriptversion="1.0.5"
 # randomessence
 ############################
 ## Version History Starts ##
@@ -15,6 +15,7 @@ scriptversion="1.0.4"
 # 1.0.2 Better checks for option 1 with explanations on htaccess
 # 1.0.3 Updater included.
 # 1.0.4 nginx /links and apache /links options added
+# 1.0.5 multi rtorrent/rutorrent options
 #
 ############################
 ### Version History Ends ###
@@ -128,7 +129,15 @@ showMenu ()
     #
     echo -e "\033[31m""15""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using the" "\033[36m""/rutorrent/.htpasswd""\e[0m"
     #
-    echo -e "\033[31m""16""\e[0m" "\033[32m""Quit""\e[0m"
+    echo -e "\033[31m""Multi Rtorrent/Rutorrent specific options section""\e[0m"
+    #
+    echo -e "\033[31m""16""\e[0m" "\033[1;30m""Multi Rtorrent/Rutorrent:""\e[0m" "Add or edit a user in the existing Rutorrent .htpasswd"
+    #
+    echo -e "\033[31m""17""\e[0m" "\033[1;30m""Multi Rtorrent/Rutorrent:""\e[0m" "Delete a user in the existing Rutorrent .htpasswd"
+    #
+    echo -e "\033[31m""18""\e[0m" "\033[1;30m""Multi Rtorrent/Rutorrent:""\e[0m" "List" "\033[36m""/rutorrent/.htpasswd""\e[0m" "users and their order"
+    #
+    echo -e "\033[31m""19""\e[0m" "\033[32m""Quit""\e[0m"
 }
 ###
 #
@@ -389,9 +398,65 @@ while [ 1 ]
         fi
         ;;
 ##########
-
+        "16") # Multi Rtorrent/RuTorrent: Add or edit a user in the existing Rutorrent .htpasswd
+        echo -e "Where you have" "\033[32m""rutorrent-4""\e[0m" "then" "\033[31m""4""\e[0m" "is the suffix."
+        read -ep "Please state the suffix of the instance you wish to modify: " suffix
+        echo
+        if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd ]
+        then
+            echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage good passwords.""\e[0m"
+            echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent-$suffix/.htpasswd""\e[0m"
+            echo -e "\033[1;31m"
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d:  -f1
+            echo -e "\e[0m"
+            echo -e "\033[33m""Enter an existing username to update or a new one to create an entry.""\e[0m"
+            read -ep "What is the username you wish to create, if they are not listed above, or edit if they exist?: " username
+            htpasswd -m $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd $username
+            sleep 2
+        else
+            echo -e "\033[31m" "The file does not exist." "\033[32m""Check the suffix was correct""\e[0m"
+            sleep 2
+        fi
+        ;;
 ##########
-        "16") # Quit
+        "17") # Multi Rtorrent/RuTorrent: Delete a user in the existing Rutorrent .htpasswd
+        echo -e "Where you have" "\033[32m""rutorrent-4""\e[0m" "then" "\033[31m""4""\e[0m" "is the suffix."
+        read -ep "Please state the suffix of the instance you wish to modify: " suffix
+        echo
+        if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd ]
+        then
+            echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent-$suffix/.htpasswd""\e[0m"
+            echo -e "\033[1;31m"
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d:  -f1
+            echo -e "\e[0m"
+            echo -e "\033[33m""Enter username from the list to delete them.""\e[0m"
+            read -ep "What is the username you wish to remove?: " username
+            htpasswd -D $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd $username
+            sleep 2
+        else
+            echo -e "\033[31m" "The file does not exist." "\033[32m""Is RuTorrent installed?""\e[0m"
+            sleep 2
+        fi
+        ;;
+##########
+        "18") # Multi Rtorrent/RuTorrent: List .htpasswd users and their order
+        echo -e "Where you have" "\033[32m""rutorrent-4""\e[0m" "then" "\033[31m""4""\e[0m" "is the suffix."
+        read -ep "Please state the suffix of the instance you wish to modify: " suffix
+        echo
+        if [ -f $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd ]
+        then
+            echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent-$suffix/.htpasswd""\e[0m"
+            echo -e "\033[1;31m"
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d:  -f1
+            echo -e "\e[0m"
+            sleep 4
+        else
+            echo -e "\033[31m" "The file does not exist." "\033[32m""Is RuTorrent installed?""\e[0m"
+            sleep 2
+        fi
+        ;;
+##########
+        "19") # Quit
         exit 1
         ;;
 ##########
