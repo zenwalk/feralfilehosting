@@ -1,4 +1,5 @@
-` These applications are listed here for your convenience only. They are not endorsed nor supported by Feral Hosting. We will try to answer simple questions about use, but ultimately the support for each application falls to the software developer. If an application does not do what you expect it to, please look on their website, forum or knowledge-base.`
+
+These applications are listed here for your convenience only. They are not endorsed nor supported by Feral Hosting. We will try to answer simple questions about use, but ultimately the support for each application falls to the software developer. If an application does not do what you expect it to, please look on their website, forum or knowledge-base.
 
 Some applications gave a portable version or PortableApps version. Portable apps can be run from a USB stick and do not write any configs to the local PC. Carry your apps in your pocket! There are lots more portable apps [here](http://portableapps.com/apps). 
 
@@ -6,29 +7,29 @@ Some applications gave a portable version or PortableApps version. Portable apps
 
 [Bitkinex](http://www.bitkinex.com/ftp/client/bitkinex323.exe) - BitKinex is a handy network client supporting multiple transfer protocols (FTP, FTP(S), SFTP, HTTP(S) and WebDAV). Supports segmented downloads - [Full Features list](http://www.bitkinex.com/features)
 
-[WinSCP 5.1.4](http://sourceforge.net/projects/winscp/files/WinSCP/5.1.4/winscp514setup.exe) - **Free** SFTP and FTP client for Windows. Supports custom commands. 
+[WinSCP 5.1.6](http://sourceforge.net/projects/winscp/files/WinSCP/5.1.6/winscp516setup.exe) - **Free** SFTP and FTP client for Windows. Supports custom commands. 
 Also available - [WinSCP Portable 5.*.*](http://portableapps.com/apps/internet/winscp_portable)
 
-[FileZilla](http://filezilla-project.org/download.php) - **Free** FTP client that runs on  **all major platforms**. Supports transferring multiple files at the same time. 
+[FileZilla](https://www.feralhosting.com/faq/view?question=187) - **Free** FTP client that runs on  **all major platforms**. Supports transferring multiple files at the same time. 
 Also available - [FileZilla Portable](http://portableapps.com/apps/internet/filezilla_portable).
 
 [CuteFTP Home or Pro](http://www.cuteftp.com/downloads/) - paid multi-file and multi-part FTP client for Windows and Mac.
 
-[Core FTP Pro](http://www.coreftp.com/download.html) - paid multi-file and multi-part FTP client for Windows. ( The **Free** client is limited and does not do multi-part downloads )
+[Aria2c](https://www.feralhosting.com/faq/view?question=236) - aria2 is a lightweight multi-protocol & multi-source command-line download utility. It supports HTTP/HTTPS, FTP, BitTorrent and Metalink. aria2 can be manipulated via built-in JSON-RPC and XML-RPC interfaces.
 
-[xshell ssh client](http://www.netsarang.com/products/xsh_overview.html) - Free for home use - Xshell is a powerful terminal emulator that supports SSH, SFTP, TELNET, RLOGIN and SERIAL. [Read More and download](http://www.netsarang.com/products/xsh_overview.html)
+[XShell SSH client](https://www.feralhosting.com/faq/view?question=238) - Free for home use - Xshell is a powerful terminal emulator that supports SSH, SFTP, TELNET, RLOGIN and SERIAL.
 
-[PuTTy](http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe) - **Free** SSH client for Windows. For Macs, you can just use the built-in terminal or xterm. Or see below for link to Mac version of Putty. 
+[PuTTy](https://www.feralhosting.com/faq/view?question=12) - **Free** SSH client for Windows. For Macs, you can just use the built-in terminal or xterm. Or see below for link to Mac version of Putty. 
 Also available - [Putty Portable](http://portableapps.com/apps/internet/putty_portable). 
 
-[OpenVPN Community Downloads](http://openvpn.net/index.php/download/community-downloads.html) - **Free** VPN client for Windows. Linux and Macs generally come with clients built-in into their network managers.
+[OpenVPN Community Downloads](https://www.feralhosting.com/faq/view?question=5) - **Free** VPN client for Windows. Linux and Macs generally come with clients built-in into their network managers.
 
-[7-zip](http://www.7-zip.org/download.html) - **Free** archiving client for **all major platforms**. It can handle .zip and .rar files, as well as its own format - .7z 
+[p7zip](https://www.feralhosting.com/faq/view?question=245) - **Free** archiving client for **all major platforms**. It can handle .zip and .rar files, as well as its own format - .7z 
 Also available - [7-zip Portable](http://portableapps.com/apps/utilities/7-zip_portable). 
 
 **Remote GUI clients for Transmission:**
 
-[Transmission Remote GUI 4.1](http://code.google.com/p/transmisson-remote-gui/downloads/list)
+[Transmission Remote GUI 4.1](https://www.feralhosting.com/faq/view?question=4)
 
 **IRC Chat Programs**
 
@@ -43,7 +44,7 @@ Also available - [Chatzilla Standalone](http://chatzilla.rdmsoft.com/xulrunner/)
 
 **Mac**
 
-[FileZilla](http://filezilla-project.org/download.php) - **[b]Free**[/b] FTP client that runs on  **all major platforms, including Mac. ** Supports transferring multiple files at the same time
+[FileZilla](https://www.feralhosting.com/faq/view?question=187) - **[b]Free**[/b] FTP client that runs on  **all major platforms, including Mac. ** Supports transferring multiple files at the same time
 
 [Fugu](http://www.versiontracker.com/dyn/moreinfo/macosx/15693) - **Free** SFTP, OpenSSH & FTP client for Mac
 
@@ -55,7 +56,7 @@ Also available - [Chatzilla Standalone](http://chatzilla.rdmsoft.com/xulrunner/)
 
 **Android**
 
-[Transdroid](http://transdroid.wordpress.com/) - **Free** - Transdroid is an Android  remote client for your BitTorrent application running on a server or home computer. Currently Transmission, µTorrent, BitTorrent 6+ and Deluge 1.2+ are supported. It can show the active torrents, pause, resume or remove them and new torrents can be added via URL.
+[Transdroid](https://www.feralhosting.com/faq/view?question=81) - **Free** - Transdroid is an Android  remote client for your BitTorrent application running on a server or home computer. Currently Transmission, µTorrent, BitTorrent 6+ and Deluge 1.2+ are supported. It can show the active torrents, pause, resume or remove them and new torrents can be added via URL.
 
 [ConnectBot](http://code.google.com/p/connectbot/) - **Free** - ConnectBot is a powerful open-source Secure Shell (SSH) client for android platform. It can manage simultaneous SSH sessions, create secure tunnels, and copy/paste between other applications.
 

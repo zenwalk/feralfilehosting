@@ -1,7 +1,7 @@
 
 ### Connecting with SSH:
 
-**Option 1:** Get PuTTy installer; Download PuTTY Installer from [here](http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe)
+**Option 1:** Get PuTTy installer; Download PuTTY Installer from [here](http://the.earth.li/~sgtatham/putty/0.63/x86/putty-0.63-installer.exe)
 
 **Option 2:** Get PuTTy zip (portable); Download PuTTY Zip from [Get PuTTy zip (portable)](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip)
 

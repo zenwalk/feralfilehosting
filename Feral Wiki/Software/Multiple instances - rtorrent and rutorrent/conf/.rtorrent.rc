@@ -2,10 +2,10 @@
 #
 # While editing: please remember there are other people on your server!
 
-directory = /media/DiskID/username/private/rtorrent/data
-session = /media/DiskID/username/private/rtorrent/work
+directory = /media/DiskID/home/username/private/rtorrent/data
+session = /media/DiskID/home/username/private/rtorrent/work
 
-schedule = watch_directory, 5, 60, load_start=/media/DiskID/username/private/rtorrent/watch/*.torrent
+schedule = watch_directory, 5, 60, load_start=/media/DiskID/home/username/private/rtorrent/watch/*.torrent
 schedule = untied_directory, 5, 60, stop_untied=
 
 schedule = low_diskspace, 5, 120, close_low_diskspace=100M
@@ -26,6 +26,6 @@ system.file_allocate.set = yes
 encryption = allow_incoming,enable_retry
 
 # Start rutorrent plugins automatically
-execute = {sh,-c,/usr/bin/php /media/DiskID/username/www/username.server.feralhosting.com/public_html/rutorrent/php/initplugins.php username &}
+execute = {sh,-c,/usr/bin/php /media/DiskID/home/username/www/username.server.feralhosting.com/public_html/rutorrent/php/initplugins.php username &}
 
-scgi_local = /media/DiskID/username/private/rtorrent/.socket
+scgi_local = /media/DiskID/home/username/private/rtorrent/.socket

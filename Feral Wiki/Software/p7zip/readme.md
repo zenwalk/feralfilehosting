@@ -47,3 +47,6 @@ OK, now you can simply use
 ~~~
 7z x ~/path/to/some/archive
 ~~~
+
+
+

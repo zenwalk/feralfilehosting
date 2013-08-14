@@ -7,7 +7,7 @@ So instead of entering our complicated (or simple) password every time we ssh to
 
 #### How to get PAGEANT?
 
-If you have already installed the puTTy installer or downloaded the [snapshot zip](http://tartarus.org/~simon/putty-snapshots/x86/putty.zip) file you have PAGEANT already. For the installer look under the installation directory (Program files (x86)/PuTTy/) or where you extracted the zip file to. You can also get the [snapshot EXE](http://tartarus.org/~simon/putty-snapshots/x86/pageant.exe)
+If you have already installed the [puTTy installer](https://www.feralhosting.com/faq/view?question=12) or downloaded the [Putty zip](https://www.feralhosting.com/faq/view?question=12) file you have PAGEANT already. For the installer look under the installation directory (Program files (x86)/PuTTy/) or where you extracted the zip file to.
 
 #### How to use PAGEANT?
 

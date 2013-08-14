@@ -189,7 +189,7 @@ Sometimes SFTP is considerably slower than what is possible; if this is the case
 
 **SSH**
 
-SSH is useful for complete control over your account and is used to help fix any problems. We recommend using the [PuTTy client](http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe) on Windows. On Macs, you can just use terminal or xterm.
+SSH is useful for complete control over your account and is used to help fix any problems. We recommend using the [PuTTy client](https://www.feralhosting.com/faq/view?question=12) on Windows. On Macs, you can just use terminal or xterm.
 
 Related tutorial: [Connecting with Putty on Windows](https://www.feralhosting.com/faq/view?question=12)
 Related tutorial: [SSH Tunnels Basic - PuTTy](https://www.feralhosting.com/faq/view?question=37)
@@ -202,9 +202,9 @@ Alternatively, you can use your preferred browser or a download manager to downl
 
 With the purchase of a slot you are given two unique WWW urls for you to use.
 
-username.servername.feralhosting.com   < https has a cert mismatch issue due to the name format.
+username.servername.feralhosting.com < https has a cert mismatch issue due to the name format.
 
-servername.feralhosting.com/username/  < https has a valid and matching ssl certificate for Feral subdomains.
+servername.feralhosting.com/username < https has a valid and matching ssl certificate for Feral subdomains.
 
 These URLs represent the same location with two ways to reaching it. The files in one will be the same files in the other and vice versa.
 

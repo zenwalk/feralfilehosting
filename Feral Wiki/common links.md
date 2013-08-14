@@ -1,6 +1,10 @@
 
 ### Common links
 
+[putty 0.63 installer](http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.63-installer.exe)
+
+[putty 0.63 zip](http://the.earth.li/~sgtatham/putty/latest/x86/putty.zip)
+
 In SSH do these commands. Use this faq if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
 
 How to [SSH](https://www.feralhosting.com/faq/view?question=12) into your slot.

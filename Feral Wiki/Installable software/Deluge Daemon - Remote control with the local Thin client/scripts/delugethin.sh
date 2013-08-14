@@ -4,6 +4,8 @@ scriptversion="0.8.0"
 scriptname="delugethin.sh"
 # randomessence
 #
+# wget -qO ~/delugethin.sh http://git.io/obe0mA && bash ~/delugethin.sh
+#
 # How do i customise this updater? Search and replace all instances of "somescript" with the name of your script, do not include the .sh
 # The replace all "https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/" with the url to the raw script.
 # Insert you script in the "Script goes here" labelled section 

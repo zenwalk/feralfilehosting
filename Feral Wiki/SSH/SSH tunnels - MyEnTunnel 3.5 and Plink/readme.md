@@ -1,4 +1,6 @@
 
+**Important note:** Myentunnel 3.5.2 only works with plink.exe 0.62 and not 0.63 for the moment. Myentunnel 3.5.2 and plink.exe 0.62 are bundled together in a link in Step 1 ready to use.
+
 Unlike using OpenVPN that encrypts `all` network traffic at the driver level for that device, creating SSH tunnels enables you to route your for traffic/applications selectively. 
 
 For example: You could open a tunnel only for browsing or an application, letting the rest of your traffic go through your ISP directly, unencrypted. This can prevent a lot of problems for casual usage, such as using an imap application such as Thunderbird or using Personal websites like Paypal.
@@ -11,19 +13,19 @@ You can create and have open as many tunnels as you need per device which is mor
 
 MyEnTunnel is a tiny, portable piece of software that will allow you to easily set up a secure, encrypted SSH tunnel to your Feral box and use it as a local SOCKS5 proxy.
 
-It's easier to set up and configure than the [PuTTY method](http://www.feralhosting.com/heron/faq/view?question=37). Another advantage of this set-up is that MyEnTunnel runs quietly in your system tray not clattering your desktop as PuTTY would. MyEnTunnel will also re-establish the tunnel automatically if connection to the server was dropped.
+It's easier to set up and configure than the [PuTTY method](https://www.feralhosting.com/faq/view?question=37). Another advantage of this set-up is that MyEnTunnel runs quietly in your system tray not clattering your desktop as PuTTY would. MyEnTunnel will also re-establish the tunnel automatically if connection to the server was dropped.
 
 **Step 1:**
 
 Download [Visit the MyEnTunnel site](http://nemesis2.qx.net/pages/MyEnTunnel) and save the unicode 3.5.2 version to your local machine, and extract it to a local dir of your choice (this software doesn't require installation).
 
-You can direct download all required files using this: [MyEnTunnel with plink](https://github.com/feralhosting/feralfilehosting/raw/master/Feral/1%20General/SSH%20Tunnel%20Myentunnel/myentunnel-unicode.3.5.2.plink.0.62.zip) This is a prezipped version that includes plink 0.62 for convenience.
+You can direct download all required files using this: [MyEnTunnel with plink](https://github.com/feralhosting/feralfilehosting/raw/master/Feral%20Wiki/SSH/SSH%20tunnels%20-%20MyEnTunnel%203.5%20and%20Plink/myentunnel-unicode.3.5.2.plink.0.62.zip) This is a prezipped version that includes plink 0.62 for convenience.
 
 **Step 2:**
 
 Download [plink.exe 0.62](http://the.earth.li/~sgtatham/putty/latest/x86/plink.exe) and put it in the same directory where your MyEnTunnel resides.
 
-**Important note:** Do not use the latest snapshot. This version of plink does not work with dynamic socks for some reason.
+**Important note:** Myentunnel 3.5.2 only works with plink.exe 0.62 and not 0.63 for the moment
 
 **Step 3:**
 

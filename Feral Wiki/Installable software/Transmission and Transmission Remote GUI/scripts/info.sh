@@ -1,7 +1,7 @@
 #!/bin/bash
 # author: randomessence
 # transmission remote gui basic info.sh
-# wget -qNO ~/info.sh http://git.io/QsfUKA && bash ~/info.sh
+# wget -qO ~/info.sh http://git.io/QsfUKA && bash ~/info.sh
 if [ -f $HOME/.config/transmission-daemon/settings.json ]
 then
     echo

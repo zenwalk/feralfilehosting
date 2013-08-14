@@ -10,7 +10,7 @@ This software can be installed from the [**Install Software** link in your Manag
 In [SSH](https://www.feralhosting.com/faq/view?question=12) run this command to see you main info except the password:
 
 ~~~
-wget -qNO ~/info.sh http://git.io/QsfUKA && bash ~/info.sh
+wget -qO ~/info.sh http://git.io/QsfUKA && bash ~/info.sh
 ~~~
 
 To see you password you must click on the Slot Details page of the relevant slot in your [Account Manager](https://www.feralhosting.com/manager/) and it will look like this:

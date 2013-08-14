@@ -3,17 +3,13 @@ Feralstats plugin is a custom made plugin for ruTorrent. It works for existing F
 
 The plugin shows how much external traffic and disk usage that has been used, and how close the usage is to the limit.
 
-To install in SSH:
+To install in [SSH](https://www.feralhosting.com/faq/view?question=12):
 
 ```
 cd ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/
 wget -qO feralstats.zip http://git.io/nB1WyA
 unzip -qo feralstats.zip && rm -f feralstats.zip
 ```
-
-http://git.io/nB1WyA
-
-
 To upload using FTP:
 
 **1:** Download [http://git.io/nB1WyA](http://git.io/nB1WyA)
