@@ -8,7 +8,7 @@ This bash script provides some easy options to perform some common tasks.
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Password%20protect%20your%20WWW%20folder/bashscript.png)
 
 ~~~
-wget -qNO ~/htpasswdtk.sh http://git.io/eJySww && bash ~/htpasswdtk.sh
+wget -qO ~/htpasswdtk.sh http://git.io/eJySww && bash ~/htpasswdtk.sh
 ~~~
 
 This script will also get the latest version and copy it to your `~/bin` directory and make it executable.
