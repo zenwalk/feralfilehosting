@@ -43,11 +43,25 @@ When you clone the existing installation you will need to take this into account
 
 When you want to be able to log into a single instance and be logged into multiple instance simultaneously you will need to:
 
-1: Make sure all instances and their `.htaccess` have the same AuthName.
+1: Make sure all instances and their `.htaccess` have the same AuthName. The default is
 
-2: All linked to `.htpasswd` files have the the same user and more importantly, the same md5 salt.
+~~~
+AuthName "username"
+~~~
+
+2: All linked to `.htpasswd` files have the the same user and more importantly, the same md5 salt. Having the same username and password in not enough. It must be the same salt.
 
 ### Running multiple instances of rtorrent and rutorrent
+
+You can do this in two ways.
+
+**1:** You can clone an existing installation. So this can be useful if you want to preserve customisations and settings.
+
+**2:** You can use template files which mimics almost identically a Feral fresh install. The bash script uses this option
+
+If you want to use option 2 then use the bash script.
+
+If you want to clone an existing installation in whatever state it currently is use the FAQ.
 
 **Important note:** Please make sure you have installed rtorrent/rutorrent using the [**Install Software** link in your Manager](https://www.feralhosting.com/manager/)
 
