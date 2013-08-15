@@ -4,7 +4,7 @@ scriptversion="1.0.3"
 scriptname="autodlrutorrentfix"
 # randomessence
 #
-# wget -qNO ~/autodlrutorrentfix.sh http://git.io/BBUryw && bash ~/autodlrutorrentfix.sh
+# wget -qO ~/autodlrutorrentfix.sh http://git.io/BBUryw && bash ~/autodlrutorrentfix.sh
 #
 ############################
 ## Version History Starts ##
@@ -42,20 +42,20 @@ mkdir -p $HOME/bin
 #
 if [ ! -f $HOME/autodlrutorrentfix.sh ]
 then
-    wget -qNO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+    wget -qO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
 fi
 if [ ! -f $HOME/bin/autodlrutorrentfix ]
 then
-    wget -qNO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+    wget -qO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
 fi
 #
-wget -qNO $HOME/000autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+wget -qO $HOME/000autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
 #
 if ! diff -q $HOME/000autodlrutorrentfix.sh $HOME/autodlrutorrentfix.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
-    wget -qNO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+    wget -qO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+    wget -qO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
     bash $HOME/autodlrutorrentfix.sh
     exit 1' > $HOME/111autodlrutorrentfix.sh
     bash $HOME/111autodlrutorrentfix.sh
@@ -64,8 +64,8 @@ fi
 if ! diff -q $HOME/000autodlrutorrentfix.sh $HOME/bin/autodlrutorrentfix > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
-    wget -qNO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+    wget -qO $HOME/autodlrutorrentfix.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
+    wget -qO $HOME/bin/autodlrutorrentfix https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Autodl-irssi%20and%20rutorrent%20plugin%20-%20community%20edition/scripts/autodlrutorrentfix.sh
     bash $HOME/autodlrutorrentfix.sh
     exit 1' > $HOME/222autodlrutorrentfix.sh
     bash $HOME/222autodlrutorrentfix.sh
