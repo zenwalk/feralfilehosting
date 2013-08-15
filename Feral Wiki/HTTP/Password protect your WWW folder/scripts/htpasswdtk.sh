@@ -425,7 +425,7 @@ while [ 1 ]
             echo
             echo -e "Here is a list of the usernames and their order in your" "\033[36m""$HOME/private/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/private/.htpasswd | cut -d:  -f1
+            cat $HOME/private/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             read -ep "What is the username you wish to create, if they are not listed above, or edit if they exist?: " username
             htpasswd -m $HOME/private/.htpasswd $username
@@ -441,7 +441,7 @@ while [ 1 ]
         then
             echo -e "Here is a list of the usernames and their order in your" "\033[36m""$HOME/private/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/private/.htpasswd | cut -d:  -f1
+            cat $HOME/private/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             echo -e "Enter username from the list to delete them."
             read -ep "What is the username you wish to remove?: " username
@@ -473,7 +473,7 @@ while [ 1 ]
         then
             echo -e "Here is a list of the usernames and their order in your" "\033[36m""$HOME/private/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/private/.htpasswd | cut -d:  -f1
+            cat $HOME/private/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             sleep 4
         else
@@ -505,7 +505,7 @@ while [ 1 ]
             echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage good passwords.""\e[0m"
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd | cut -d:  -f1
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             echo -e "\033[33m""Enter an existing username to update or a new one to create an entry.""\e[0m"
             read -ep "What is the username you wish to create, if they are not listed above, or edit if they exist?: " username
@@ -522,7 +522,7 @@ while [ 1 ]
         then
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd | cut -d:  -f1
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             echo -e "\033[33m""Enter username from the list to delete them.""\e[0m"
             read -ep "What is the username you wish to remove?: " username
@@ -550,7 +550,7 @@ while [ 1 ]
         then
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd | cut -d:  -f1
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             sleep 4
         else
@@ -621,7 +621,8 @@ while [ 1 ]
         if [[ -f ~/private/.htpasswd && -d ~/.nginx/conf.d  ]]
         then
         echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/private/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
-        killall -9 nginx php5-fpm -u $(whoami)
+        killall -9 -u $(whoami) nginx php5-fpm
+        echo
         echo "Now wait up to 5 minutes for nginx to restart"
         echo
         sleep 2
@@ -636,7 +637,8 @@ while [ 1 ]
         if [[ -f ~/www/$(whoami).$(hostname)/public_html/rutorrent/.htpasswd && -d ~/.nginx/conf.d ]]
         then
         echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
-        killall -9 nginx php5-fpm -u $(whoami)
+        killall -9 -u $(whoami) nginx php5-fpm
+        echo
         echo "Now wait up to 5 minutes for nginx to restart"
         echo
         sleep 2
@@ -656,7 +658,7 @@ while [ 1 ]
             echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage good passwords.""\e[0m"
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent-$suffix/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d:  -f1
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             echo -e "\033[33m""Enter an existing username to update or a new one to create an entry.""\e[0m"
             read -ep "What is the username you wish to create, if they are not listed above, or edit if they exist?: " username
@@ -676,7 +678,7 @@ while [ 1 ]
         then
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent-$suffix/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d:  -f1
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             echo -e "\033[33m""Enter username from the list to delete them.""\e[0m"
             read -ep "What is the username you wish to remove?: " username
@@ -696,7 +698,7 @@ while [ 1 ]
         then
             echo -e "\033[32m""Here is a list of the usernames and their order in your" "\033[36m""/rutorrent-$suffix/.htpasswd""\e[0m"
             echo -e "\033[1;31m"
-            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d:  -f1
+            cat $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd | cut -d: -f1
             echo -e "\e[0m"
             sleep 4
         else
