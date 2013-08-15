@@ -1,6 +1,6 @@
 #!/bin/bash
 # htpasswd user and password toolkit
-scriptversion="1.0.6"
+scriptversion="1.1.0"
 # randomessence
 ############################
 ## Version History Starts ##
@@ -16,7 +16,7 @@ scriptversion="1.0.6"
 # 1.0.3 Updater included.
 # 1.0.4 nginx /links and apache /links options added
 # 1.0.5 multi rtorrent/rutorrent options
-# 1.0.6 Changes to Authname generation to avoid conflict or allow single login
+# 1.1.0 Changes to Authname generation to avoid conflict or allow single login
 #
 ############################
 ### Version History Ends ###
@@ -96,7 +96,7 @@ showMenu ()
     #
     echo -e "\033[31m""1""\e[0m" "Create a new" "\033[36m""~/private/.htpasswd""\e[0m" "and user only""\e[0m"
     #
-    echo -e "\033[31m""2""\e[0m" "Create a new" "\033[36m""~/private/.htpasswd""\e[0m" "and user, and a .htaccess in the" "\033[36m""public_html.""\e[0m"
+    echo -e "\033[31m""2""\e[0m" "Create a new" "\033[36m""~/private/.htpasswd""\e[0m" "and user, and/or a" "\033[36m"".htaccess""\e[0m"
     #
     echo -e "\033[31m""3""\e[0m" "Add a new user or update an existing user in your" "\033[36m""~/private/.htpasswd""\e[0m"
     #
@@ -177,42 +177,242 @@ while [ 1 ]
         fi
         ;;
 ##########
-        "2") # Create a new ~/private/.htpasswd,user and .htaccess in public_html.
+        "2") # Create a new ~/private/.htpasswd,user and .htaccess.
         if [ ! -f $HOME/private/.htpasswd ]
         then
-                echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
-                echo -e "\033[33m""Note: This will append/add the settings if a .htaccess already exists in the web server root""\033[33m"
-                read -ep "What is the username you wish to create?: " username
-                htpasswd -cm $HOME/private/.htpasswd $username
-                chmod 600 $HOME/private/.htpasswd
-                echo "The .htpasswd file was created and the user: $username added"
-                echo -e "######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
-                find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
-                echo "The .htaccess file was created"
+            echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
+            echo -e "\033[33m""Note: This will append/add the settings if a .htaccess already exists in the web server root""\e[0m"
+            read -ep "What is the username you wish to create?: " username
+            htpasswd -cm $HOME/private/.htpasswd $username
+            chmod 644 $HOME/private/.htpasswd
+            echo
+            echo -e "The" "\033[36m"".htpasswd""\e[0m" "file was created and the user" "\033[32m""$username""\e[0m" "added"
+            echo
+            # htaccess generation
+            echo -e "\033[31m""If no custom location is given then it will be created in the WWW root""\e[0m"
+            read -ep "Would you like to create the .htaccess in a specific location? [y] yes or [n] no: " specificloc
+            echo
+            if [[ $specificloc =~ ^[Yy]$ ]]
+            then
+                echo -e "\033[32m""This path is relative to your WWW root. For links you would enter this path:""\e[0m" "\033[36m""/links""\e[0m"
+                read -ep "Give the name of the folder you with to create the .htaccess in: /" specificlocpath
                 echo
-                echo -e "\033[32m""The" "\033[36m"".htaccess""\e[0m" "\033[32m""is only created in the WWW root and not in subdirectories.""\e[0m" "\033[33m""It created a template for you to use in other directories""\e[0m"
-                echo -e "\033[32m""Make a directory user specific: Copy the .htaccess there, change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
-                echo -e "Now only the user $username will have access to that folder."
-                sleep 4
+                if [[ -d $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath ]]
+                then
+                    if [[ -f $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess ]]
+                    then
+                        if [[ -z "$(sed -n '/AuthName "Please Login"/p' $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess)" ]]
+                        then
+                            echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess
+                            find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                            echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in" "\033[36m""/$specificlocpath""\e[0m"
+                            echo
+                            echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                            echo
+                            sleep 2
+                        else
+                            echo -e "This" "\033[36m"".htaccess""\e[0m" "already has a Authfile entry."
+                            sleep 2
+                            echo
+                        fi
+                    else
+                        echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess
+                        find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                        echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in" "\033[36m""/$specificlocpath""\e[0m"
+                        echo
+                            echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                            echo
+                        sleep 2
+                    fi
+                else
+                    echo -e "\033[31m""This location does not exist.""\e[0m" "Please create the directory first"
+                    echo
+                    sleep 2
+                fi
+            else
+                if [[ -f $HOME/www/$(whoami).$(hostname)/public_html/.htaccess ]]
+                then
+                    if [[ -z "$(sed -n '/AuthName "Please Login"/p' $HOME/www/$(whoami).$(hostname)/public_html/.htaccess)" ]]
+                    then
+                        echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                        find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                        echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in the" "\033[36m""WWW""\e[0m" "root"
+                        echo
+                        echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                        echo
+                        sleep 2
+                    else
+                        echo -e "This" "\033[36m"".htaccess""\e[0m" "already has a Authfile entry."
+                        sleep 2
+                        echo
+                    fi
+                else
+                    echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                    find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                    echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in the" "\033[36m""WWW""\e[0m" "root"
+                    echo
+                    echo -e "\033[32m""To make a directory user specific: Copy the .htaccess there, change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                    echo
+                    sleep 2
+                fi
+            fi
+            # htaccess generation end
         else
             echo -e "\033[31m""The ~/private/.htpasswd exists.""\e[0m" 
             read -ep "Do you wish overwrite it? [y] yes or [n] no: " confirm
             if [[ $confirm =~ ^[Yy]$ ]]
             then
                 echo -e "\033[1;32m""Note: Use a good password manager like keepass so you can easily manage secure passwords." "\e[0m"
-                echo -e "\033[33m""Note: This will append/add the settings if a .htaccess already exists in the web server root""\033[33m"
+                echo -e "\033[33m""Note: This will append/add the settings if a .htaccess already exists in the web server root""\e[0m"
                 read -ep "What is the username you wish to create?: " username
                 htpasswd -cm $HOME/private/.htpasswd $username
-                chmod 600 $HOME/private/.htpasswd
-                echo "The .htpasswd file was created and the user: $username added"
-                echo -e "######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
-                find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
-                echo "The .htaccess file was created"
+                chmod 644 $HOME/private/.htpasswd
                 echo
-                echo -e "\033[32m""The" "\033[36m"".htaccess""\e[0m" "\033[32m""is only created in the WWW root and not in subdirectories.""\e[0m" "\033[33m""It created a template for you to use in other directories""\e[0m"
-                echo -e "\033[32m""Make a directory user specific: Copy the .htaccess there, change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
-                echo -e "Now only the user $username will have access to that folder."
-                sleep 4
+                echo -e "The" "\033[36m"".htpasswd""\e[0m" "file was created and the user" "\033[32m""$username""\e[0m" "added"
+                echo
+            # htaccess generation
+            echo -e "\033[31m""If no custom location is given then it will be created in the WWW root""\e[0m"
+            read -ep "Would you like to create the .htaccess in a specific location? [y] yes or [n] no: " specificloc
+            echo
+            if [[ $specificloc =~ ^[Yy]$ ]]
+            then
+                echo -e "\033[32m""This path is relative to your WWW root. For links you would enter this path:""\e[0m" "\033[36m""/links""\e[0m"
+                read -ep "Give the name of the folder you with to create the .htaccess in: /" specificlocpath
+                echo
+                if [[ -d $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath ]]
+                then
+                    if [[ -f $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess ]]
+                    then
+                        if [[ -z "$(sed -n '/AuthName "Please Login"/p' $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess)" ]]
+                        then
+                            echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess
+                            find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                            echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in" "\033[36m""/$specificlocpath""\e[0m"
+                            echo
+                            echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                            echo
+                            sleep 2
+                        else
+                            echo -e "This" "\033[36m"".htaccess""\e[0m" "already has a Authfile entry."
+                            sleep 2
+                            echo
+                        fi
+                    else
+                        echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess
+                        find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                        echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in" "\033[36m""/$specificlocpath""\e[0m"
+                        echo
+                            echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                            echo
+                        sleep 2
+                    fi
+                else
+                    echo -e "\033[31m""This location does not exist.""\e[0m" "Please create the directory first"
+                    echo
+                    sleep 2
+                fi
+            else
+                if [[ -f $HOME/www/$(whoami).$(hostname)/public_html/.htaccess ]]
+                then
+                    if [[ -z "$(sed -n '/AuthName "Please Login"/p' $HOME/www/$(whoami).$(hostname)/public_html/.htaccess)" ]]
+                    then
+                        echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                        find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                        echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in the" "\033[36m""WWW""\e[0m" "root"
+                        echo
+                        echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                        echo
+                        sleep 2
+                    else
+                        echo -e "This" "\033[36m"".htaccess""\e[0m" "already has a Authfile entry."
+                        sleep 2
+                        echo
+                    fi
+                else
+                    echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                    find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                    echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in the" "\033[36m""WWW""\e[0m" "root"
+                    echo
+                    echo -e "\033[32m""To make a directory user specific: Copy the .htaccess there, change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                    echo
+                    sleep 2
+                fi
+            fi
+            # htaccess generation end
+            else
+                read -ep "Would you like to just generate the .htaccess? [y] yes or [n] no: " justdoit
+                if [[ $justdoit =~ ^[Yy]$ ]]
+                then
+                    # htaccess generation
+                    echo -e "\033[31m""If no custom location is given then it will be created in the WWW root""\e[0m"
+                    read -ep "Would you like to create the .htaccess in a specific location? [y] yes or [n] no: " specificloc
+                    echo
+                    if [[ $specificloc =~ ^[Yy]$ ]]
+                    then
+                        echo -e "\033[32m""This path is relative to your WWW root. For links you would enter this path:""\e[0m" "\033[36m""/links""\e[0m"
+                        read -ep "Give the name of the folder you with to create the .htaccess in: /" specificlocpath
+                        echo
+                        if [[ -d $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath ]]
+                        then
+                            if [[ -f $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess ]]
+                            then
+                                if [[ -z "$(sed -n '/AuthName "Please Login"/p' $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess)" ]]
+                                then
+                                    echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess
+                                    find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                                    echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in" "\033[36m""/$specificlocpath""\e[0m"
+                                    echo
+                                    echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                                    echo
+                                    sleep 2
+                                else
+                                    echo -e "This" "\033[36m"".htaccess""\e[0m" "already has a Authfile entry."
+                                    sleep 2
+                                    echo
+                                fi
+                            else
+                                echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/$specificlocpath/.htaccess
+                                find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                                echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in" "\033[36m""/$specificlocpath""\e[0m"
+                                echo
+                                    echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                                    echo
+                                sleep 2
+                            fi
+                        else
+                            echo -e "\033[31m""This location does not exist.""\e[0m" "Please create the directory first"
+                            echo
+                            sleep 2
+                        fi
+                    else
+                        if [[ -f $HOME/www/$(whoami).$(hostname)/public_html/.htaccess ]]
+                        then
+                            if [[ -z "$(sed -n '/AuthName "Please Login"/p' $HOME/www/$(whoami).$(hostname)/public_html/.htaccess)" ]]
+                            then
+                                echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                                find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                                echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in the" "\033[36m""WWW""\e[0m" "root"
+                                echo
+                                echo -e "\033[32m""To make a directory user specific: Change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                                echo
+                                sleep 2
+                            else
+                                echo -e "This" "\033[36m"".htaccess""\e[0m" "already has a Authfile entry."
+                                sleep 2
+                                echo
+                            fi
+                        else
+                            echo -e "\n######\nAuthUserFile \"$HOME/private/.htpasswd\"\nAuthGroupFile /dev/null\nAuthName \"Please Login\"\nAuthType Basic\n#####\nRequire valid-user\n####\nSatisfy All\n###" >> $HOME/www/$(whoami).$(hostname)/public_html/.htaccess
+                            find $HOME/www/$(whoami).$(hostname)/public_html -type f -name ".htaccess" -exec chmod 644 {} \;
+                            echo -e "The" "\033[36m"".htaccess""\e[0m" "file was created or updated in the" "\033[36m""WWW""\e[0m" "root"
+                            echo
+                            echo -e "\033[32m""To make a directory user specific: Copy the .htaccess there, change:""\e[0m" "\033[33m""Require valid-user""\e[0m" "\033[32m""to""\e[0m" "\033[33m""Require user $username""\e[0m"
+                            echo
+                            sleep 2
+                        fi
+                    fi
+                    # htaccess generation end
+                fi
             fi
         fi
         ;;
