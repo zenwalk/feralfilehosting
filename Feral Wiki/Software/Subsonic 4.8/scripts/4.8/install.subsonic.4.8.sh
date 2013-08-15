@@ -12,7 +12,7 @@ javaversion="1.7 Update 25"
 #
 # * * * * * bash -l ~/bin/subsonicron
 #
-# wget -qNO ~/subsonic.4.8.sh http://git.io/aFIIXg && bash ~/subsonic.4.8.sh
+# wget -qO ~/subsonic.4.8.sh http://git.io/aFIIXg && bash ~/subsonic.4.8.sh
 #
 ############################
 ## Version History Starts ##
@@ -112,20 +112,20 @@ mkdir -p $HOME/bin
 #
 if [ ! -f  $HOME/subsonic.4.8.sh ]
 then
-    wget -qNO $HOME/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+    wget -qO $HOME/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
 fi
 if [ ! -f  $HOME/bin/subsonic.4.8 ]
 then
-    wget -qNO $HOME/bin/subsonic.4.8 https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+    wget -qO $HOME/bin/subsonic.4.8 https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
 fi
 #
-wget -qNO $HOME/000subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+wget -qO $HOME/000subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
 #
 if ! diff -q $HOME/000subsonic.4.8.sh $HOME/subsonic.4.8.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
-    wget -qNO $HOME/bin/subsonic.4.8 https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+    wget -qO $HOME/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+    wget -qO $HOME/bin/subsonic.4.8 https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
     bash $HOME/subsonic.4.8.sh
     exit 1' > $HOME/111subsonic.4.8.sh
     bash $HOME/111subsonic.4.8.sh
@@ -134,8 +134,8 @@ fi
 if ! diff -q $HOME/000subsonic.4.8.sh $HOME/bin/subsonic.4.8 > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
-    wget -qNO $HOME/bin/subsonic.4.8 https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+    wget -qO $HOME/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+    wget -qO $HOME/bin/subsonic.4.8 https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
     bash $HOME/subsonic.4.8.sh
     exit 1' > $HOME/222subsonic.4.8.sh
     bash $HOME/222subsonic.4.8.sh
@@ -326,7 +326,8 @@ then
     ###### Install Java 1.7 Start
     if [ "$installedjavaversion" != "$javaversion" ]
     then
-        wget -qNO ~/java.tar.gz http://javadl.sun.com/webapps/download/AutoDL?BundleId=78697
+        echo "Please wait a moment while java is installed"
+        wget -qO ~/java.tar.gz http://javadl.sun.com/webapps/download/AutoDL?BundleId=78697
         tar -xzf ~/java.tar.gz 
         cp -rf ~/jre1.7.0_25/. ~/private/java/
         rm -f ~/java.tar.gz
@@ -365,7 +366,7 @@ then
             # Creates some directories we need for configuring the start-up script
             #
             echo -e "\033[32m""$subsonicfvs""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/subsonic.tar.gz $subsonicfv
+            wget -qO ~/private/subsonic/subsonic.tar.gz $subsonicfv
             echo -e "\033[36m""$subsonicfvs""\e[0m" "Has been downloaded and renamed to" "\033[36m""subsonic.tar.gz\e[0m"
             # Gets the latest version of subsonic from sourceforge. Currently at 4.8
             #
@@ -380,7 +381,7 @@ then
             # tidy up
             #
             echo -e "\033[32m""$sffmpegfvs""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/transcode/ffmpeg.tar.gz $sffmpegfv
+            wget -qO ~/private/subsonic/transcode/ffmpeg.tar.gz $sffmpegfv
             echo -e "\033[36m""$sffmpegfvs""\e[0m" "Has been downloaded and renamed to" "\033[36m""ffmpeg.tar.gz\e[0m"
             # Downloads a perma hosted version of ffmpeg static and renames it to ffmpeg.tar.gz. Dated at 14/06/2013
             #
@@ -479,7 +480,7 @@ then
             # Creates some directories we need for configuring the start-up script
             #
             echo -e "\033[32m""$madsonicfvs""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/madsonic.zip $madsonicfv
+            wget -qO ~/private/subsonic/madsonic.zip $madsonicfv
             echo -e "\033[36m""$madsonicfvs""\e[0m" "Has been downloaded and renamed to" "\033[36m""madsonic.zip\e[0m"
             # Gets the latest version of subsonic from sourceforge. Currently at 4.8
             #
@@ -494,7 +495,7 @@ then
             # tidy up
             #
             echo -e "\033[32m""$mffmpegfvcs""\e[0m" "Is downloading now."
-            wget -qNO ~/private/subsonic/transcode/ffmpeg.zip $mffmpegfvc
+            wget -qO ~/private/subsonic/transcode/ffmpeg.zip $mffmpegfvc
             echo -e "\033[36m""$mffmpegfvcs""\e[0m" "Has been downloaded and renamed to" "\033[36m""ffmpeg.tar.gz\e[0m"
             # Downloads a perma hosted version of ffmpeg static and renames it to ffmpeg.tar.gz. Dated at 04/24/2013
             #
@@ -623,7 +624,7 @@ then
                 if [ -f ~/subsonic.4.8.sh ]; then
                     bash ~/subsonic.4.8.sh
                 else
-                    wget -qNO ~/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
+                    wget -qO ~/subsonic.4.8.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Subsonic%204.8/scripts/4.8/install.subsonic.4.8.sh
                     bash ~/subsonic.4.8.sh
                 fi
             else
