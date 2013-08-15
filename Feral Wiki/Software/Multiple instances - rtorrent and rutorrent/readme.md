@@ -4,15 +4,48 @@
 This script will:
 
 1: Ask you for a suffix for this unique instance of rtorrent and rutorrent.
-2: Clone the existing rtorrent/rutorrent installation files, adding this suffix
-3: Make the required edits to the files using this suffix
-4: Start rtorrent in a screen using the unique rtorrent/rc for this instance.
+2: Create you a fresh install based on the Feral rtorrent and rutorrent installation. Colored ratio and Feralstats plugins included.
+3: Make the required edits to some using this suffix so it becomes an independent installation.
+4: Ask you for a username and password to password protect the folder. All instances are unique and will not clash even if the same username and password is used in another instance.
+5: Start rtorrent in a screen using the unique rtorrent/rc for this instance.
 
 It will not damage your existing installation or overwrite custom instances if the same suffix is used.
 
 ~~~
 wget -qO ~/multirtru.sh http://git.io/m_dugQ && bash ~/multirtru.sh
 ~~~
+
+### Important: Read this first
+
+When creating a new instance of rutorrent there is an important behaviour using the `.htaccess` and `.htpasswd` combo that you need to understand.
+
+The default rutorrent `.htaccess` has a line like this:
+
+~~~
+AuthName "username"
+~~~
+
+And the default rutorrent `.htpasswd` has a line like this, which is the md5 salted password for this user:
+
+~~~
+username:$apr1$MPG6YdI6$8qwQtGQj5jHoL62L2/rhg1
+~~~
+
+If you have a new instance that uses the same AuthName but the relevant `.htpasswd` does not contain a matching username and md5 salt you will start to confuse rutorrent because this is how it authorizes you.
+
+The script deals with this by giving each instance a unique AuthName based on the suffix used, such as:
+
+~~~
+AuthName "rutorrent-3"
+~~~
+
+When you clone the existing installation you will need to take this into account, so to sum it up:
+
+When you want to be able to log into a single instance and be logged into multiple instance simultaneously you will need to:
+
+1: Make sure all instances and their `.htaccess` have the same AuthName.
+
+2: All linked to `.htpasswd` files have the the same user and more importantly, the same md5 salt.
 
 ### Running multiple instances of rtorrent and rutorrent
 
