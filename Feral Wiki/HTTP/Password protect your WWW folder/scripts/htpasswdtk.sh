@@ -623,6 +623,8 @@ while [ 1 ]
         echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/private/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
         killall -9 nginx php5-fpm -u $(whoami)
         echo "Now wait up to 5 minutes for nginx to restart"
+        echo
+        sleep 2
         else
             echo -e "\033[31m""required files and the folder" "\033[36m""~/.nginx/conf.d""\e[0m" "\033[31m""do not exist""\e[0m"
             echo
@@ -636,6 +638,8 @@ while [ 1 ]
         echo -e 'location /links {\n    auth_basic "Please log in";\n    auth_basic_user_file '$HOME'/www/'$(whoami)'.'$(hostname)'/public_html/rutorrent/.htpasswd;\n}' > ~/.nginx/conf.d/000-default-server.d/links.conf
         killall -9 nginx php5-fpm -u $(whoami)
         echo "Now wait up to 5 minutes for nginx to restart"
+        echo
+        sleep 2
         else
             echo -e "\033[31m""required files and the folder" "\033[36m""~/.nginx/conf.d""\e[0m" "\033[31m""do not exist""\e[0m"
             echo
@@ -659,7 +663,7 @@ while [ 1 ]
             htpasswd -m $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd $username
             sleep 2
         else
-            echo -e "\033[31m" "The file does not exist." "\033[32m""Check the suffix was correct""\e[0m"
+            echo -e "\033[31m" "The file does not exist at rutorrent-$suffix." "\033[32m""Check the suffix was correct""\e[0m"
             sleep 2
         fi
         ;;
@@ -679,7 +683,7 @@ while [ 1 ]
             htpasswd -D $HOME/www/$(whoami).$(hostname)/public_html/rutorrent-$suffix/.htpasswd $username
             sleep 2
         else
-            echo -e "\033[31m" "The file does not exist." "\033[32m""Is RuTorrent installed?""\e[0m"
+            echo -e "\033[31m" "The file does not exist at rutorrent-$suffix." "\033[32m""Is RuTorrent installed?""\e[0m"
             sleep 2
         fi
         ;;
@@ -696,7 +700,7 @@ while [ 1 ]
             echo -e "\e[0m"
             sleep 4
         else
-            echo -e "\033[31m" "The file does not exist." "\033[32m""Is RuTorrent installed?""\e[0m"
+            echo -e "\033[31m" "The file does not exist at rutorrent-$suffix." "\033[32m""Is RuTorrent installed?""\e[0m"
             sleep 2
         fi
         ;;
