@@ -92,7 +92,7 @@ echo
 #
 showMenu () 
 {
-    echo -e "\033[31m"".htpasswd options section""\e[0m"
+    echo -e "\033[32m"".htpasswd options section""\e[0m"
     #
     echo -e "\033[31m""1""\e[0m" "Create a new" "\033[36m""~/private/.htpasswd""\e[0m" "and user only""\e[0m"
     #
@@ -106,7 +106,7 @@ showMenu ()
     #   
     echo -e "\033[31m""6""\e[0m" "List" "\033[36m""~/private/.htpasswd""\e[0m" "users and their order"
     #
-    echo -e "\033[31m""Rutorrent specific options section""\e[0m"
+    echo -e "\033[32m""Rutorrent specific options section""\e[0m"
     #
     echo -e "\033[31m""7""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "Change the existing Rutorrent .htaccess to use" "\033[36m""~/private/.htpasswd""\e[0m"
     #
@@ -118,7 +118,7 @@ showMenu ()
     #
     echo -e "\033[31m""11""\e[0m" "\033[1;30m""RuTorrent:""\e[0m" "List" "\033[36m""/rutorrent/.htpasswd""\e[0m" "users and their order"
     #
-    echo -e "\033[31m""Other tools section""\e[0m"
+    echo -e "\033[32m""Other tools section""\e[0m"
     #
     echo -e "\033[31m""12""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use the" "\033[36m""~/private/.htpasswd""\e[0m" "AuthFile path" "\033[33m""(if present)""\e[0m"
     #
@@ -126,13 +126,13 @@ showMenu ()
     #
     echo -e "\033[31m""14""\e[0m" "Change all" "\033[36m""public_html""\e[0m" ".htaccess to use a custom AuthFile path" "\033[33m""(if present)""\e[0m"
     #
-    echo -e "\033[31m""Nginx specific options section""\e[0m"
+    echo -e "\033[32m""Nginx specific options section""\e[0m"
     #
     echo -e "\033[31m""15""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using the" "\033[36m""~/private/.htpasswd""\e[0m"
     #
     echo -e "\033[31m""16""\e[0m" "Protect the" "\033[36m""/links""\e[0m" "directory using the" "\033[36m""/rutorrent/.htpasswd""\e[0m"
     #
-    echo -e "\033[31m""Multi Rtorrent/Rutorrent specific options section""\e[0m"
+    echo -e "\033[32m""Multi Rtorrent/Rutorrent specific options section""\e[0m"
     #
     echo -e "\033[31m""17""\e[0m" "\033[1;30m""Multi Rtorrent/Rutorrent:""\e[0m" "Add or edit a user in the existing Rutorrent .htpasswd"
     #
