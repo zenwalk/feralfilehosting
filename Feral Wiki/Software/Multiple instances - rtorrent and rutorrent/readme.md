@@ -193,13 +193,13 @@ $scgi_host = 'unix://'.$_pw['dir'].'/private/rtorrent-1/.socket';
 Load your custom instance in a new screen window.
 
 ~~~
-screen -S rtorrent-1 rtorrent -n -o import=~/.rtorrent-1.rc
+screen -fa -dmS rtorrent-1 rtorrent -n -o import=~/.rtorrent-1.rc
 ~~~
 
 If you see the screen is terminating error, do this:
 
 ~~~
-screen -S rtorrent-1
+screen -fa -S rtorrent-1
 ~~~
 
 The do this:

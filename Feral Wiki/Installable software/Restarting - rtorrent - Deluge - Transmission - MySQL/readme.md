@@ -16,7 +16,7 @@ killall -9 -u $(whoami) rtorrent
 **2:** Start it again in a screen
 
 ~~~
-screen -S rtorrent rtorrent
+screen -fa -dmS rtorrent rtorrent
 ~~~
 
 If all goes well, you should be greeted with your rtorrent  and you should see your torrents. To exit rtorrent (and keep it running) press and hold `CTRL` and `a` then press `d` to detach from the screen once you are sure rtorrent is running.
@@ -50,7 +50,19 @@ rm -rf ~/private/rtorrent/work/rtorrent.*
 **3.1:** Start it again in a screen:
 
 ~~~
-screen -S rtorrent rtorrent
+screen -fa -dmS rtorrent rtorrent
+~~~
+
+To attach to this screen:
+
+~~~
+screen -r rtorrent
+~~~
+
+If for some reason it won't attach but the screen is running try this:
+
+~~~
+screen -xRR rtorrent
 ~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Installable%20software/Restarting%20-%20rtorrent%20-%20Deluge%20-%20Transmission%20-%20MySQL/1.png)
