@@ -156,9 +156,11 @@ else
         echo
         # create the screen
         echo -e "\033[32m""4:""\e[0m" "Creating the screen process"
-        echo
         screen -dmS rtorrent-$suffix rtorrent -n -o import=~/.rtorrent-$suffix.rc
-        echo "Done. To reattach to this screen type:"
+        echo
+        echo 'screen -dmS rtorrent-'$suffix' rtorrent -n -o import=~/.rtorrent-'$suffix'.rc' >> ~/multirtru.restart.txt
+        echo -e "This command was added to" "\033[36m""~/multirtru.restart.txt""\e[0m" "so you can easily restart this instance"
+        echo "To reattach to this screen type:"
         echo
         echo -e "\033[33m""screen -r rtorrent-$suffix""\e[0m"
         echo
