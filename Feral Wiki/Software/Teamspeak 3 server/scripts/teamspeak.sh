@@ -2,7 +2,7 @@
 #
 # Install Teamspeak 3
 scriptversion="1.0.8"
-teamspeakversion="3.0.7.2"
+teamspeakversion="3.0.8"
 # randomessence 27/04/2013
 #
 # bash ~/private/teamspeak/ts3server_startscript.sh start
@@ -51,21 +51,21 @@ mkdir -p $HOME/bin
 #
 if [ ! -f  ~/teamspeak.sh ]
 then
-    wget -qNO $HOME/teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+    wget -qO $HOME/teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
 fi
 if [ ! -f  ~/bin/teamspeak ]
 then
-    wget -qNO $HOME/bin/teamspeak https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+    wget -qO $HOME/bin/teamspeak https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
 fi
 #
 #
-wget -qNO $HOME/000teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+wget -qO $HOME/000teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
 #
 if ! diff -q $HOME/000teamspeak.sh $HOME/teamspeak.sh > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
-    wget -qNO $HOME/bin/teamspeak https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+    wget -qO $HOME/teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+    wget -qO $HOME/bin/teamspeak https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
     bash $HOME/teamspeak.sh
     exit 1' > $HOME/111teamspeak.sh
     bash $HOME/111teamspeak.sh
@@ -74,8 +74,8 @@ fi
 if ! diff -q $HOME/000teamspeak.sh $HOME/bin/teamspeak > /dev/null 2>&1
 then
     echo '#!/bin/bash
-    wget -qNO $HOME/teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
-    wget -qNO $HOME/bin/teamspeak https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+    wget -qO $HOME/teamspeak.sh https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
+    wget -qO $HOME/bin/teamspeak https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Software/Teamspeak%203%20server/scripts/teamspeak.sh
     bash $HOME/teamspeak.sh
     exit 1' > $HOME/222teamspeak.sh
     bash $HOME/222teamspeak.sh
@@ -92,8 +92,8 @@ chmod -f 700 ~/bin/teamspeak
 ### Self Updater Ends
 #
 # creates the ~/bin directory which is generally useful. Copies the script to ~/bin as teamspeak and then makes it executable.
-wget -qNO ~/private/teamspeak.tar.gz http://ftp.4players.de/pub/hosted/ts3/releases/3.0.7.2/teamspeak3-server_linux-amd64-3.0.7.2.tar.gz 
-# wget the latest version of the linux 3.0.7.2 amd64 server binary
+wget -qO ~/private/teamspeak.tar.gz http://ftp.4players.de/pub/hosted/ts3/releases/3.0.8/teamspeak3-server_linux-amd64-3.0.8.tar.gz
+# wget the latest version of the linux 3.0.8 amd64 server binary
 tar -xzf ~/private/teamspeak.tar.gz -C ~/private/
 rm -f ~/private/teamspeak.tar.gz 2> /dev/null
 # extract this to the ~/private directory
