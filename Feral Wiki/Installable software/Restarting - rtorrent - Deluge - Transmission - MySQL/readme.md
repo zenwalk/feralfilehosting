@@ -10,7 +10,7 @@ Run the following commands through [SSH](https://www.feralhosting.com/faq/view?q
 **1:** Kill rtorrent
  
 ~~~
-killall -9 rtorrent -u $(whoami)
+killall -9 -u $(whoami) rtorrent
 ~~~
 
 **2:** Start it again in a screen
@@ -62,7 +62,7 @@ Run the following commands through [SSH guide basics - PuTTy](https://www.feralh
 **1:** Kill transmission
 
 ~~~
-killall -9 transmission-daemon -u $(whoami)
+killall -9 -u $(whoami) transmission-daemon
 ~~~
 
 **2:** Start transmission
@@ -86,19 +86,19 @@ Use the commands you need to kill and start the deluge daemon and Web Gui:
 **Option 1:** Kill deluge only
 
 ~~~
-killall -9 deluged -u $(whoami)
+killall -9 -u $(whoami) deluged
 ~~~
 
 **Option 2:** Kill the Web Gui only
 
 ~~~
-killall -9 deluge-web -u $(whoami)
+killall -9 -u $(whoami) deluge-web
 ~~~
 
 **Option 3** This command would kill the deluge process and the web gui together
 
 ~~~
-killall -9 deluged deluge-web -u $(whoami)
+killall -9 -u $(whoami) deluged deluge-web
 ~~~
 
 ### Restart the deluge daemon and Web Gui
@@ -136,7 +136,7 @@ Run the following commands through [ SSH](https://www.feralhosting.com/faq/view?
 **1:** Kill mysql
 
 ~~~
-killall -9 mysqld mysqld_safe -u $(whoami)
+killall -9 -u $(whoami) mysqld mysqld_safe
 ~~~
 
 **2:** Start mysql
