@@ -157,9 +157,9 @@ else
         # create the screen
         echo -e "\033[32m""4:""\e[0m" "Creating the screen process"
         screen -dmS rtorrent-$suffix rtorrent -n -o import=~/.rtorrent-$suffix.rc
-        echo
         echo 'screen -dmS rtorrent-'$suffix' rtorrent -n -o import=~/.rtorrent-'$suffix'.rc' >> ~/multirtru.restart.txt
-        echo -e "This command was added to" "\033[36m""~/multirtru.restart.txt""\e[0m" "so you can easily restart this instance"
+        echo
+        echo -e "\033[32m""This command was added to""\e[0m" "\033[36m""~/multirtru.restart.txt""\e[0m" "\033[32m""so you can easily restart this instance""\e[0m"
         echo "To reattach to this screen type:"
         echo
         echo -e "\033[33m""screen -r rtorrent-$suffix""\e[0m"
@@ -171,11 +171,11 @@ else
         if [[ -n "$username" ]]
         then
             echo -e "The username for this instance is:" "\033[32m""$username""\e[0m"
-            echo
         else
             echo -e "The username for this instance is:" "\033[32m""rutorrent-$suffix""\e[0m"
-            echo
         fi
+        echo "https://$(hostname)/$(whoami)/rutorrent-$suffix"
+        echo
         exit 1
     else
         echo -e "\033[31m""This particular suffix already exists, try another. The script will restart.""\e[0m"
