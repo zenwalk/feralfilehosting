@@ -171,10 +171,12 @@ else
         if [[ -n "$username" ]]
         then
             echo -e "The username for this instance is:" "\033[32m""$username""\e[0m"
+            echo
         else
             echo -e "The username for this instance is:" "\033[32m""rutorrent-$suffix""\e[0m"
+            echo
         fi
-        echo "https://$(hostname)/$(whoami)/rutorrent-$suffix"
+        echo -e "The URL is:" "\033[32m""https://$(hostname)/$(whoami)/rutorrent-$suffix""\e[0m"
         echo
         exit 1
     else
