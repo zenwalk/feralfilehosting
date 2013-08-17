@@ -149,9 +149,13 @@ killall -9 -u $(whoami) nginx php5-fpm
 
 Once it has restarted the h5ai should be working.
 
-For a specific directory only, change the location:
+### h5ai custom directory with nginx that is not password protected
+
+For a specific directory only, you can change the location in the `h5ai.conf` if the directory you want to use is not already password protected:
 
 **Important note:** The location is relative to your WWW root. Make sure the location exists in your WWW.
+
+For example we can edit the `h5ai.conf` to this:
 
 ~~~
 location /links {
@@ -159,7 +163,27 @@ index  index.html  index.php  /_h5ai/server/php/index.php;
 }
 ~~~
 
-The restart nginx
+Then restart nginx:
+
+~~~
+killall -9 -u $(whoami) nginx php5-fpm
+~~~
+
+### h5ai custom directory with nginx that is also password protected 
+
+If the directory you want to use h5ai with is already password protected then you must merge the changes into the `.conf` for that location and then remove the `h5ai.conf` or nginx won't restart:
+
+So for example we edit the `links.conf` to be like this:
+
+~~~
+location /links {
+index  index.html  index.php /_h5ai/server/php/index.php;
+auth_basic "Please log in";
+auth_basic_user_file /path/to/the/.htpasswd;
+}
+~~~
+
+Then delete the `h5ai.conf` and then restart nginx:
 
 ~~~
 killall -9 -u $(whoami) nginx php5-fpm

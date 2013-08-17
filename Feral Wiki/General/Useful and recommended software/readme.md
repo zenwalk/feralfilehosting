@@ -7,7 +7,7 @@ Some applications gave a portable version or PortableApps version. Portable apps
 
 [Bitkinex](http://www.bitkinex.com/ftp/client/bitkinex323.exe) - BitKinex is a handy network client supporting multiple transfer protocols (FTP, FTP(S), SFTP, HTTP(S) and WebDAV). Supports segmented downloads - [Full Features list](http://www.bitkinex.com/features)
 
-[WinSCP 5.1.6](http://sourceforge.net/projects/winscp/files/WinSCP/5.1.6/winscp516setup.exe) - **Free** SFTP and FTP client for Windows. Supports custom commands. 
+[WinSCP 5.1.7](http://winscp.net/download/winscp517setup.exe) - **Free** SFTP and FTP client for Windows. Supports custom commands. 
 Also available - [WinSCP Portable 5.*.*](http://portableapps.com/apps/internet/winscp_portable)
 
 [FileZilla](https://www.feralhosting.com/faq/view?question=187) - **Free** FTP client that runs on  **all major platforms**. Supports transferring multiple files at the same time. 
