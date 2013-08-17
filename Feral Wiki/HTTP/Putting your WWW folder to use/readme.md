@@ -78,17 +78,19 @@ Now visit your WWW `links` folder in your browser, click on the newly created sy
 
 ### Optional
 
-[_h5ai directory indexer](http://larsjung.de/h5ai/)
+[h5ai directory indexer](http://larsjung.de/h5ai/)
+
+**Important note:** The main `_h5ai` directory does not like being anywhere else except the server root. To only apply the indexing to certain directories please use the options described below. Do not try to install the actual `_h5ai` directory to a sub directory.
 
 The screenshot below illustrates the result:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Putting%20your%20WWW%20folder%20to%20use/h5ai.png)
 
-Version 0.23 has a problem. This is a problem with the two url formats available at Feral. It will work with one
-and not the other. To fix this you will need to use this custom version of v0.23 that works for both URL types at 
+Version 0.23 has a problem. This is a problem with the two URL formats available at Feral. It will work with one
+and not the other. To fix this you will need to use this custom version of 0.23 that works for both URL types at 
 the same time.
 
-To download _h5ai 0.23 (custom with dual url format fix) use these commands in ssh.
+To download _h5ai 0.23 (custom with dual url format fix) use these commands in SSH.
 
 ~~~
 wget -qO ~/h5ai.zip http://git.io/QdyWzg
@@ -103,13 +105,19 @@ Use this command to append the required entry to an existing `.htaccess` files o
 echo -e '\nDirectoryIndex  index.html  index.php  /_h5ai/server/php/index.php' >> ~/www/$(whoami).$(hostname)/public_html/.htaccess
 ~~~
 
-_h5ai will now be ready to use in your WWW. By default this works from the WWW root down. If you would like to make it specific to certain folders you need to edit the `.htaccess ` files and remove this:
+_h5ai will now be ready to use in your WWW. By default this works from the WWW root down. 
+
+If you would like to make it specific to certain folders you need to edit the `.htaccess ` files and remove this:
 
 ~~~
 DirectoryIndex  index.html  index.php  /_h5ai/server/php/index.php
 ~~~
 
-Now inside the directory you want to use _h5ai create a `.htaccess` file and add the the line above you just removed. This will make it work for this folder and folders within.
+Then, inside the directory you want to use _h5ai create either:
+
+1: Create a `.htaccess` file if there is not one present, or add the line to it 
+
+2: Add the line to any existing `.htaccess` files. This will make it work for this folder and folders within.
 
 **For nginx only:**
 
@@ -136,16 +144,32 @@ location / {
 Now restart nginx using this command:
 
 ~~~
-killall -9 nginx php5-fpm -u $(whoami)
+killall -9 -u $(whoami) nginx php5-fpm
 ~~~
 
 Once it has restarted the h5ai should be working.
+
+For a specific directory only, change the location:
+
+**Important note:** The location is relative to your WWW root. Make sure the location exists in your WWW.
+
+~~~
+location /links {
+index  index.html  index.php  /_h5ai/server/php/index.php;
+}
+~~~
+
+The restart nginx
+
+~~~
+killall -9 -u $(whoami) nginx php5-fpm
+~~~
 
 ### Contribute:
 
 The repo for this custom file can be found here for users to check or to contribute to.
 
-[https://github.com/feralhosting/h5ai_custom](https://github.com/feralhosting/h5ai_custom)
+[https://github.com/feralhosting/_h5ai_0.23_custom](https://github.com/feralhosting/_h5ai_0.23_custom)
 
 
 
