@@ -83,16 +83,6 @@ cp -f ~/.rtorrent.rc ~/.rtorrent-1.rc
 
 **2:** Clone the rutorrent Web Gui
 
-You can do this one of two ways:
-
-~~~
-cp -rf /opt/rutorrent/current/. ~/www/$(whoami).$(hostname)/public_html/rutorrent-1/
-~~~
-
-~~~
-htpasswd -cm ~/www/$(whoami).$(hostname)/public_html/rutorrent-1/.htpasswd username
-~~~
-
 ~~~
 cp -rf ~/www/$(whoami).$(hostname)/public_html/rutorrent/. ~/www/$(whoami).$(hostname)/public_html/rutorrent-1
 ~~~
