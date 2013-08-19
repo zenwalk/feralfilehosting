@@ -1,4 +1,6 @@
 
+You can ask for this to be installed on your slot by opening a ticket.
+
 ### pz7ip
 
 Download the binaries and extract them using these commands:
@@ -22,30 +24,20 @@ For example how to extract an iso:
 
 -o cannot use ~ in the path or have a space after it. It must be relative from you are in the shell.
 
-### Organise the binaries
+### Rename the folder
 
-You can do these stesp to make put the binaries in a more organised location and add that location to your PATH so you can easily call the binary.
+**Important note:** You will need to use the full path to the binary when executing it.
 
-~~~
-cp -rf ~/p7zip_9.20.1/. ~/private/programs && rm -rf  ~/p7zip_9.20.1
-~~~
-
-Now run this command.
+If you want it to be easier to call then rename the folder
 
 ~~~
-echo 'PATH=~/private/programs/bin:$PATH' >> ~/.bashrc
+cp -rf ~/p7zip_9.20.1/. ~/7z && rm -rf ~/p7zip_9.20.1
 ~~~
 
-Now reload your shell
+So now it will be:
 
 ~~~
-source ~/.bashrc
-~~~
-
-OK, now you can simply use
-
-~~~
-7z x ~/path/to/some/archive
+~/7z/bin/7z x ~/Your.iso -oWhere/You/Want/It/Extracted/To
 ~~~
 
 
