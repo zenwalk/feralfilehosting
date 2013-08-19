@@ -26,19 +26,40 @@ For example how to extract an iso:
 
 ### Rename the folder
 
-**Important note:** You will need to use the full path to the binary when executing it.
+**Important note:** You will need to use the full path to the binary when executing it if using 7z.
 
 If you want it to be easier to call then rename the folder
 
 ~~~
-cp -rf ~/p7zip_9.20.1/. ~/7z && rm -rf ~/p7zip_9.20.1
+cp -rf ~/p7zip_9.20.1/. ~/programs && rm -rf ~/p7zip_9.20.1
 ~~~
 
 So now it will be:
 
 ~~~
-~/7z/bin/7z x ~/Your.iso -oWhere/You/Want/It/Extracted/To
+~/programs/bin/7z x ~/Your.iso -oWhere/You/Want/It/Extracted/To
 ~~~
 
+### Adding 7za to the PATH
+
+7za is a standalone executable and can be added to the PATH. This does not work with 7z.
+
+Now run this command if you copied the binaries using the command above:
+
+~~~
+echo 'PATH=~/programs/bin:$PATH' >> ~/.bashrc
+~~~
+
+Now reload your shell
+
+~~~
+source ~/.bashrc
+~~~
+
+OK, now you can simply use
+
+~~~
+7za x ~/path/to/some/archive
+~~~
 
 
