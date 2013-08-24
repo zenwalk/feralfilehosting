@@ -7,13 +7,13 @@ Doe these commands in [SSH](https://www.feralhosting.com/faq/view?question=12):
 
 ~~~
 mkdir -p ~/.irssi/scripts/autorun
-wget -qNO ~/.irssi/xchat.theme http://irssi.org/themefiles/xchat.theme
+wget -qO ~/.irssi/xchat.theme http://irssi.org/themefiles/xchat.theme
 ~~~
 
 **2:** Get a nick colour script:
 
 ~~~
-wget -qNO ~/.irssi/scripts/autorun/xchatnickcolor.pl http://dave.waxman.org/irssi/xchatnickcolor.pl
+wget -qO ~/.irssi/scripts/autorun/xchatnickcolor.pl http://dave.waxman.org/irssi/xchatnickcolor.pl
 ~~~
 
 **3:** Create a screen and open irssi in it using this command:
