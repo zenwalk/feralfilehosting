@@ -1,13 +1,13 @@
 
-In SSH do these commands. Use this faq if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
+In SSH do these commands. Use this FAQ if you do not know how to SSH into your slot: [SSH basics - Putty](https://www.feralhosting.com/faq/view?question=12)
 
 These commands will download the linked version of node.js and set it up inside your `~/private` directory.
 
 ~~~
-wget -qNO ~/node.js.tar.gz http://nodejs.org/dist/v0.10.13/node-v0.10.13-linux-x64.tar.gz
+wget -qO ~/node.js.tar.gz http://nodejs.org/dist/v0.10.17/node-v0.10.17-linux-x64.tar.gz
 ~~~
 
-This downloads the node-v0.10.13-linux-x64.tar.gz and then saves it as node.tar.gz in your  `~/private` directory.
+This downloads the `node-v0.10.17-linux-x64.tar.gz` and then saves it as `node.tar.gz` in your  `~/private` directory.
 
 ~~~
 tar -xzf ~/node.js.tar.gz -C ~/private
@@ -46,7 +46,7 @@ node -v
 Tries to call node.js to check the version and should return:
 
 ~~~
-v0.10.13
+v0.10.17
 ~~~
 
 If you see the version then it is ready to use.
