@@ -1,10 +1,10 @@
 #!/bin/bash
 # Install Subsonic
 #
-scriptversion="1.5.6"
+scriptversion="1.5.7"
 scriptname="subsonic.4.8.sh"
 subsonicversion="4.8"
-madsonicversion="5.0 Beta4 Build 3560"
+madsonicversion="5.0 Beta5 Build 3600"
 javaversion="1.7 Update 25"
 #
 # Bobtentpeg 01/30/2013
@@ -67,6 +67,7 @@ javaversion="1.7 Update 25"
 # v 1.5.4 added the creation of a small ~/bin script that a user can call in crontab to restart at reboot. it checks to see it the PID is already running.
 # v 1.5.5 RSK updateda and various readability tweaks
 # v 1.5.6 Madsonic 5.0 Beta4 Build 3560 with custom Audioffmpeg and ffmpeg. Some hardcoded things changed to variables for easier updating of the script
+# v 1.5.7 updated subsonic version. Add an option to update installtion.
 #
 ############################
 ### Version History Ends ###
@@ -92,11 +93,11 @@ subsonicfvs="subsonic-4.8-standalone.tar.gz"
 sffmpegfv="https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.static.64bit.2013-06-14.tar.gz"
 sffmpegfvs="ffmpeg.static.64bit.2013-06-14.tar.gz"
 # Some variable links for madsonic
-madsonicfv="https://bitbucket.org/feralhosting/feralfiles/downloads/5.0.3560.beta4XE-standalone.zip"
-madsonicfvs="5.0.3560.beta4XE-standalone.zip"
+madsonicfv="https://bitbucket.org/feralhosting/feralfiles/downloads/5.0.3600.beta5XE-standalone.zip"
+madsonicfvs="5.0.3600.beta5XE-standalone.zip"
 # Madsonic custom ffmpeg with Audioffmpeg
-mffmpegfvc="https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.2013-07-11.zip"
-mffmpegfvcs="ffmpeg.2013-07-11.zip"
+mffmpegfvc="https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.2013-08-28.zip"
+mffmpegfvcs="ffmpeg.2013-08-28.zip"
 #
 ############################
 ####### Variable End #######
@@ -148,6 +149,11 @@ echo
 echo -e "The version of the" "\033[33m""Subsonic""\e[0m" "server being used in this script is:" "\033[31m""$subsonicversion""\e[0m"
 echo -e "The version of the" "\033[33m""Madsonic""\e[0m" "server being used in this script is:" "\033[31m""$madsonicversion""\e[0m"
 echo -e "The version of the" "\033[33m""Java""\e[0m" "being used in this script is:" "\033[31m""$javaversion""\e[0m"
+if [[ -f ~/private/subsonic/.version ]]
+then
+    echo
+    echo -e "Your currently installed version is:" "\033[32m""$(sed -n '1p' ~/private/subsonic/.version)""\e[0m"
+fi    
 echo
 #
 rm -f $HOME/000subsonic.4.8.sh $HOME/111subsonic.4.8.sh $HOME/222subsonic.4.8.sh $HOME/294857.sh $HOME/6273846.sh
@@ -217,7 +223,7 @@ then
         echo -e \"\\\e[0m\"
     fi
 elif [[ \$confirm =~ ^[Aa]\$ ]]; then
-    killall -9 java -u \$(whoami) 2> /dev/null
+    killall -9 -u \$(whoami) java 2> /dev/null
     echo -e \"\\\033[31mAll java processes have been killed\\\e[0m\"
     echo
     echo -e \"\\\033[33mChecking for open java processes:\\\e[0m\"
@@ -362,6 +368,7 @@ then
             mkdir -p ~/private/subsonic/transcode
             mkdir -p ~/private/subsonic/playlists
             mkdir -p ~/private/subsonic/Podcasts
+            echo -n "$subsonicfvs" > ~/private/subsonic/.version
             echo
             # Creates some directories we need for configuring the start-up script
             #
@@ -476,6 +483,7 @@ then
             mkdir -p ~/private/subsonic/Podcast
             mkdir -p ~/private/subsonic/Incoming
             mkdir -p ~/private/subsonic/playlist-export
+            echo -n "$madsonicfvs" > ~/private/subsonic/.version
             echo
             # Creates some directories we need for configuring the start-up script
             #
@@ -589,12 +597,12 @@ then
     else
         echo -e "\033[31m""Subsonic appears to already be installed.""\e[0m" "Please kill the PID:" "\033[33m""$(cat ~/private/subsonic/subsonic.4.8.sh.PID 2> /dev/null)""\e[0m" "if it is running and delete the" "\033[36m""~/private/subsonic directory""\e[0m"
         echo
-        read -ep "Would you like me to kill Java (all Java processes) and remove the directories for you? [y] or quit now [q]: "  confirm  
+        read -ep "Would you like me to kill Java (all Java processes) and remove the directories for you? [y] or update your installation [u] quit now [q]: "  confirm
         if [[ $confirm =~ ^[Yy]$ ]]
         then
             echo
             echo "Killing all Java processes."
-            killall -9 java -u $(whoami) 2> /dev/null
+            killall -9 -u $(whoami) java 2> /dev/null
             echo -e "\033[31m" "Done""\e[0m"
             sleep 1
             echo "Removing ~/private/subsonic"
@@ -630,7 +638,73 @@ then
             else
                 exit 1
             fi
+        elif [[ $confirm =~ ^[Uu]$ ]]
+        then
+            read -ep "Would you like to update Subsonic [s] or Madsonic [m]: "  confirmupdate
+            echo
+            if [[ $confirmupdate =~ ^[Ss]$ ]]
+            then
+                echo -e "Subsonic is being updated. This will only take a moment."
+                echo
+                killall -9 -u $(whoami) java 2> /dev/null
+                mkdir -p ~/sonictmp
+                wget -qO ~/subsonic.tar.gz $subsonicfv
+                tar -xzf ~/subsonic.tar.gz -C ~/sonictmp
+                rm -f ~/sonictmp/subsonic.sh
+                cp -rf ~/sonictmp/. ~/private/subsonic/
+                wget -qO ~/subffmpeg.tar.gz $sffmpegfv
+                tar -xzf ~/subffmpeg.tar.gz -C ~/private/subsonic/transcode
+                chmod -f 700 ~/private/subsonic/transcode/ffmpeg
+                echo -n "$subsonicfvs" > ~/private/subsonic/.version
+                rm -rf ~/subsonic.tar.gz ~/subffmpeg.tar.gz ~/sonictmp
+                bash ~/private/subsonic/subsonic.sh
+                echo -e "A restart/start/kill script has been created at:" "\033[35m""~/bin/subsonicrsk""\e[0m"
+                echo -e "\033[32m""Subsonic is now started, use the links below to access it. Don't forget to set path to FULL path to you music folder in the gui.""\e[0m"
+                sleep 1
+                echo
+                echo -e "\033[31m""HTTP""\e[0m" "is accessible at" "\033[31m""http://$(hostname)""\e[0m"":""\033[33m""$(sed -n -e 's/SUBSONIC_PORT=\([0-9]\+\)/\1/p' ~/private/subsonic/subsonic.sh 2> /dev/null)""\e[0m"
+                echo -e "HTTPS uses a custom but invalid subsonic.org cert and not one from Feral. It is safe to accept."
+                echo -e "\033[32m""HTTPS""\e[0m" "is accessible at" "\033[32m""https://$(hostname)""\e[0m"":""\033[33m""$(sed -n -e 's/SUBSONIC_HTTPS_PORT=\([0-9]\+\)/\1/p' ~/private/subsonic/subsonic.sh 2> /dev/null)""\e[0m"
+                echo
+                echo -e "Subsonic started at PID:" "\033[31m""$(cat ~/private/subsonic/subsonic.4.8.sh.PID 2> /dev/null)""\e[0m"
+                echo
+                bash
+                exit 1
+            elif [[ $confirmupdate =~ ^[Mm]$ ]]
+            then
+                echo -e "Madsonic is being updated. This will only take a moment."
+                echo
+                killall -9 -u $(whoami) java 2> /dev/null
+                mkdir -p ~/sonictmp
+                wget -qO ~/madsonic.zip $madsonicfv
+                unzip -qo ~/madsonic.zip -d ~/sonictmp
+                rm -f ~/sonictmp/subsonic.sh
+                cp -rf ~/sonictmp/. ~/private/subsonic/
+                wget -qO ~/madffmpeg.zip $mffmpegfvc
+                unzip -qo ~/madffmpeg.zip -d ~/private/subsonic/transcode
+                chmod -f 700 ~/private/subsonic/transcode/Audioffmpeg ~/private/subsonic/transcode/ffmpeg
+                echo -n "$madsonicfvs" > ~/private/subsonic/.version
+                rm -rf ~/madsonic.zip ~/madffmpeg.zip ~/sonictmp
+                bash ~/private/subsonic/subsonic.sh
+                echo -e "A restart/start/kill script has been created at:" "\033[35m""~/bin/subsonicrsk""\e[0m"
+                echo -e "\033[32m""Subsonic is now started, use the links below to access it. Don't forget to set path to FULL path to you music folder in the gui.""\e[0m"
+                sleep 1
+                echo
+                echo -e "\033[31m""HTTP""\e[0m" "is accessible at" "\033[31m""http://$(hostname)""\e[0m"":""\033[33m""$(sed -n -e 's/SUBSONIC_PORT=\([0-9]\+\)/\1/p' ~/private/subsonic/subsonic.sh 2> /dev/null)""\e[0m"
+                echo -e "HTTPS uses a custom but invalid subsonic.org cert and not one from Feral. It is safe to accept."
+                echo -e "\033[32m""HTTPS""\e[0m" "is accessible at" "\033[32m""https://$(hostname)""\e[0m"":""\033[33m""$(sed -n -e 's/SUBSONIC_HTTPS_PORT=\([0-9]\+\)/\1/p' ~/private/subsonic/subsonic.sh 2> /dev/null)""\e[0m"
+                echo
+                echo -e "Subsonic started at PID:" "\033[31m""$(cat ~/private/subsonic/subsonic.4.8.sh.PID 2> /dev/null)""\e[0m"
+                echo
+                bash
+                exit 1
+            else
+                echo "You did not select a valid option. The script will exit."
+                echo
+                exit 1
+            fi
         else
+            echo
             exit 1
         fi
     fi

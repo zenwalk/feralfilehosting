@@ -24,7 +24,7 @@ To install this software using a custom bash script connect to your slot using S
 The execute command (you can copy and paste):
 
 ~~~
-wget -qNO ~/subsonic.4.8.sh http://git.io/aFIIXg && bash ~/subsonic.4.8.sh
+wget -qO ~/subsonic.4.8.sh http://git.io/aFIIXg && bash ~/subsonic.4.8.sh
 ~~~
 
 Then follow the progress in your terminal. Some steps require user input. You will be asked whether you want to install Subsonic or Madsonic.
@@ -176,7 +176,7 @@ mkdir -p  ~/private/subsonic/transcode ~/private/subsonic/playlists ~/private/su
 Gets the latest version of subsonic from sourceforge.net, currently at: `4.8`
 
 ~~~
-wget -qNO ~/subsonic.tar.gz http://sourceforge.net/projects/subsonic/files/subsonic/4.8/subsonic-4.8-standalone.tar.gz
+wget -qO ~/subsonic.tar.gz http://sourceforge.net/projects/subsonic/files/subsonic/4.8/subsonic-4.8-standalone.tar.gz
 ~~~
 
 Extracts the archive we just downloaded
@@ -188,7 +188,7 @@ tar -xzf ~/subsonic.tar.gz -C ~/private/subsonic/
 Downloads a long term hosted version of ffmpeg static. Dated at `06/14/2013`
 
 ~~~
-wget -qNO ~/ffmpeg.tar.gz https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.static.64bit.2013-06-14.tar.gz
+wget -qO ~/ffmpeg.tar.gz https://bitbucket.org/feralhosting/feralfiles/downloads/ffmpeg.static.64bit.2013-06-14.tar.gz
 ~~~
 
 Extracts the ffmpeg version we downloaded to the transcode directory
@@ -308,7 +308,7 @@ Avconv: A static build found here can also be used.
 Use these commands to download and extract a static build 06.14.2013 ready for use:
 
 ~~~
-wget -qNO ~/avconv.tar.gz https://bitbucket.org/feralhosting/feralfiles/downloads/libav-linux64-20130614.tar.gz
+wget -qO ~/avconv.tar.gz https://bitbucket.org/feralhosting/feralfiles/downloads/libav-linux64-20130614.tar.gz
 tar -xzf ~/avconv.tar.gz -C ~/private/subsonic/transcode/
 rm -f ~/avconv.tar.gz
 ~~~
