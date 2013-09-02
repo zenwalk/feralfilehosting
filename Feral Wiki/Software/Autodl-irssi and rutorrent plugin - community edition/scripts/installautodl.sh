@@ -175,6 +175,7 @@ then
     fi
     # Now we fix it
     echo "Applying the fix script as part of the installation:"
+    sleep 2
     echo
     if [ -d ~/.irssi/scripts/AutodlIrssi/ ]
     then
