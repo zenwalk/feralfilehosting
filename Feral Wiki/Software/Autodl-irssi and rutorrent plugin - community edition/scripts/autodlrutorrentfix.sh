@@ -91,7 +91,7 @@ then
 ############################
 ####### Script Start #######
 ############################
-#
+    #
     if [ -d ~/.irssi/scripts/AutodlIrssi/ ]
     then
         echo -e "\033[33m""Autodl Before""\e[0m"
@@ -117,7 +117,7 @@ then
         echo
         exit
     fi
-#
+    #
     if [ -d ~/www/$(whoami).$(hostname)/public_html/rutorrent/plugins/autodl-irssi/ ]
     then
         echo -e "\033[33m""Autodl-rutorrent Before""\e[0m"
@@ -135,7 +135,7 @@ then
         echo
         exit 1
     fi
-    killall -9 irssi -u $(whoami) 2> /dev/null 
+    killall -9 -u $(whoami) irssi 2> /dev/null 
     screen -wipe > /dev/null 2>&1
     screen -dmS autodl irssi
     echo -e "\033[33m""Checking we restarted irssi or if there are multiple screens/processes""\e[0m"
@@ -147,7 +147,7 @@ then
     echo -e "This fix might have to be run each time you update/overwrite the autodl or autodl-rutorrent files."
     echo
     exit 1
-#
+    #
 ############################
 ####### Script Ends  #######
 ############################
