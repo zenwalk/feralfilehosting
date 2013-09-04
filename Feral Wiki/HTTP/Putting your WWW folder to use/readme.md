@@ -82,18 +82,18 @@ Now visit your WWW `links` folder in your browser, click on the newly created sy
 
 **Important note:** The main `_h5ai` directory does not like being anywhere else except the server root. To only apply the indexing to certain directories please use the options described below. Do not try to install the actual `_h5ai` directory to a sub directory.
 
-The screenshot below illustrates the result:
+The screen shot below illustrates the result:
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Putting%20your%20WWW%20folder%20to%20use/h5ai.png)
 
-Version 0.23 has a problem. This is a problem with the two URL formats available at Feral. It will work with one
-and not the other. To fix this you will need to use this custom version of 0.23 that works for both URL types at 
+Version 0.24 has a problem. This is a problem with the two URL formats available at Feral. It will work with one
+and not the other. To fix this you will need to use this custom version of 0.24 that works for both URL types at 
 the same time.
 
-To download _h5ai 0.23 (custom with dual url format fix) use these commands in SSH.
+To download _h5ai 0.24 (custom with dual url format fix) use these commands in SSH.
 
 ~~~
-wget -qO ~/h5ai.zip http://git.io/QdyWzg
+wget -qO ~/h5ai.zip http://git.io/RG-BpQ
 unzip -qo ~/h5ai.zip -d ~/www/$(whoami).$(hostname)/public_html/
 ~~~
 
@@ -193,7 +193,7 @@ killall -9 -u $(whoami) nginx php5-fpm
 
 The repo for this custom file can be found here for users to check or to contribute to.
 
-[https://github.com/feralhosting/_h5ai_0.23_custom](https://github.com/feralhosting/_h5ai_0.23_custom)
+[https://github.com/feralhosting/h5ai_custom](https://github.com/feralhosting/h5ai_custom)
 
 
 
