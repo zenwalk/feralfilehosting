@@ -50,6 +50,7 @@ We want to install these programs so we will have to find and select them for in
 ~~~
 cygrunsrv
 lftp
+rsync
 cron
 openssh
 openssl
@@ -73,6 +74,14 @@ lftp
 ~~~
 
 ![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.lftp.png)
+
+Now search for:
+
+~~~
+rsync
+~~~
+
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/Other%20software/Cygwin%20-%20Linux%20tools%20on%20Windows/apps.rsync.png)
 
 Now search for:
 
