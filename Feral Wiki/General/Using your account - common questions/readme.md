@@ -83,11 +83,15 @@ A: Feral do not provide FTPS access as part of their set-up, only SFTP. You can 
 
 **Q:** Is there test file for Cogent?
 
-A: Yes, here it is: 
+A: Yes, here it is:
 
 [http://aphrodite.feralhosting.com/test.bin](http://aphrodite.feralhosting.com/test.bin)
 
-[https://aphrodite.feralhosting.com/test.bin](http://aphrodite.feralhosting.com/test.bin)
+[http://mirror.nl.leaseweb.net/speedtest/100mb.bin](http://mirror.nl.leaseweb.net/speedtest/100mb.bin)
+
+[http://test.fiberring.net/100mb.bin](http://test.fiberring.net/100mb.bin)
+
+[ftp://scarlet.feralhosting.com/8.0-RELEASE-amd64-disc1.iso](ftp://scarlet.feralhosting.com/8.0-RELEASE-amd64-disc1.iso)
 
 **Q:** Deluge, how do I use plug-ins, RSS and or make torrents.
 

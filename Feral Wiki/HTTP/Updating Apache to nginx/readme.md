@@ -56,13 +56,21 @@ There exist tools to assist with the conversion if you [Google "nginx htaccess c
 
 Which can be removed once you've reviewed the set up.
 
-`nginx` can be restarted by running the [SSH command](https://www.feralhosting.com/faq/view?question=12) 
+To reload the nginx conf file use this command for changes to take effect use this command:
+
+~~~
+/usr/sbin/nginx -s reload -c ~/.nginx/nginx.conf
+~~~
+
+
+
+`nginx` can be killed and then automatically restarted by running the [SSH command](https://www.feralhosting.com/faq/view?question=12) 
 
 ~~~
 killall -9 nginx php5-fpm -u $(whoami)
 ~~~
 
-and waiting 5 minutes for it to be restarted.
+and then waiting up to 5 minutes for it to be restarted.
 
 If nothing prevents nginx starting, like a bad .conf file, then running this command should show you the running processes.
 

@@ -19,24 +19,28 @@ Create shareable links using [Ajaxplorer 5 - Basic setup](https://www.feralhosti
 
 **2:** Provide them with a download link to a file hosted on one of our servers:
 
-OVH and Leaseweb test files:
-
-~~~
-http://proof.ovh.net/
-http://mirror.nl.leaseweb.net/speedtest/100mb.bin
-~~~
-
 Feral OVH test file:
 
 ~~~
-ftp://scarlet.feralhosting.com/ubuntu-9.04-desktop-amd64.iso
+ftp://scarlet.feralhosting.com/8.0-RELEASE-amd64-disc1.iso
+~~~
+
+Leaseweb Test File:
+
+~~~
+http://mirror.nl.leaseweb.net/speedtest/100mb.bin
+~~~
+
+Fiberring test file:
+
+~~~
+http://test.fiberring.net/100mb.bin
 ~~~
 
 Feral Cogent test file:
 
 ~~~
 http://aphrodite.feralhosting.com/test.bin
-https://aphrodite.feralhosting.com/test.bin
 ~~~
 
 This will only show your the potential upload speed if they have a large download capacity as well as the file being hosted on another server (**scarlet**). Provide them with a link to a file on your server using your *WWW/Http* directory. Then they can *ftp/http/wget* a file of your choosing from **your** server.
@@ -44,10 +48,10 @@ This will only show your the potential upload speed if they have a large downloa
 **3:** Download a big file to your server with wget and take a screenshot:
 
 ~~~
-wget -O /dev/null http://proof.ovh.net/files/10Gio.dat
-wget -O /dev/null http://mirror.nl.leaseweb.net/speedtest/10000mb.bin
+wget -O /dev/null http://mirror.nl.leaseweb.net/speedtest/100mb.bin
 wget -O /dev/null http://aphrodite.feralhosting.com/test.bin
-wget -O /dev/null https://aphrodite.feralhosting.com/test.bin
+wget -O /dev/null http://test.fiberring.net/100mb.bin
+wget -O /dev/null ftp://scarlet.feralhosting.com/8.0-RELEASE-amd64-disc1.iso
 ~~~
 
 Pres and hold `CTRL` then press `c` at any time to quit the download.
