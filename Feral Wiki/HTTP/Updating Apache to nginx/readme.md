@@ -56,13 +56,21 @@ There exist tools to assist with the conversion if you [Google "nginx htaccess c
 
 Which can be removed once you've reviewed the set up.
 
+**Reload your nginx.conf**
+
 To reload the nginx conf file use this command for changes to take effect use this command:
 
 ~~~
 /usr/sbin/nginx -s reload -c ~/.nginx/nginx.conf
 ~~~
 
+You will see this:
 
+![](https://raw.github.com/feralhosting/feralfilehosting/master/Feral%20Wiki/HTTP/Updating%20Apache%20to%20nginx/nginx.png)
+
+This is normal, your changes have been applied. You may need clear your browser cache for some changes to take effect.
+
+**Kill the nginx process**
 
 `nginx` can be killed and then automatically restarted by running the [SSH command](https://www.feralhosting.com/faq/view?question=12) 
 
