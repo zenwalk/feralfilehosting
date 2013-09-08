@@ -21,7 +21,7 @@ nano -w ~/www/$(whoami).$(hostname)/public_html/.htaccess
 
 Then copy an paste this code below.
 
-
+~~~
 RewriteEngine on
 #
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -31,7 +31,7 @@ RewriteRule ^.*$ https://%{HTTP:X-Host}%{REQUEST_URI} [R,L]
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTP:x-HOST} ^.+\.feralhosting\.com$ [NC]
 RewriteRule ^.*$ https://%{HTTP:X-Host}/%{ENV:USER}%{REQUEST_URI} [R,L]
-
+~~~
 
 Press `CTRL + X` then `Y` to save in nano.
 
@@ -67,7 +67,7 @@ server.feralhosting.com/username/
 
 Then use this code instead.
 
-
+~~~
 RewriteEngine on
 #
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -76,7 +76,7 @@ RewriteCond %{HTTP:x-HOST} ^(.+\.)?(.+)\.feralhosting\.com$ [NC]
 RewriteRule ^.*$ https://%{ENV:APACHE_HOSTNAME}/%{ENV:USER}%{REQUEST_URI} [R,L] 
 RewriteCond %{HTTP:x-HOST} ^(.+\.)(.+)\.feralhosting\.com$ [NC]
 RewriteRule ^.*$ https://%{ENV:APACHE_HOSTNAME}/%{ENV:USER}%{REQUEST_URI} [R,L] 
-
+~~~
 
 [pastebin: Force all HTTP to https://server.feralhosting.com only](http://pastebin.com/sawcAhCn)
 

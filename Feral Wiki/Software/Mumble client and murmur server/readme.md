@@ -6,7 +6,7 @@ How to install and use the murmur Mumble server for use with Mumble clients.
 The murmur server is the server for the mumble VoIP client.
 
 ```
-wget -qNO server.tar.bz2 http://downloads.sourceforge.net/project/mumble/Mumble/1.2.4/murmur-static_x86-1.2.4.tar.bz2
+wget -qO server.tar.bz2 http://downloads.sourceforge.net/project/mumble/Mumble/1.2.4/murmur-static_x86-1.2.4.tar.bz2
 tar -xjf server.tar.bz2 && cp -rf ~/murmur-static_x86-1.2.4/. ~/private/murmur && rm -rf ~/murmur-static_x86-1.2.4
 ```
 
@@ -65,6 +65,15 @@ Use this command to see all running instances of the murmur server
 ```
 ps x | grep murmur | grep -v grep
 ```
+
+To kill the process (all running instances) use this command:
+
+~~~
+killall -u $(whoami) murmur.x86
+~~~
+
+
+
 
 
 
